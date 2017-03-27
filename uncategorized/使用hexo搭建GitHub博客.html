@@ -6,15 +6,40 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.aiwyt.com">
-  <title>Java常见对象之集合 | 祁伟鹏的博客</title>
+  <title>使用hexo搭建GitHub博客 | 祁伟鹏的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="Java常见对象之集合">
-<meta property="og:url" content="http://www.aiwyt.com/posts/uncategorized/Java常见对象之集合.html">
+  <meta name="description" content="最近在学习Java开发，开始的时候使用有道云笔记，记了些笔记希望可以分享给其他人，觉得有道云笔记分享比较麻烦，只能单篇的分享出去。就想找一个博客平台在上面写，看了csdn，博客园，简书等，发现都不能合自己心意。就准备自己搭建一个博客，之后根据自己的喜好自定义，完善。下面就是我搭建博客的过程：
+
+本文主要讲解，如何使用GitHub+Hexo搭建个人博客，因本人使用的是MacBook Air 所以，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用hexo搭建GitHub博客">
+<meta property="og:url" content="http://www.aiwyt.com/uncategorized/使用hexo搭建GitHub博客.html">
 <meta property="og:site_name" content="祁伟鹏的博客">
-<meta property="og:updated_time" content="2017-03-27T07:14:44.000Z">
+<meta property="og:description" content="最近在学习Java开发，开始的时候使用有道云笔记，记了些笔记希望可以分享给其他人，觉得有道云笔记分享比较麻烦，只能单篇的分享出去。就想找一个博客平台在上面写，看了csdn，博客园，简书等，发现都不能合自己心意。就准备自己搭建一个博客，之后根据自己的喜好自定义，完善。下面就是我搭建博客的过程：
+
+本文主要讲解，如何使用GitHub+Hexo搭建个人博客，因本人使用的是MacBook Air 所以，">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/291600-bf68e5e46e09a1a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/291600-7cec7b9f28359ea5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/291600-3bff2a591beb2bb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://i4.buimg.com/589326/8d78d106c49302c6.jpg">
+<meta property="og:image" content="http://i4.buimg.com/589326/abc24f9f57d8308d.jpg">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/291600-25cf02703765ff4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/291600-fc61b6d6d2b38fa2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/291600-34e4d1af45d6f267.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://chuantu.biz/t5/52/1490594381x2890173710.png">
+<meta property="og:image" content="http://chuantu.biz/t5/52/1490595428x2890174015.png">
+<meta property="og:image" content="http://chuantu.biz/t5/52/1490595628x2890174015.png">
+<meta property="og:image" content="http://chuantu.biz/t5/52/1490595706x2890174015.png">
+<meta property="og:image" content="http://chuantu.biz/t5/52/1490595892x2890174015.png">
+<meta property="og:image" content="http://chuantu.biz/t5/52/1490596057x2890174015.png">
+<meta property="og:image" content="http://chuantu.biz/t5/52/1490596601x2890174015.png">
+<meta property="og:updated_time" content="2017-03-27T07:53:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java常见对象之集合">
+<meta name="twitter:title" content="使用hexo搭建GitHub博客">
+<meta name="twitter:description" content="最近在学习Java开发，开始的时候使用有道云笔记，记了些笔记希望可以分享给其他人，觉得有道云笔记分享比较麻烦，只能单篇的分享出去。就想找一个博客平台在上面写，看了csdn，博客园，简书等，发现都不能合自己心意。就准备自己搭建一个博客，之后根据自己的喜好自定义，完善。下面就是我搭建博客的过程：
+
+本文主要讲解，如何使用GitHub+Hexo搭建个人博客，因本人使用的是MacBook Air 所以，">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/291600-bf68e5e46e09a1a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="祁伟鹏的博客" type="application/atom+xml">
   
@@ -154,27 +179,119 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java常见对象之集合" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-使用hexo搭建GitHub博客" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Java常见对象之集合
+      使用hexo搭建GitHub博客
     </h1>
   
 
         
-        <a href="/posts/uncategorized/Java常见对象之集合.html" class="archive-article-date">
-  	<time datetime="2017-03-27T07:14:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-27</time>
+        <a href="/uncategorized/使用hexo搭建GitHub博客.html" class="archive-article-date">
+  	<time datetime="2017-03-27T03:26:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <blockquote>
+<p>最近在学习Java开发，开始的时候使用有道云笔记，记了些笔记希望可以分享给其他人，觉得有道云笔记分享比较麻烦，只能单篇的分享出去。就想找一个博客平台在上面写，看了csdn，博客园，简书等，发现都不能合自己心意。就准备自己搭建一个博客，之后根据自己的喜好自定义，完善。下面就是我搭建博客的过程：</p>
+</blockquote>
+<p>本文主要讲解，如何使用GitHub+Hexo搭建个人博客，因本人使用的是MacBook Air 所以，该文章是基于苹果的Mac osx操作系统，windows操作系统搭建方法大同小异。<br><a id="more"></a></p>
+<h2 id="Github准备"><a href="#Github准备" class="headerlink" title="Github准备"></a>Github准备</h2><h3 id="注册GitHub账号"><a href="#注册GitHub账号" class="headerlink" title="注册GitHub账号"></a>注册GitHub账号</h3><p>注册GitHub账号这里我们就不多说了，大家可以直接进入<a href="https://github.com" target="_blank" rel="external">GitHub官网</a>注册。</p>
+<h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><p>登录账号后，在Github页面右上方选择New repository创建一个新的仓库。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/291600-bf68e5e46e09a1a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<center><font color="gray"><em>(图片来自简书)</em></font></center>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/291600-7cec7b9f28359ea5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<center><font color="gray"><em>(图片来自简书)</em></font></center>
+
+<ul>
+<li><p>在<font color="gray">Repository name</font>输入框中 输入：</p>
+<pre><code>你的github名字.github.io
+</code></pre><p>然后点击<font color="gray">Create repository</font>即可 </p>
+</li>
+</ul>
+<h3 id="生成秘钥"><a href="#生成秘钥" class="headerlink" title="生成秘钥"></a>生成秘钥</h3><ul>
+<li><p>在终端<font color="gray">（Terminal)</font>输入：</p>
+<pre><code>ssh-keygen -t rsa -C &quot;Github的注册邮箱地址&quot;
+</code></pre></li>
+</ul>
+<p>一直<font color="gray">Enter</font>过来就好，待秘钥生成完毕，会得到两个文件<strong>id_rsa</strong>和<strong>id_rsa.pub</strong>，用带格式的记事本打开<strong>id_rsa.pub</strong>，Ctrl + a复制里面的所有内容，然后进入<a href="https://github.com/settings/ssh" target="_blank" rel="external">https://github.com/settings/ssh</a>：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/291600-3bff2a591beb2bb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<center><font color="gray"><em>(图片来自简书)</em></font></center><br>将复制的内容粘贴到Key的输入框，随便写好Title里面的内容，点击<font color="gray">Add SSH key</font>按钮即可。<br><br>## 安装node.js<br>点击进入<a href="https://nodejs.org/en/" target="_blank" rel="external">node.js官网</a><br><br><img src="http://i4.buimg.com/589326/8d78d106c49302c6.jpg" alt="Markdown"><br><center><font color="gray"><em>(图片来自node.js官网)</em></font></center>
+
+<p>目前node.js有两个推荐版本，分为通用版和最新版，本文使用v.7.7.4版本，点击可直接进行下载。下载安装即可。</p>
+<p>安装完成后，进入终端<font color="gray">（Terminal)</font>输入：</p>
+<pre><code>npm -v
+node -v 
+</code></pre><p>如下图显示版本号，安装成功。</p>
+<p><img src="http://i4.buimg.com/589326/abc24f9f57d8308d.jpg" alt="Markdown"></p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>因Mac 安装Xcode后就会安装有Git，这里就不多说。如果您的电脑没有安装Git，可前往<a href="https://git-scm.com/downloads" target="_blank" rel="external">Git官网</a>下载安装即可。<br><img src="http://upload-images.jianshu.io/upload_images/291600-25cf02703765ff4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Markdown"></p>
+<center><font color="gray"><em>(图片来自简书)</em></font></center>
+
+<h2 id="安装配置hexo"><a href="#安装配置hexo" class="headerlink" title="安装配置hexo"></a>安装配置hexo</h2><p><img src="http://upload-images.jianshu.io/upload_images/291600-fc61b6d6d2b38fa2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<center><font color="gray"><em>(图片来自简书)</em></font></center><br>接下来我们的操作都将在<font color="gray">Terminal</font>终端进行：<br><br><em> 定位博客本地放置的路径<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cd 文件夹</div></pre></td></tr></table></figure><br><br>注：这个文件夹，最好不要选择需要管理员权限才能创建的文件夹
+
+</em> 下载安装Hexo<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure><br><br>安装好hexo后，继续在终端输入：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo</div></pre></td></tr></table></figure><br><br>若出现如下图，则说明安装成功:<br><img src="http://upload-images.jianshu.io/upload_images/291600-34e4d1af45d6f267.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><center><font color="gray"><em>(图片来自简书)</em></font></center>
+
+<ul>
+<li>初始化博客</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 建立一个博客文件夹，并初始化博客，&lt;folder&gt;为文件夹的名称，可以随便起名字 --&gt;</div><div class="line">$ hexo init &lt;folder&gt; </div><div class="line">// 进入博客文件夹，&lt;folder&gt;为文件夹的名称</div><div class="line">$ cd &lt;folder&gt;</div><div class="line">// node.js的命令，根据博客既定的dependencies配置安装所有的依赖包</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
+<p>初始化博客以后，我们可以看到博客文件夹里的文件是这样的：<br><img src="http://chuantu.biz/t5/52/1490594381x2890173710.png" alt=""></p>
+<ul>
+<li>配置博客</li>
+</ul>
+<p>基于上一步，我们对博客修改相应的配置，我们用到_config.yml文件，下面是该文件的默认参数信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line"># Hexo Configuration</div><div class="line">## Docs: https://hexo.io/docs/configuration.html</div><div class="line">## Source: https://github.com/hexojs/hexo/</div><div class="line"></div><div class="line"># Site</div><div class="line">title: # The title of your website</div><div class="line">subtitle: # The subtitle of your website</div><div class="line">description: # The description of your website</div><div class="line">author: # Your name</div><div class="line">language: # The language of your website</div><div class="line">timezone: </div><div class="line"></div><div class="line"># URL</div><div class="line">## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</div><div class="line">url: http://yoursite.com/child</div><div class="line">root: /</div><div class="line">permalink: :year/:month/:day/:title/</div><div class="line">permalink_defaults:</div><div class="line"></div><div class="line"># Directory</div><div class="line">source_dir: source</div><div class="line">public_dir: public</div><div class="line">tag_dir: tags</div><div class="line">archive_dir: archives</div><div class="line">category_dir: categories</div><div class="line">code_dir: downloads/code</div><div class="line">i18n_dir: :lang</div><div class="line">skip_render:</div><div class="line"></div><div class="line"># Writing</div><div class="line">new_post_name: :title.md # File name of new posts</div><div class="line">default_layout: post</div><div class="line">titlecase: false # Transform title into titlecase</div><div class="line">external_link: true # Open external links in new tab</div><div class="line">filename_case: 0</div><div class="line">render_drafts: false</div><div class="line">post_asset_folder: false</div><div class="line">relative_link: false</div><div class="line">future: true</div><div class="line">highlight:</div><div class="line">  enable: true</div><div class="line">  line_number: true</div><div class="line">  auto_detect: false</div><div class="line">  tab_replace:</div><div class="line"></div><div class="line"># Category &amp; Tag</div><div class="line">default_category: uncategorized</div><div class="line">category_map:</div><div class="line">tag_map:</div><div class="line"></div><div class="line"># Date / Time format</div><div class="line">## Hexo uses Moment.js to parse and display date</div><div class="line">## You can customize the date format as defined in</div><div class="line">## http://momentjs.com/docs/#/displaying/format/</div><div class="line">date_format: YYYY-MM-DD</div><div class="line">time_format: HH:mm:ss</div><div class="line"></div><div class="line"># Pagination</div><div class="line">## Set per_page to 0 to disable pagination</div><div class="line">per_page: 10</div><div class="line">pagination_dir: page</div><div class="line"></div><div class="line"># Extensions</div><div class="line">## Plugins: https://hexo.io/plugins/</div><div class="line">## Themes: https://hexo.io/themes/</div><div class="line">theme: landscape</div><div class="line"></div><div class="line"># Deployment</div><div class="line">## Docs: https://hexo.io/docs/deployment.html</div><div class="line">deploy:</div><div class="line">  type:</div></pre></td></tr></table></figure>
+<p>这些配置中，很多是不需要我们去修改设置的，我们只要修改下面的几个配置接可以了：</p>
+<h4 id="修改网站相关信息"><a href="#修改网站相关信息" class="headerlink" title="修改网站相关信息"></a>修改网站相关信息</h4><!--lang: json-->
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">title: inerdstack</div><div class="line">subtitle: the stack of it nerds</div><div class="line">description: start from zero</div><div class="line">author: inerdstack</div><div class="line">language: zh-CN</div><div class="line">timezone: Asia/Shanghai</div></pre></td></tr></table></figure>
+<p>language和timezone都是有输入规范的，详细可参考<a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank" rel="external">语言规范</a>和<a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" target="_blank" rel="external">时区规范</a>。</p>
+<p><strong>注意：每一项的填写，其:后面都要保留一个空格，下同。</strong></p>
+<h4 id="个人域名"><a href="#个人域名" class="headerlink" title="个人域名"></a>个人域名</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url: http:<span class="comment">//aiwyt.com</span></div></pre></td></tr></table></figure>
+<p>对于root（根目录）、permalink（永久链接）、permalink_defaults（默认永久链接）等其他信息保持默认。</p>
+<h4 id="配置部署"><a href="#配置部署" class="headerlink" title="配置部署"></a>配置部署</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: https://github.com/false7518/false7518.github.io</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+<p>其中repo项是之前Github上创建好的仓库的地址，可以通过如下图所示的方式得到：<br><img src="http://chuantu.biz/t5/52/1490595428x2890174015.png" alt=""></p>
+<p>Branch是项目的分支，我们默认用主分支master。</p>
+<h2 id="发表一篇文章"><a href="#发表一篇文章" class="headerlink" title="发表一篇文章"></a>发表一篇文章</h2><p>在终端输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 新建一篇文章</div><div class="line">hexo new &quot;文章标题&quot;</div></pre></td></tr></table></figure>
+<p>我们可以在本地博客文件夹<font color="gray">source</font>-&gt;<font color="gray">_post</font>文件夹下看到我们新建的markdown文件<br><img src="http://chuantu.biz/t5/52/1490595628x2890174015.png" alt=""><br>用Markdown编辑器打开文件，我们可以看到这样的内容：<br><img src="http://chuantu.biz/t5/52/1490595706x2890174015.png" alt=""><br>我们写下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;最近在学习Java开发，开始的时候使用有道云笔记，记了些笔记希望可以分享给其他人，觉得有道云笔记分享比较麻烦，只能单篇的分享出去。</div><div class="line">&gt;就想找一个博客平台在上面写，看了csdn，博客园，简书等，发现都不能合自己心意。</div><div class="line">&gt;就准备自己搭建一个博客，之后根据自己的喜好自定义，完善。下面就是我搭建博客的过程：</div></pre></td></tr></table></figure>
+<p>保存后，我们进行本地发布：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>如下图：<br><img src="http://chuantu.biz/t5/52/1490595892x2890174015.png" alt=""><br>发布成功,这个时候我们打开浏览器，输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://localhost:4000/</div></pre></td></tr></table></figure>
+<p>我们可以在浏览器端看到我们搭建好的博客和发布的文章：<br><img src="http://chuantu.biz/t5/52/1490596057x2890174015.png" alt=""><br>因为我这里使用了<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">yilia主题</a>，所以界面风格可能和大家的有所不同。如何更换主题，本文之后会详细介绍。</p>
+<p>到了这里发布博客就已经完成了。但是毕竟我们目前发布的只有本机看得到，怎么让其他人看到我们写的博客呢？这时候我们来看看博客的部署。</p>
+<p>我们只要在终端执行这样的命令即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div><div class="line">$ hexo deploy</div><div class="line"></div><div class="line">	或者可以简写为</div><div class="line">$ hexo d g</div></pre></td></tr></table></figure>
+<p><img src="http://chuantu.biz/t5/52/1490596601x2890174015.png" alt=""></p>
+<p>这样我们在浏览器中输入刚才我们创建的仓库对应的链接，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://false7518.github.io</div></pre></td></tr></table></figure>
+<p>就可以在任何地方访问到我们的博客了。</p>
+<h2 id="主题更换"><a href="#主题更换" class="headerlink" title="主题更换"></a>主题更换</h2><ul>
+<li>下载主题</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</div></pre></td></tr></table></figure>
+<ul>
+<li>配置</li>
+</ul>
+<p>首先我们切换到我们刚才创建的博客的目录下，这个文件夹主要用来进行博客的管理，看下目录下的详情。</p>
+<p><font color="gray">yilia主题</font>就在<font color="gray">themes</font>目录下了,<font color="gray">_config.yml</font>主要是主目录下的一些配置，很清晰，每个地方应该如何填写也很简单</p>
+<p>修改hexo根目录下的 <code>_config.yml ： theme: yilia</code></p>
+<p>更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd themes/yilia</div><div class="line">git pull</div></pre></td></tr></table></figure>
+<p>主题配置文件在主题主目录下的_config.yml，请根据自己需要修改使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line"># Header</div><div class="line"></div><div class="line">menu:</div><div class="line">  主页: /</div><div class="line">  随笔: /tags/随笔/</div><div class="line"></div><div class="line"># SubNav</div><div class="line">subnav:</div><div class="line">  github: &quot;#&quot;</div><div class="line">  weibo: &quot;#&quot;</div><div class="line">  rss: &quot;#&quot;</div><div class="line">  zhihu: &quot;#&quot;</div><div class="line">  #qq: &quot;#&quot;</div><div class="line">  #weixin: &quot;#&quot;</div><div class="line">  #jianshu: &quot;#&quot;</div><div class="line">  #douban: &quot;#&quot;</div><div class="line">  #segmentfault: &quot;#&quot;</div><div class="line">  #bilibili: &quot;#&quot;</div><div class="line">  #acfun: &quot;#&quot;</div><div class="line">  #mail: &quot;mailto:litten225@qq.com&quot;</div><div class="line">  #facebook: &quot;#&quot;</div><div class="line">  #google: &quot;#&quot;</div><div class="line">  #twitter: &quot;#&quot;</div><div class="line">  #linkedin: &quot;#&quot;</div><div class="line"></div><div class="line">rss: /atom.xml</div><div class="line"></div><div class="line"># 是否需要修改 root 路径</div><div class="line"># 如果您的网站存放在子目录中，例如 http://yoursite.com/blog，</div><div class="line"># 请将您的 url 设为 http://yoursite.com/blog 并把 root 设为 /blog/。</div><div class="line">root: </div><div class="line"></div><div class="line"># Content</div><div class="line"></div><div class="line"># 文章太长，截断按钮文字</div><div class="line">excerpt_link: more</div><div class="line"># 文章卡片右下角常驻链接，不需要请设置为false</div><div class="line">show_all_link: &apos;展开全文&apos;</div><div class="line"># 数学公式</div><div class="line">mathjax: false</div><div class="line"># 是否在新窗口打开链接</div><div class="line">open_in_new: false</div><div class="line"></div><div class="line"># 打赏</div><div class="line"># 请在需要打赏的文章的md文件头部，设置属性reward: true</div><div class="line"></div><div class="line"># 打赏基础设定：0-关闭打赏； 1-文章对应的md文件里有reward:true属性，才有打赏； 2-所有文章均有打赏</div><div class="line">reward_type: 2</div><div class="line"># 打赏wording</div><div class="line">reward_wording: &apos;谢谢你请我吃糖果&apos;</div><div class="line"># 支付宝二维码图片地址，跟你设置头像的方式一样。比如：/assets/img/alipay.jpg</div><div class="line">alipay: </div><div class="line"># 微信二维码图片地址</div><div class="line">weixin: </div><div class="line"></div><div class="line"># Miscellaneous</div><div class="line">baidu_analytics: &apos;&apos;</div><div class="line">google_analytics: &apos;&apos;</div><div class="line">favicon: /favicon.png</div><div class="line"></div><div class="line">#你的头像url</div><div class="line">avatar:</div><div class="line"></div><div class="line">#是否开启分享</div><div class="line">share_jia: true</div><div class="line"></div><div class="line">#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key</div><div class="line">#若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论</div><div class="line">duoshuo: false</div><div class="line"></div><div class="line"># 样式定制 - 一般不需要修改，除非有很强的定制欲望…</div><div class="line">style:</div><div class="line">  # 头像上面的背景颜色</div><div class="line">  header: &apos;#4d4d4d&apos;</div><div class="line">  # 右滑板块背景</div><div class="line">  slider: &apos;linear-gradient(200deg,#a0cfe4,#e8c37e)&apos;</div><div class="line"></div><div class="line"># slider的设置</div><div class="line">slider:</div><div class="line">  # 是否默认展开tags板块</div><div class="line">  showTags: false</div><div class="line">  </div><div class="line"># 智能菜单</div><div class="line"># 如不需要，将该对应项置为false</div><div class="line"># 比如</div><div class="line">#smart_menu:</div><div class="line">#  friends: false</div><div class="line">smart_menu:</div><div class="line">  innerArchive: &apos;所有文章&apos;</div><div class="line">  friends: &apos;友链&apos;</div><div class="line">  aboutme: &apos;关于我&apos;</div><div class="line"></div><div class="line">friends:</div><div class="line">  友情链接1: http://localhost:4000/</div><div class="line">  友情链接2: http://localhost:4000/</div><div class="line">  友情链接3: http://localhost:4000/</div><div class="line">  友情链接4: http://localhost:4000/</div><div class="line">  友情链接5: http://localhost:4000/</div><div class="line">  友情链接6: http://localhost:4000/</div><div class="line"></div><div class="line">aboutme: 很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div></pre></td></tr></table></figure>
+<p>配置之后重新发布，我们的博客主题就会替换成yilia主题了。替换其他主题的方法也是相同的，这里就不多说。</p>
+
       
 
       
@@ -203,6 +320,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Github</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -253,7 +393,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.aiwyt.com/posts/uncategorized/Java常见对象之集合.html" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.aiwyt.com/uncategorized/使用hexo搭建GitHub博客.html" alt="微信分享二维码">
     </div>
 </div>
 
@@ -267,18 +407,18 @@
   
 <nav id="article-nav">
   
-    <a href="/posts/uncategorized/SpringBoot快速入门.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/uncategorized/Markdown基础应用.html" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          SpringBoot快速入门
+          Markdown基础应用
         
       </div>
     </a>
   
   
-    <a href="/posts/uncategorized/Java常见对象之字符串.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java常见对象之字符串</div>
+    <a href="/uncategorized/hello-world.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
       <i class="icon-circle-right"></i>
     </a>
   
