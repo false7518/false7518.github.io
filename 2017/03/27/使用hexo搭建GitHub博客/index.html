@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://chuantu.biz/t5/52/1490595892x2890174015.png">
 <meta property="og:image" content="http://chuantu.biz/t5/52/1490596057x2890174015.png">
 <meta property="og:image" content="http://chuantu.biz/t5/52/1490596601x2890174015.png">
-<meta property="og:updated_time" content="2017-03-27T06:51:26.000Z">
+<meta property="og:updated_time" content="2017-03-27T07:53:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用hexo搭建GitHub博客">
 <meta name="twitter:description" content="最近在学习Java开发，开始的时候使用有道云笔记，记了些笔记希望可以分享给其他人，觉得有道云笔记分享比较麻烦，只能单篇的分享出去。就想找一个博客平台在上面写，看了csdn，博客园，简书等，发现都不能合自己心意。就准备自己搭建一个博客，之后根据自己的喜好自定义，完善。下面就是我搭建博客的过程：
@@ -68,7 +68,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="null" class="js-avatar">
+			<img src="http://chuantu.biz/t5/52/1490601326x2890174015.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">false7518</a></h1>
@@ -110,6 +110,8 @@
 		        
 					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 		        
+					<a class="qq" target="_blank" href="#751820513" title="qq"><i class="icon-qq"></i></a>
+		        
 			</div>
 		</nav>
 	</header>		
@@ -126,7 +128,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="null" class="js-avatar">
+				<img src="http://chuantu.biz/t5/52/1490601326x2890174015.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">false7518</h1>
@@ -150,6 +152,8 @@
 						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
 			        
 						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+			        
+						<a class="qq" target="_blank" href="#751820513" title="qq"><i class="icon-qq"></i></a>
 			        
 				</div>
 			</nav>
@@ -198,7 +202,7 @@
         <blockquote>
 <p>最近在学习Java开发，开始的时候使用有道云笔记，记了些笔记希望可以分享给其他人，觉得有道云笔记分享比较麻烦，只能单篇的分享出去。就想找一个博客平台在上面写，看了csdn，博客园，简书等，发现都不能合自己心意。就准备自己搭建一个博客，之后根据自己的喜好自定义，完善。下面就是我搭建博客的过程：</p>
 </blockquote>
-<p>本文主要讲解，如何使用GitHub+Hexo搭建个人博客，因本人使用的是MacBook Air 所以，该文章是基于苹果的Mac osx操作系统，windows操作系统搭建方法大同小异。</p>
+<p>本文主要讲解，如何使用GitHub+Hexo搭建个人博客，因本人使用的是MacBook Air 所以，该文章是基于苹果的Mac osx操作系统，windows操作系统搭建方法大同小异。<br><a id="more"></a></p>
 <h2 id="Github准备"><a href="#Github准备" class="headerlink" title="Github准备"></a>Github准备</h2><h3 id="注册GitHub账号"><a href="#注册GitHub账号" class="headerlink" title="注册GitHub账号"></a>注册GitHub账号</h3><p>注册GitHub账号这里我们就不多说了，大家可以直接进入<a href="https://github.com" target="_blank" rel="external">GitHub官网</a>注册。</p>
 <h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><p>登录账号后，在Github页面右上方选择New repository创建一个新的仓库。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/291600-bf68e5e46e09a1a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
@@ -316,6 +320,29 @@ node -v
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Github</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -379,6 +406,15 @@ node -v
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/03/27/Markdown基础应用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Markdown基础应用
+        
+      </div>
+    </a>
   
   
     <a href="/2017/03/27/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
@@ -484,6 +520,22 @@ node -v
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
