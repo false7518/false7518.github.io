@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="编程,java," />
 
 
 
@@ -87,16 +87,37 @@
 
 
 
-<meta name="description" content="上天安排的最大嘛">
+<meta name="description" content="本文来源于黑马J2EE培训教学笔记。博主又进行整理，掺杂自己的一些学习笔记，供大家学习。学习编程之前，我们首先要了解计算机的一些基本知识。本文讲解的一些基础知识，适合没有学习过计算机语言的小伙伴们了解。
+
+ 本文知识点
+
+计算机基础知识
+常量与变量的使用
+常见运算符的基本用法
+流程控制语句">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java编程基础">
 <meta property="og:url" content="http://www.aiwyt.com/uncategorized/Java编程基础.html">
 <meta property="og:site_name" content="祁伟鹏的博客">
-<meta property="og:description" content="上天安排的最大嘛">
-<meta property="og:updated_time" content="2017-03-27T07:12:19.000Z">
+<meta property="og:description" content="本文来源于黑马J2EE培训教学笔记。博主又进行整理，掺杂自己的一些学习笔记，供大家学习。学习编程之前，我们首先要了解计算机的一些基本知识。本文讲解的一些基础知识，适合没有学习过计算机语言的小伙伴们了解。
+
+ 本文知识点
+
+计算机基础知识
+常量与变量的使用
+常见运算符的基本用法
+流程控制语句">
+<meta property="og:updated_time" content="2017-03-28T09:16:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java编程基础">
-<meta name="twitter:description" content="上天安排的最大嘛">
+<meta name="twitter:description" content="本文来源于黑马J2EE培训教学笔记。博主又进行整理，掺杂自己的一些学习笔记，供大家学习。学习编程之前，我们首先要了解计算机的一些基本知识。本文讲解的一些基础知识，适合没有学习过计算机语言的小伙伴们了解。
+
+ 本文知识点
+
+计算机基础知识
+常量与变量的使用
+常见运算符的基本用法
+流程控制语句">
 
 
 
@@ -332,7 +353,1828 @@
       
 
       
-        
+        <blockquote>
+<p>本文来源于黑马J2EE培训教学笔记。博主又进行整理，掺杂自己的一些学习笔记，供大家学习。学习编程之前，我们首先要了解计算机的一些基本知识。本文讲解的一些基础知识，适合没有学习过计算机语言的小伙伴们了解。</p>
+</blockquote>
+<p> 本文知识点</p>
+<ul>
+<li>计算机基础知识</li>
+<li>常量与变量的使用</li>
+<li>常见运算符的基本用法</li>
+<li>流程控制语句    </li>
+</ul>
+<a id="more"></a>
+<h2 id="计算机基础知识"><a href="#计算机基础知识" class="headerlink" title="计算机基础知识"></a>计算机基础知识</h2><h3 id="计算机概述"><a href="#计算机概述" class="headerlink" title="计算机概述"></a>计算机概述</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;什么是计算机? 计算机（Computer）全称：电子计算机，俗称电脑。是一种能够按照程序运行，自动、高速处理海量数据的现代化智能电子设备。由硬件和软件所组成，没有安装任何软件的计算机称为裸机。常见的形式有台式计算机、笔记本计算机、大型计算机等。</p>
+<ul>
+<li>计算机的应用举例<ul>
+<li>1：科学计算</li>
+<li>2、数据处理</li>
+<li>3、自动控制</li>
+<li>4、计算机辅助设计</li>
+<li>5、人工智能</li>
+<li>6、多媒体应用</li>
+<li>7、计算机网络</li>
+<li>… </li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;什么是硬件?计算机硬件（Computer Hardware）是指计算机系统中由电子，机械和光电元件等组成的各种物理装置的总称。这些物理装置按系统结构的要求构成一个有机整体为计算机软件运行提供物质基础。 计算机的硬件分成5大组成部件：运算器、控制器、存储器、输入设备和输出设备。</p>
+<ul>
+<li>运算器和控制器是计算机的核心，合称中央处理单元（Central Processing Unit，CPU）或处理器。CPU的内部还有一些高速存储单元，被称为寄存器。其中运算器执行所有的算术和逻辑运算；控制器负责把指令逐条从存储器中取出，经译码后向计算机发出各种控制命令；而寄存器为处理单元提供操作所需要的数据。</li>
+<li>存储器是计算机的记忆部分，用来存放程序以及程序中涉及的数据。它分为内部存储器和外部存储器。内部存储器用于存放正在执行的程序和使用的数据，其成本高、容量小，但速度快。外部存储器可用于长期保存大量程序和数据，其成本低、容量大，但速度较慢。</li>
+<li>输入设备和输出设备统称为外部设备，简称外设或I/O设备，用来实现人机交互和机间通信。微型机中常用的输入设备有键盘、鼠标等，输出设备有显示器、打印机等。</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;什么是软件?计算机软件(Computer Software)是使用计算机过程中必不可少的东西，计算机软件可以使计算机按照事先预定好的顺序完成特定的功能。计算机软件按照其功能划分为系统软件与应用软件：</p>
+<ul>
+<li>系统软件： DOS(Disk Operating System), Windows, Linux, Unix, Mac, Android, iOS</li>
+<li>应用软件：office  QQ聊天  YY语言  扫雷</li>
+</ul>
+<h3 id="软件开发和计算机语言概述"><a href="#软件开发和计算机语言概述" class="headerlink" title="软件开发和计算机语言概述"></a>软件开发和计算机语言概述</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;什么是软件？软件就是按照特定顺序组织的计算机数据和指令的集合。什么是开发?简单来说开发就是软件的制作过程。什么是软件开发？借助开发工具与计算机语言制作软件。什么是计算机语言？人与计算机之间进行信息交流沟通的一种特殊语言。</p>
+<ul>
+<li>计算机语言的分类<ul>
+<li>机器语言：机器语言是直接用二进制代码指令表达的计算机语言，指令是用0和1组成的一串代码，它们有一定的位数，并分成若干段，各段的编码表示不同的含义。</li>
+<li>汇编语言：汇编语言是使用一些特殊的符号来代替机器语言的二进制码，计算机不能直接识别，需要用一种软件将汇编语言翻译成机器语言。</li>
+<li>高级语言：  使用普通英语进行编写源代码，通过编译器将源代码翻译成计算机直接识别的机器语言，之后再由计算机执行。<ul>
+<li>高级语言包括C,C++,C#,JAVA</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="人机交互"><a href="#人机交互" class="headerlink" title="人机交互"></a>人机交互</h3><ul>
+<li>A:人机交互的两种方式<ul>
+<li>a:命令行方式 <ul>
+<li>需要有一个控制台，输入特定的指令，让计算机完成一些操作。较为麻烦，需要记录住一些命令。 </li>
+</ul>
+</li>
+<li>b:图形化界面方式<ul>
+<li>这种方式简单直观，使用者易于接受，容易上手操作。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="常见的DOS命令"><a href="#常见的DOS命令" class="headerlink" title="常见的DOS命令"></a>常见的DOS命令</h3><p>在这里我们说一下windows系统中中常用的DOS命令有哪些，使用DOS命令需要先打开DOS控制台。</p>
+<h4 id="如何打开DOS控制台"><a href="#如何打开DOS控制台" class="headerlink" title="如何打开DOS控制台"></a>如何打开DOS控制台</h4><ul>
+<li>xp下如何打开DOS控制台？<ul>
+<li>a:开始–程序–附件–命令提示符</li>
+<li>b:开始–运行–cmd–回车</li>
+<li>c:win+r–cmd–回车</li>
+</ul>
+</li>
+<li>win7下如何打开DOS控制台？<ul>
+<li>a:开始–所有程序–附件–命令提示符</li>
+<li>b:开始–搜索程序和文件–cmd–回车</li>
+<li>c:win+r–cmd–回车</li>
+</ul>
+</li>
+<li>win8下如何打开DOS控制台<ul>
+<li>a:鼠标左击开始–下箭头–命令提示符</li>
+<li>b:鼠标右击开始–搜索–cmd–回车</li>
+<li>c:鼠标右击开始–运行–cmd–回车</li>
+<li>d:win+r–cmd–回车</li>
+</ul>
+</li>
+</ul>
+<h4 id="DOS命令"><a href="#DOS命令" class="headerlink" title="DOS命令"></a>DOS命令</h4><ul>
+<li>d: 回车    盘符切换</li>
+<li>dir(directory):列出当前目录下的文件以及文件夹</li>
+<li>cd (change directory)改变指定目录(进入指定目录)</li>
+<li>cd.. : 退回到上一级目录</li>
+<li>cd\: 退回到根目录</li>
+<li>cls : (clear screen)清屏</li>
+<li>exit : 退出dos命令行</li>
+<li>md (make directory) : 创建目录</li>
+<li>rd (remove directory): 删除目录</li>
+<li>del (delete): 删除文件,删除一堆后缀名一样的文件*.txt</li>
+<li>notepad 创建文件</li>
+<li>删除带内容的文件夹<ul>
+<li>rd + /s    文件夹名称(询问是否删除)</li>
+<li>rd + /q + /s 文件夹名称(直接删除)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="Java语言基础"><a href="#Java语言基础" class="headerlink" title="Java语言基础"></a>Java语言基础</h2><h3 id="Java语言概述"><a href="#Java语言概述" class="headerlink" title="Java语言概述"></a>Java语言概述</h3><h4 id="Java语言发展史"><a href="#Java语言发展史" class="headerlink" title="Java语言发展史"></a>Java语言发展史</h4><p> 詹姆斯·高斯林（James Gosling）1977年获得了加拿大卡尔加里大学计算机科学学士学位，1983年获得了美国卡内基梅隆大学计算机科学博士学位，毕业后到IBM工作，设计IBM第一代工作站NeWS系统，但不受重视。后来转至Sun公司，1990年，与Patrick，Naughton和Mike Sheridan等人合作“绿色计划”，后来发展一套语言叫做“Oak”，后改名为Java。</p>
+<ul>
+<li><font color="gray">注：SUN(Stanford University Network，斯坦福大学网络公司) </font>
+
+</li>
+</ul>
+<h4 id="Java语言版本"><a href="#Java语言版本" class="headerlink" title="Java语言版本"></a>Java语言版本</h4><pre><code>JDK 1.1.4        Sparkler    宝石                1997-09-12
+JDK 1.1.5        Pumpkin        南瓜                1997-12-13
+JDK 1.1.6        Abigail        阿比盖尔--女子名        1998-04-24
+JDK 1.1.7        Brutus        布鲁图--古罗马政治家和将军    1998-09-28
+JDK 1.1.8        Chelsea        切尔西--城市名            1999-04-08
+J2SE 1.2        Playground    运动场                1998-12-04
+J2SE 1.2.1        none        无                1999-03-30
+J2SE 1.2.2        Cricket        蟋蟀                1999-07-08
+J2SE 1.3        Kestrel        美洲红隼(sǔn)            2000-05-08
+J2SE 1.3.1        Ladybird    瓢虫                2001-05-17
+J2SE 1.4.0        Merlin        灰背隼                2002-02-13
+J2SE 1.4.1        grasshopper    蚱蜢                2002-09-16
+J2SE 1.4.2        Mantis        螳螂                2003-06-26
+JAVASE 5.0 (1.5.0)    Tiger        老虎    
+JAVASE 5.1 (1.5.1)    Dragonfly    蜻蜓    
+JAVASE 6.0 (1.6.0)    Mustang        野马
+JAVASE 7.0 (1.7.0)    Dolphin        海豚
+</code></pre><h4 id="Java语言平台"><a href="#Java语言平台" class="headerlink" title="Java语言平台"></a>Java语言平台</h4><p>J2SE(Java 2 Platform Standard Edition)标准版</p>
+<ul>
+<li>是为开发普通桌面和商务应用程序提供的解决方案,该技术体系是其他两者的基础，可以完成一些桌面应用程序的开发</li>
+</ul>
+<p>J2ME(Java 2 Platform Micro Edition)小型版</p>
+<ul>
+<li>是为开发电子消费产品和嵌入式设备提供的解决方案</li>
+</ul>
+<p>J2EE(Java 2 Platform Enterprise Edition)企业版</p>
+<ul>
+<li>是为开发企业环境下的应用程序提供的一套解决方案,该技术体系中包含的技术如 Servlet、Jsp等，主要针对于Web应用程序开发 </li>
+</ul>
+<h4 id="Java语言特性"><a href="#Java语言特性" class="headerlink" title="Java语言特性"></a>Java语言特性</h4><ul>
+<li>简单性        </li>
+<li>解释性</li>
+<li>面向对象        </li>
+<li>高性能</li>
+<li>分布式处理    </li>
+<li>多线程</li>
+<li>健壮性        </li>
+<li>动态</li>
+<li>结构中立        </li>
+<li>安全性</li>
+<li>开源</li>
+<li>跨平台</li>
+</ul>
+<h3 id="Java语言跨平台原理"><a href="#Java语言跨平台原理" class="headerlink" title="Java语言跨平台原理"></a>Java语言跨平台原理</h3><p>Java语言开发的应用可以在不同平台上运行。只要在需要运行java应用程序的操作系统上，先安装一个Java虚拟机(JVM Java Virtual Machine)即可。由JVM来负责Java程序在该系统中的运行。</p>
+<ul>
+<li>write once ,run anywhere!(一处编译,到处运行)</li>
+</ul>
+<h3 id="JRE和JDK的概述"><a href="#JRE和JDK的概述" class="headerlink" title="JRE和JDK的概述"></a>JRE和JDK的概述</h3><ul>
+<li>什么是JRE<ul>
+<li>包括Java虚拟机(JVM Java Virtual Machine)和Java程序所需的核心类库等，如果想要运行一个开发好的Java程序，计算机中只需要安装JRE即可。</li>
+<li>JRE:JVM+类库。 </li>
+</ul>
+</li>
+<li>什么是JDK<ul>
+<li>JDK是提供给Java开发人员使用的，其中包含了java的开发工具，也包括了JRE。所以安装了JDK，就不用在单独安装JRE了。</li>
+<li>其中的开发工具：编译工具(javac.exe)  打包工具(jar.exe)等<ul>
+<li>JDK:JRE+JAVA的开发工具。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>为什么JDK中包含一个JRE<ul>
+<li>为什么JDK中包含一个JRE呢？<ul>
+<li>开发完的程序，需要运行一下看看效果。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="JDK的下载和安装过程图解"><a href="#JDK的下载和安装过程图解" class="headerlink" title="JDK的下载和安装过程图解"></a>JDK的下载和安装过程图解</h3><ul>
+<li>A:JDK的下载<ul>
+<li>a:官网 <a href="http://www.oracle.com" target="_blank" rel="external">http://www.oracle.com</a></li>
+<li>b:演示下载流程</li>
+</ul>
+</li>
+<li>B:JDK的安装<ul>
+<li>a:傻瓜式安装<ul>
+<li>双击安装程序，然后一路next即可(但是不建议)</li>
+</ul>
+</li>
+<li>b:安装的推荐方式<ul>
+<li>安装路径不要有中文或者特殊符号如空格等。</li>
+<li>所有和开发相关的软件最好安装目录统一。<ul>
+<li>举例：我的JDK安装路径<ul>
+<li>D:\develop\Java\jdk1.7.0_72</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>当提示安装JRE时，可以选择不安装。建议还是安装上。</li>
+</ul>
+</li>
+<li>c:演示安装流程<ul>
+<li>可以先在d盘建立一个文件夹develop</li>
+<li>然后演示安装过程</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>C:验证安装是否成功<ul>
+<li>a:通过DOS命令，切换到JDK安装的bin目录下。<ul>
+<li>D:\develop\Java\jdk1.7.0_72\bin</li>
+</ul>
+</li>
+<li>b:然后分别输入javac和java，如果正常显示一些内容，说明安装成功</li>
+</ul>
+</li>
+</ul>
+<h3 id="JDK安装路径下的目录解释"><a href="#JDK安装路径下的目录解释" class="headerlink" title="JDK安装路径下的目录解释"></a>JDK安装路径下的目录解释</h3><ul>
+<li>a:bin目录：该目录用于存放一些可执行程序。<ul>
+<li>如javac.exe（java编译器）、java.exe(java运行工具)，jar.exe(打包工具)和* javadoc.exe(文档生成工具)等。</li>
+</ul>
+</li>
+<li>b:db目录：db目录是一个小型的数据库。<ul>
+<li>从JDK 6.0开始，Java中引用了一个新的成员JavaDB，这是一个纯Java实现、开源的数据库管理系统。这个数据库不仅轻便，而且支持JDBC 4.0所有的规范，在学习JDBC 时，不再需要额外地安装一个数据库软件，选择直接使用JavaDB即可。</li>
+</ul>
+</li>
+<li>c:jre目录：”jre”是 Java Runtime Environment 的缩写，意为Java程序运行时环境。此目录是Java运行时环境的根目录，它包括Java虚拟机，运行时的类包，Java应用启动器以及一个bin目录，但不包含开发环境中的开发工具。</li>
+<li>d:include目录：由于JDK是通过C和C++实现的，因此在启动时需要引入一些C语言的头文件，该目录就是用于存放这些头文件的。</li>
+<li>e:lib目录：lib是library的缩写，意为 Java 类库或库文件，是开发工具使用的归档包文件。</li>
+<li>f:src.zip文件：src.zip为src文件夹的压缩文件，src中放置的是JDK核心类的源代码，通过该文件可以查看Java基础类的源代码。</li>
+</ul>
+<h3 id="Path环境变量的作用及配置方式1"><a href="#Path环境变量的作用及配置方式1" class="headerlink" title="Path环境变量的作用及配置方式1"></a>Path环境变量的作用及配置方式1</h3><ul>
+<li>A:在JDK的bin目录下开发程序容易产生的问题<ul>
+<li>a:如果文件过多，不方便管理</li>
+<li>b:删除自己写过的不需要的文件，可能不小心把JDK自带的工具给删除了</li>
+</ul>
+</li>
+<li>B:如何解决问题呢<ul>
+<li>notepad这样的命令为什么在任何路径下都能够执行,配置path环境变量</li>
+</ul>
+</li>
+<li>C:配置方式<ul>
+<li>a:xp系统<ul>
+<li>右键点击桌面计算机→选择属性→选择高级选项卡→点击环境变量→下方系统变量中查找path→双击path→将jdk安装目录下的bin目录添加到最左边并添加分号。</li>
+</ul>
+</li>
+<li>b:win7/win8系统<ul>
+<li>右键点击桌面计算机→选择属性→选择高级系统设置→选择高级选项卡→点击环境变量→下方系统变量中查找path→双击path→将jdk安装目录下的bin目录添加到最左边并添加分号。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>path配置的是可执行的文件.exe,配置后可以在不同的盘符下访问path路径下的可执行文件</li>
+</ul>
+<h3 id="Path环境变量的配置方式2"><a href="#Path环境变量的配置方式2" class="headerlink" title="Path环境变量的配置方式2"></a>Path环境变量的配置方式2</h3><ul>
+<li>A:先配置JAVA_HOME</li>
+<li>B:再修改path</li>
+<li>C:最后说一下path是有先后顺序关系的</li>
+</ul>
+<h3 id="classpath环境变量的作用及其配置"><a href="#classpath环境变量的作用及其配置" class="headerlink" title="classpath环境变量的作用及其配置"></a>classpath环境变量的作用及其配置</h3><ul>
+<li>A:为什么要配置classpath</li>
+<li>B:classpath配置的原理</li>
+<li><p>C:如何配置classpath</p>
+</li>
+<li><p>path和classpath的区别</p>
+<ul>
+<li>path配置的是可执行的文件.exe,配置后可以在不同的盘符下访问path路径下的可执行文件</li>
+<li>classpath配置的java的类文件,就是.class文件</li>
+</ul>
+</li>
+</ul>
+<h3 id="Java开发工具介绍"><a href="#Java开发工具介绍" class="headerlink" title="Java开发工具介绍"></a>Java开发工具介绍</h3><ul>
+<li>A:notepad(微软操作系统自带)</li>
+<li>B:Editplus/Notepad++</li>
+<li>C:Eclipse</li>
+<li>D:MyEclipse<ul>
+<li>给大家简单的介绍一下这些工具，然后说说我们使用这些工具的顺序。</li>
+<li>基础班：先notepad，然后Editplus，再Eclipse。</li>
+<li>就业班：MyEclipse和Eclipse都用。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Editplus开发程序并编译运行"><a href="#Editplus开发程序并编译运行" class="headerlink" title="Editplus开发程序并编译运行"></a>Editplus开发程序并编译运行</h3><ul>
+<li>A:配置快捷键编译运行</li>
+<li>B:去除备份文件</li>
+</ul>
+<hr>
+<h2 id="第一个Java程序"><a href="#第一个Java程序" class="headerlink" title="第一个Java程序"></a>第一个Java程序</h2><h3 id="HelloWorld案例的编写和运行"><a href="#HelloWorld案例的编写和运行" class="headerlink" title="HelloWorld案例的编写和运行"></a>HelloWorld案例的编写和运行</h3><ul>
+<li>A:定义类</li>
+<li>B:写main方法</li>
+<li>C:写输出语句</li>
+<li>D:Java程序开发运行与工作原理</li>
+<li>E:编译和运行程序</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"HelloWorld"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="HelloWorld案例常见问题"><a href="#HelloWorld案例常见问题" class="headerlink" title="HelloWorld案例常见问题"></a>HelloWorld案例常见问题</h3><ul>
+<li>A:找不到文件(都演示一下，让学生看看出现的都是什么问题)<ul>
+<li>a:文件扩展名隐藏导致编译失败</li>
+<li>b:文件名写错了</li>
+</ul>
+</li>
+<li>B:单词拼写问题(都演示一下，让学生看看出现的都是什么问题)<ul>
+<li>a:class写成Class</li>
+<li>b:String写成string</li>
+<li>c:System写成system</li>
+<li>d:main写成mian</li>
+</ul>
+</li>
+<li>C:括号匹配问题(都演示一下，让学生看看出现的都是什么问题)<ul>
+<li>a:把类体的那对大括号弄掉一个</li>
+<li>b:把方法体的那对大括号弄掉一个</li>
+<li>c:把输出语句的那对小括号弄掉一个</li>
+</ul>
+</li>
+<li>D:中英文问题(都演示一下，让学生看看出现的都是什么问题)<ul>
+<li>a:提示信息：错误: 非法字符: \????的格式</li>
+<li>注意：java编程中需要的基本上都是英文字符</li>
+</ul>
+</li>
+</ul>
+<h3 id="Java语言的书写格式-约定俗成"><a href="#Java语言的书写格式-约定俗成" class="headerlink" title="Java语言的书写格式(约定俗成)"></a>Java语言的书写格式(约定俗成)</h3><ul>
+<li>1,大括号要对齐,并且成对写</li>
+<li>2,左大括号前面有空格</li>
+<li>3,遇到左大括号要缩进,Tab</li>
+<li>4,方法和程序块之间加空行让程序看起来清晰</li>
+<li>5,并排语句之间加空格,例如for语句</li>
+<li>6,运算符两侧加空格</li>
+</ul>
+<h3 id="注释概述及其分类"><a href="#注释概述及其分类" class="headerlink" title="注释概述及其分类"></a>注释概述及其分类</h3><ul>
+<li>A:什么是注释</li>
+<li><p>B:注释的分类及讲解</p>
+<ul>
+<li>文档注释目前不讲，说后面讲解</li>
+</ul>
+</li>
+<li><p>注释的作用</p>
+<ul>
+<li>A:解释说明程序</li>
+<li>B:帮助我们调试错误</li>
+</ul>
+</li>
+</ul>
+<h3 id="关键字的概述和使用"><a href="#关键字的概述和使用" class="headerlink" title="关键字的概述和使用"></a>关键字的概述和使用</h3><ul>
+<li>A:什么是关键字<ul>
+<li>被Java语言赋予特定含义的单词 </li>
+</ul>
+</li>
+<li>B:关键字的特点<ul>
+<li>组成关键字的字母全部小写 </li>
+</ul>
+</li>
+<li>C:常见关键字<ul>
+<li>public static void class等 </li>
+</ul>
+</li>
+<li>D:关键字的注意事项<ul>
+<li>goto和const作为保留字存在,目前并不使用,类似Editplus这样的高级记事本,针对关键字有特殊的颜色标记，非常直观 </li>
+</ul>
+</li>
+</ul>
+<h3 id="标识符的概述和组成规则"><a href="#标识符的概述和组成规则" class="headerlink" title="标识符的概述和组成规则"></a>标识符的概述和组成规则</h3><ul>
+<li>A:什么是标识符<ul>
+<li>就是给类,接口,方法,变量等起名字时使用的字符序列 </li>
+</ul>
+</li>
+<li>B:标识符的组成规则<ul>
+<li>英文大小写字母</li>
+<li>数字字符</li>
+<li>$和_ </li>
+</ul>
+</li>
+<li>C:标识符注意事项<ul>
+<li>1,不能使用关键字</li>
+<li>2,不能数字开头 </li>
+</ul>
+</li>
+</ul>
+<h3 id="标识符中常见的命名规则"><a href="#标识符中常见的命名规则" class="headerlink" title="标识符中常见的命名规则"></a>标识符中常见的命名规则</h3><ul>
+<li>见名知意</li>
+<li>A:包<ul>
+<li>最好是域名倒过来,要求所有的字母小写 </li>
+</ul>
+</li>
+<li>B:类或者接口<ul>
+<li>如果是一个单词首字母大写</li>
+<li>如果是多个单词每个单词首字母大写(驼峰标识) </li>
+</ul>
+</li>
+<li>C:方法或者变量<ul>
+<li>如果是一个单词全部小写</li>
+<li>如果是多个单词,从第二个单词首字母大写 </li>
+</ul>
+</li>
+<li>D:常量<ul>
+<li>如果是一个单词,所有字母大写</li>
+<li>如果是多个单词,所有的单词大写,用下划线区分每个单词 </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="常量与进制转换"><a href="#常量与进制转换" class="headerlink" title="常量与进制转换"></a>常量与进制转换</h2><h3 id="常量的概述和使用"><a href="#常量的概述和使用" class="headerlink" title="常量的概述和使用"></a>常量的概述和使用</h3><ul>
+<li>A:什么是常量<ul>
+<li>在程序执行的过程中其值不可以发生改变 </li>
+</ul>
+</li>
+<li>B:Java中常量的分类<ul>
+<li>字面值常量</li>
+<li>自定义常量(面向对象部分讲) </li>
+</ul>
+</li>
+<li><p>C:字面值常量的分类</p>
+<ul>
+<li>字符串常量    用双引号括起来的内容</li>
+<li>整数常量        所有整数</li>
+<li>小数常量        所有小数</li>
+<li>字符常量        用单引号括起来的内容,里面只能放单个数字,单个字母或单个符号</li>
+<li>布尔常量        较为特殊，只有true和false</li>
+<li>空常量            null(数组部分讲解)</li>
+</ul>
+</li>
+<li><p>D:案例演示</p>
+<ul>
+<li>用输出语句输出各种常量。null不演示</li>
+</ul>
+</li>
+</ul>
+<h3 id="进制概述和二-八-十六进制图解"><a href="#进制概述和二-八-十六进制图解" class="headerlink" title="进制概述和二,八,十六进制图解"></a>进制概述和二,八,十六进制图解</h3><ul>
+<li>A:什么是进制<ul>
+<li>进制：就是进位制，是人们规定的一种进位方法。 对于任何一种进制–X进制，就表示某一位置上的数运算时是逢X进一位。二进制就是逢二进一，八进制是逢八进一，十进制是逢十进一，十六进制是逢十六进一。</li>
+<li>例如一周有七天,七进制,一年有十二个月,十二进制</li>
+</ul>
+</li>
+<li>B:十进制的由来 <ul>
+<li>十进制的由来是因为人类有十个手指 </li>
+</ul>
+</li>
+<li>C:二进制的由来<ul>
+<li>其实二进制来源与中国,请看史料记载</li>
+<li>18世纪德国数理哲学大师莱布尼兹从他的传教士朋友鲍威特寄给他的拉丁文译本《易经》中，读到了八卦的组成结构，惊奇地发现其基本素数（0）（1），即《易经》的阴爻yao- -和__阳爻，其进位制就是二进制，并认为这是世界上数学进制中最先进的。20世纪被称作第三次科技革命的重要标志之一的计算机的发明与应用，其运算模式正是二进制。它不但证明了莱布尼兹的原理是正确的，同时也证明了《易经》数理学是很了不起的。</li>
+</ul>
+</li>
+<li>D:八进制的由来<ul>
+<li>任何数据在计算机中都是以二进制的形式存在的。二进制早期由电信号开关演变而来。一个整数在内存中一样也是二进制的，但是使用一大串的1或者0组成的数值进行使用很麻烦。 </li>
+<li>所以就想把一大串缩短点，将二进制中的三位用一位表示。这三位可以取到的最大值就是7.超过7就进位了，这就是八进制。 </li>
+</ul>
+</li>
+<li>E:十六进制的由来<ul>
+<li>但是对于过长的二进制变成八进制还是较长，所以出现的用4个二进制位表示一位的情况，四个二进制位最大是15，这就是十六进制。</li>
+</ul>
+</li>
+<li>F:不同进制表现同一个数据的形式特点<ul>
+<li>进制越大，表现形式越短</li>
+</ul>
+</li>
+</ul>
+<h3 id="不同进制数据的表现形式"><a href="#不同进制数据的表现形式" class="headerlink" title="不同进制数据的表现形式"></a>不同进制数据的表现形式</h3><ul>
+<li>A:二进制的数据表现形式<ul>
+<li>由0,1组成。以0b(b可以大写也可以小写)开头(JDK1.7版本可以表示二进制了)</li>
+</ul>
+</li>
+<li>B:八进制的数据表现形式<ul>
+<li>由0,1,…7组成。以0开头</li>
+</ul>
+</li>
+<li>C:十进制的数据表现形式<ul>
+<li>由0,1,…9组成。整数默认是十进制的 </li>
+</ul>
+</li>
+<li>D:十六进制的数据表现形式<ul>
+<li>由0,1,…9,a,b,c,d,e,f(大小写均可)。以0x开头 </li>
+</ul>
+</li>
+<li>E:案例演示<ul>
+<li>输出不同进制表现100的数据。</li>
+<li>0b100</li>
+<li>0100</li>
+<li>100</li>
+<li>0x100</li>
+</ul>
+</li>
+</ul>
+<h3 id="任意进制到十进制的转换图解"><a href="#任意进制到十进制的转换图解" class="headerlink" title="任意进制到十进制的转换图解"></a>任意进制到十进制的转换图解</h3><ul>
+<li>A:任意进制到十进制的转换原理<ul>
+<li>系数：就是每一位上的数据。</li>
+<li>基数：X进制，基数就是X。</li>
+<li>权：在右边，从0开始编号，对应位上的编号即为该位的权。</li>
+<li>结果：把系数*基数的权次幂相加即可。 </li>
+</ul>
+</li>
+<li>B:画图练习<ul>
+<li>二进制–十进制</li>
+<li>八进制–十进制</li>
+<li>十六进制–十进制</li>
+</ul>
+</li>
+</ul>
+<h3 id="十进制到任意进制的转换图解"><a href="#十进制到任意进制的转换图解" class="headerlink" title="十进制到任意进制的转换图解"></a>十进制到任意进制的转换图解</h3><ul>
+<li>A:十进制到任意进制的转换原理<ul>
+<li>除积倒取余 </li>
+</ul>
+</li>
+<li>B:画图练习<ul>
+<li>十进制–二进制</li>
+<li>十进制–八进制</li>
+<li>十进制–十六进制</li>
+</ul>
+</li>
+</ul>
+<h3 id="快速的进制转换法"><a href="#快速的进制转换法" class="headerlink" title="快速的进制转换法"></a>快速的进制转换法</h3><ul>
+<li>A:8421码及特点<ul>
+<li>8421码是中国大陆的叫法，8421码是BCD代码中最常用的一种。在这种编码方式中每一位二值代码的1都是代表一个固定数值，把每一位的1代表的十进制数加起来，得到的结果就是它所代表的十进制数码。 </li>
+</ul>
+</li>
+<li>B:通过8421码的方式进行二进制和十进制的相互转换</li>
+<li>C:二进制到八进制的简易方式</li>
+<li>D:二进制到十六进制的简易方式</li>
+</ul>
+<h3 id="原码反码补码"><a href="#原码反码补码" class="headerlink" title="原码反码补码"></a>原码反码补码</h3><ul>
+<li>A:为什么要学习原码反码补码?<ul>
+<li>后面要学习强制类型转换,如果不知道有原反补会看不懂结果 </li>
+</ul>
+</li>
+<li>B:有符号数据表示法的几种方式<ul>
+<li>原码<ul>
+<li>就是二进制定点表示法，即最高位为符号位，“0”表示正，“1”表示负，其余位表示数值的大小。</li>
+<li>通过一个字节,也就是8个二进制位表示+7和-7</li>
+<li>0(符号位)    0000111</li>
+<li>1(符号位)    0000111</li>
+</ul>
+</li>
+<li>反码<ul>
+<li>正数的反码与其原码相同；负数的反码是对其原码逐位取反，但符号位除外。</li>
+</ul>
+</li>
+<li>补码<ul>
+<li>正数的补码与其原码相同；负数的补码是在其反码的末位加1。 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>A:已知原码求补码<ul>
+<li>0b10110100 </li>
+</ul>
+</li>
+<li>B:已知补码求原码<ul>
+<li>0b11101110 </li>
+</ul>
+</li>
+</ul>
+<h2 id="变量与数据类型转换"><a href="#变量与数据类型转换" class="headerlink" title="变量与数据类型转换"></a>变量与数据类型转换</h2><h3 id="变量的概述及格式"><a href="#变量的概述及格式" class="headerlink" title="变量的概述及格式"></a>变量的概述及格式</h3><ul>
+<li>A:什么是变量<ul>
+<li>在程序执行的过程中，在某个范围内其值可以发生改变的量</li>
+</ul>
+</li>
+<li>B:变量的定义格式<ul>
+<li>数据类型 变量名 = 变量值;</li>
+</ul>
+</li>
+<li>C:为什么要定义变量<ul>
+<li>用来不断的存放同一类型的常量，并可以重复使用 </li>
+</ul>
+</li>
+</ul>
+<h3 id="数据类型的概述和分类"><a href="#数据类型的概述和分类" class="headerlink" title="数据类型的概述和分类"></a>数据类型的概述和分类</h3><ul>
+<li>A:为什么有数据类型<ul>
+<li>Java语言是强类型语言，对于每一种数据都定义了明确的具体数据类型，在内存中分配了不同大小的内存空间</li>
+</ul>
+</li>
+<li>B:Java中数据类型的分类<ul>
+<li>基本数据类型</li>
+<li>引用数据类型 <ul>
+<li>面向对象部分讲解 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>C:基本数据类型分类(4类8种) <ul>
+<li>整数型<ul>
+<li>byte 占一个字节  -128到127</li>
+<li>short 占两个字  -2^15~2^15-1</li>
+<li>int 占四个字节 -2^31~2^31-1</li>
+<li>long 占八个字节 -2^63~2^63-1</li>
+</ul>
+</li>
+<li>浮点型<ul>
+<li>float 占四个字节 -3.403E38~3.403E38  单精度</li>
+<li>double 占八个字节-1.798E308~1.798E308 双精度</li>
+</ul>
+</li>
+<li>字符型<ul>
+<li>char 占两个字节 0~65535</li>
+</ul>
+</li>
+<li>布尔型<ul>
+<li>boolean   <ul>
+<li>boolean理论上是占八分之一个字节,因为一个开关就可以决定是true和false了,但是java中boolean类型没有明确指定他的大小      </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="定义不同数据类型的变量"><a href="#定义不同数据类型的变量" class="headerlink" title="定义不同数据类型的变量"></a>定义不同数据类型的变量</h3><ul>
+<li>A:案例演示<ul>
+<li>定义不同基本数据类型的变量，并输出</li>
+<li>赋值时候注意float类型,long类型</li>
+</ul>
+</li>
+</ul>
+<h3 id="使用变量的注意事项"><a href="#使用变量的注意事项" class="headerlink" title="使用变量的注意事项"></a>使用变量的注意事项</h3><ul>
+<li>A:案例演示<ul>
+<li>a:作用域问题<ul>
+<li>同一个区域不能使用相同的变量名 </li>
+</ul>
+</li>
+<li>b:初始化值问题<ul>
+<li>局部变量在使用之前必须赋值 </li>
+</ul>
+</li>
+<li>c:一条语句可以定义几个变量<ul>
+<li>int a,b,c…; </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据类型转换之隐式转换"><a href="#数据类型转换之隐式转换" class="headerlink" title="数据类型转换之隐式转换"></a>数据类型转换之隐式转换</h3><ul>
+<li>A:案例演示<ul>
+<li>a:int + int</li>
+<li>b:byte + int </li>
+</ul>
+</li>
+<li>B:Java中的默认转换规则<ul>
+<li>取值范围小的数据类型与取值范围大的数据类型进行运算,会先将小的数据类型提升为大的,再运算 </li>
+</ul>
+</li>
+<li>C:画图解释byte+int类型的问题</li>
+</ul>
+<h3 id="数据类型转换之强制转换"><a href="#数据类型转换之强制转换" class="headerlink" title="数据类型转换之强制转换"></a>数据类型转换之强制转换</h3><ul>
+<li>A:强制转换问题<ul>
+<li>int a = 10;</li>
+<li>byte b = 20; </li>
+<li>b = a + b;</li>
+</ul>
+</li>
+<li>B:强制转换的格式<ul>
+<li>b = (byte)(a + b); </li>
+</ul>
+</li>
+<li>C:强制转换的注意事项<ul>
+<li>如果超出了被赋值的数据类型的取值范围得到的结果会与你期望的结果不同 </li>
+</ul>
+</li>
+</ul>
+<h3 id="面试题之变量相加和常量相加的区别"><a href="#面试题之变量相加和常量相加的区别" class="headerlink" title="面试题之变量相加和常量相加的区别"></a>面试题之变量相加和常量相加的区别</h3><ul>
+<li>A:案例演示<ul>
+<li>面试题:看下面的程序是否有问题，如果有问题，请指出并说明理由。</li>
+<li>byte b1 = 3;</li>
+<li>byte b2 = 4;</li>
+<li>byte b3 = b1 + b2;<ul>
+<li>从两方面去回答这个题</li>
+<li>b1和b2是两个变量,变量里面存储的值都是变化的,所以在程序运行中JVM是无法判断里面具体的值</li>
+<li>byte类型的变量在进行运算的时候,会自动类型提升为int类型 </li>
+</ul>
+</li>
+<li>byte b4 = 3 + 4;<ul>
+<li>3和4都是常量,java有常量优化机制,就是在编译的的时候直接把3和4的结果赋值给b4了 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="long与float的取值范围谁大谁小"><a href="#long与float的取值范围谁大谁小" class="headerlink" title="long与float的取值范围谁大谁小"></a>long与float的取值范围谁大谁小</h3><ul>
+<li><p>进行混合运算的时候,byte,short,char不会相互转换,都会自动类型提升为int类型,其他类型进行混合运算的是小的数据类型提升为大的</p>
+<ul>
+<li><p>byte,short,char – int – long – float – double</p>
+</li>
+<li><p>long: 8个字节</p>
+</li>
+<li>float：4个字节</li>
+<li>IEEE754</li>
+<li>4个字节是32个二进制位</li>
+<li>1位是符号位</li>
+<li>8位是指数位</li>
+<li>00000000   11111111</li>
+<li>0到255</li>
+<li>1到254</li>
+<li>-126到127</li>
+<li>23位是尾数位</li>
+<li><p>每个指数位减去127</p>
+</li>
+<li><p>A:它们底层的存储结构不同。</p>
+</li>
+<li>B:float表示的数据范围比long的范围要大<ul>
+<li>long：2^63-1</li>
+<li>float：3.4<em>10^38 &gt; 2</em>10^38 &gt; 2<em>8^38 = 2</em>2^3^38 = 2*2^114 &gt; 2^63-1</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="字符和字符串参与运算"><a href="#字符和字符串参与运算" class="headerlink" title="字符和字符串参与运算"></a>字符和字符串参与运算</h3><ul>
+<li><p>A:案例演示</p>
+<ul>
+<li>System.out.println(‘a’);</li>
+<li><p>System.out.println(‘a’+1);</p>
+</li>
+<li><p>通过看结果知道’a’的值是多少,由此引出ASCII码表</p>
+</li>
+</ul>
+</li>
+<li>B:ASCII码表的概述<ul>
+<li>记住三个值：<ul>
+<li>‘0’  48</li>
+<li>‘A’  65</li>
+<li>‘a’  97</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>System.out.println(“hello”+’a’+1);</li>
+<li>System.out.println(‘a’+1+”hello”);</li>
+</ul>
+</li>
+<li>D:+在有字符串参与中被称为字符串连接符<ul>
+<li>System.out.println(“5+5=”+5+5);</li>
+<li>System.out.println(5+5+”=5+5”);</li>
+</ul>
+</li>
+</ul>
+<h3 id="char数据类型"><a href="#char数据类型" class="headerlink" title="char数据类型"></a>char数据类型</h3><ul>
+<li>A:char c = 97;    0到65535</li>
+<li>B:Java语言中的字符char可以存储一个中文汉字吗?为什么呢?<ul>
+<li>可以。因为Java语言采用的是Unicode编码。Unicode编码中的每个字符占用两个字节。中文也是占的两个字节</li>
+<li>所以，Java中的字符可以存储一个中文汉字</li>
+</ul>
+</li>
+</ul>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="算术运算符的基本用法"><a href="#算术运算符的基本用法" class="headerlink" title="算术运算符的基本用法"></a>算术运算符的基本用法</h3><ul>
+<li>A:什么是运算符<ul>
+<li>就是对常量和变量进行操作的符号。</li>
+</ul>
+</li>
+<li>B:运算符的分类<ul>
+<li>算术运算符，赋值运算符，比较(关系或条件)运算符，逻辑运算符，位运算符，三目(元)运算符 </li>
+</ul>
+</li>
+<li>C:算数运算符有哪些<ul>
+<li>+,-,*,/,%,++,– </li>
+</ul>
+</li>
+<li>D:注意事项：<ul>
+<li>a:+号在java中有三种作用,代表正号,做加法运算,字符串的连接符</li>
+<li>b:整数相除只能得到整数。如果想得到小数，必须把数据变化为浮点数类型</li>
+<li>c:/获取的是除法操作的商，%获取的是除法操作的余数</li>
+<li>%运算符<ul>
+<li>当左边的绝对值小于右边绝对值时,结果是左边</li>
+<li>当左边的绝对值等于右边或是右边的倍数时,结果是0</li>
+<li>当左边的绝对值大于右边绝对值时,结果是余数</li>
+<li>%运算符结果的符号只和左边有关系,与右边无关</li>
+<li>任何一个正整数%2结果不是0就是1可以用来当作切换条件 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="算术运算符-和–的用法"><a href="#算术运算符-和–的用法" class="headerlink" title="算术运算符++和–的用法"></a>算术运算符++和–的用法</h4><ul>
+<li>A:++,–运算符的作用<ul>
+<li>自加（++）自减（–）运算</li>
+<li>++:自加。对原有的数据进行+1</li>
+<li>–:自减。对原有的数据进行-1</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>a:单独使用：<ul>
+<li>放在操作数的前面和后面效果一样。(这种用法是我们比较常见的)</li>
+</ul>
+</li>
+<li>b:参与运算使用：<ul>
+<li>放在操作数的前面，先自增或者自减，然后再参与运算。</li>
+<li>放在操作数的后面，先参与运算，再自增或者自减。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="算术运算符-和–的练习"><a href="#算术运算符-和–的练习" class="headerlink" title="算术运算符++和–的练习"></a>算术运算符++和–的练习</h5><ul>
+<li><p>A:案例演示</p>
+<ul>
+<li><p>请分别计算出a,b,c的值?</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a = <span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> b = <span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> c = <span class="number">10</span>;</div><div class="line">		</div><div class="line">a = b++;		</div><div class="line">c = --a;			</div><div class="line">b = ++a;		</div><div class="line">a = c--;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>B:案例演示</p>
+<ul>
+<li><p>请分别计算出x,y的值?</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> x = <span class="number">4</span>;</div><div class="line"><span class="keyword">int</span> y = (x++)+(++x)+(x*<span class="number">10</span>);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>C:面试题</p>
+<ul>
+<li>byte b = 10;</li>
+<li>b++;</li>
+<li>b = b + 1;</li>
+<li>问哪句会报错,为什么 </li>
+</ul>
+</li>
+</ul>
+<h3 id="赋值运算符的基本用法"><a href="#赋值运算符的基本用法" class="headerlink" title="赋值运算符的基本用法"></a>赋值运算符的基本用法</h3><ul>
+<li><p>A:赋值运算符有哪些</p>
+<ul>
+<li><p>a:基本的赋值运算符：=</p>
+<ul>
+<li>把=右边的数据赋值给左边。</li>
+</ul>
+</li>
+<li><p>b:扩展的赋值运算符：+=,-=,*=,/=,%=</p>
+<ul>
+<li>+= 把左边和右边做加法，然后赋值给左边。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="赋值运算符的面试题"><a href="#赋值运算符的面试题" class="headerlink" title="赋值运算符的面试题"></a>赋值运算符的面试题</h4><ul>
+<li>A:案例演示<ul>
+<li>面试题:看下面的程序是否有问题，如果有问题，请指出并说明理由。</li>
+<li>short s=1;s = s+1;</li>
+<li>short s=1;s+=1;</li>
+</ul>
+</li>
+</ul>
+<h3 id="关系运算符的基本用法及其注意事项"><a href="#关系运算符的基本用法及其注意事项" class="headerlink" title="关系运算符的基本用法及其注意事项"></a>关系运算符的基本用法及其注意事项</h3><ul>
+<li>A:关系运算符有哪些(比较运算符,条件运算符)<ul>
+<li>==,!=,&gt;,&gt;=,&lt;,&lt;= </li>
+</ul>
+</li>
+<li><p>注意事项：</p>
+<ul>
+<li><p>无论你的操作是简单还是复杂，结果是boolean类型。</p>
+</li>
+<li><p>“==”不能写成”=”。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="逻辑运算符的基本用法"><a href="#逻辑运算符的基本用法" class="headerlink" title="逻辑运算符的基本用法"></a>逻辑运算符的基本用法</h3><ul>
+<li>A:逻辑运算符有哪些<ul>
+<li>&amp;,|,^,!</li>
+<li>&amp;&amp;,|| </li>
+</ul>
+</li>
+<li>B:案例演示</li>
+<li><p>逻辑运算符的基本用法</p>
+</li>
+<li><p>注意事项：</p>
+<ul>
+<li>a:逻辑运算符一般用于连接boolean类型的表达式或者值。</li>
+<li>b:表达式：就是用运算符把常量或者变量连接起来的符合java语法的式子。<ul>
+<li>算术表达式：a + b</li>
+<li>比较表达式：a == b(条件表达式)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>C:结论：</li>
+<li>&amp;逻辑与:有false则false。</li>
+<li>|逻辑或:有true则true。</li>
+<li>^逻辑异或:相同为false，不同为true。</li>
+<li>!逻辑非:非false则true，非true则false。<ul>
+<li>特点：偶数个不改变本身。</li>
+</ul>
+</li>
+</ul>
+<h3 id="逻辑运算符-amp-amp-和-amp-的区别"><a href="#逻辑运算符-amp-amp-和-amp-的区别" class="headerlink" title="逻辑运算符&amp;&amp;和&amp;的区别"></a>逻辑运算符&amp;&amp;和&amp;的区别</h3><ul>
+<li>A:案例演示<ul>
+<li>&amp;&amp;和&amp;的区别?<ul>
+<li>a:最终结果一样。</li>
+<li>b:&amp;&amp;具有短路效果。左边是false，右边不执行。</li>
+<li>&amp;是无论左边是false还是true,右边都会执行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>B:同理||和|的区别?(学生自学)</li>
+<li>C:开发中常用谁?<ul>
+<li>&amp;&amp;,||,!</li>
+</ul>
+</li>
+</ul>
+<h3 id="位运算符的基本用法"><a href="#位运算符的基本用法" class="headerlink" title="位运算符的基本用法"></a>位运算符的基本用法</h3><ul>
+<li>A:位运算符有哪些<ul>
+<li>&amp;,|,^,~ ,&gt;&gt;,&gt;&gt;&gt;,&lt;&lt;</li>
+</ul>
+</li>
+<li><p>B:案例演示</p>
+<ul>
+<li><p>位运算符的基本用法1</p>
+</li>
+<li><p>&amp;,|,^,~ 的用法</p>
+</li>
+<li>&amp;:有0则0</li>
+<li>|:有1则1</li>
+<li>^:相同则0，不同则1</li>
+<li>~:按位取反</li>
+</ul>
+</li>
+</ul>
+<h4 id="位异或运算符的特点及面试题"><a href="#位异或运算符的特点及面试题" class="headerlink" title="位异或运算符的特点及面试题"></a>位异或运算符的特点及面试题</h4><ul>
+<li><p>A:案例演示</p>
+<ul>
+<li><p>位异或运算符的特点</p>
+</li>
+<li><p>^的特点：一个数据对另一个数据位异或两次，该数本身不变。</p>
+</li>
+</ul>
+</li>
+<li><p>B:面试题：</p>
+<ul>
+<li>请自己实现两个整数变量的交换</li>
+<li>注意：以后讲课的过程中，我没有明确指定数据的类型，默认int类型。</li>
+</ul>
+</li>
+</ul>
+<h4 id="位运算符的基本用法2及面试题"><a href="#位运算符的基本用法2及面试题" class="headerlink" title="位运算符的基本用法2及面试题"></a>位运算符的基本用法2及面试题</h4><ul>
+<li>A:案例演示 &gt;&gt;,&gt;&gt;&gt;,&lt;&lt;的用法:<ul>
+<li>&lt;&lt;:左移    左边最高位丢弃，右边补齐0</li>
+<li><blockquote>
+<blockquote>
+<p>:右移    最高位是0，左边补齐0;最高为是1，左边补齐1</p>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>:无符号右移 无论最高位是0还是1，左边补齐0</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li>最有效率的算出2 * 8的结果</li>
+</ul>
+</li>
+</ul>
+<h3 id="三元运算符的基本用法"><a href="#三元运算符的基本用法" class="headerlink" title="三元运算符的基本用法"></a>三元运算符的基本用法</h3><ul>
+<li>A:三元运算符的格式</li>
+<li>(关系表达式) ? 表达式1 : 表达式2;</li>
+<li>B:三元运算符的执行流程 </li>
+<li>C:案例演示<ul>
+<li>获取两个数中的最大值</li>
+</ul>
+</li>
+</ul>
+<h4 id="三元运算符的练习"><a href="#三元运算符的练习" class="headerlink" title="三元运算符的练习"></a>三元运算符的练习</h4><ul>
+<li>A:案例演示<ul>
+<li>比较两个整数是否相同</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>获取三个整数中的最大值</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="键盘录入"><a href="#键盘录入" class="headerlink" title="键盘录入"></a>键盘录入</h2><h3 id="键盘录入的基本格式讲解"><a href="#键盘录入的基本格式讲解" class="headerlink" title="键盘录入的基本格式讲解"></a>键盘录入的基本格式讲解</h3><ul>
+<li>A:为什么要使用键盘录入数据<ul>
+<li>a:为了让程序的数据更符合开发的数据</li>
+<li>b:让程序更灵活一下</li>
+</ul>
+</li>
+<li>B:如何实现键盘录入呢?<ul>
+<li>先照格式来。</li>
+<li>a:导包<ul>
+<li>格式：<ul>
+<li>import java.util.Scanner; </li>
+</ul>
+</li>
+<li>位置：<ul>
+<li>在class上面。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>b:创建键盘录入对象<ul>
+<li>格式：<ul>
+<li>Scanner sc = new Scanner(System.in);</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>c:通过对象获取数据    <ul>
+<li>格式：<ul>
+<li>int x = sc.nextInt();</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>键盘录入1个整数，并输出到控制台。</li>
+<li>键盘录入2个整数，并输出到控制台。</li>
+</ul>
+</li>
+</ul>
+<h4 id="键盘录入的练习1"><a href="#键盘录入的练习1" class="headerlink" title="键盘录入的练习1"></a>键盘录入的练习1</h4><ul>
+<li>A:案例演示<ul>
+<li>键盘录入练习：键盘录入两个数据，并对这两个数据求和，输出其结果</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>键盘录入练习：键盘录入两个数据，获取这两个数据中的最大值</li>
+</ul>
+</li>
+</ul>
+<h4 id="键盘录入的练习2"><a href="#键盘录入的练习2" class="headerlink" title="键盘录入的练习2"></a>键盘录入的练习2</h4><ul>
+<li>A:案例演示<ul>
+<li>键盘录入练习：键盘录入两个数据，比较这两个数据是否相等</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>键盘录入练习：键盘录入三个数据，获取这三个数据中的最大值</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h2><ul>
+<li>A:什么是流程控制语句<ul>
+<li>流程控制语句：可以控制程序的执行流程。</li>
+</ul>
+</li>
+<li>B:流程控制语句的分类<ul>
+<li>顺序结构</li>
+<li>选择结构</li>
+<li>循环结构</li>
+</ul>
+</li>
+<li>C:执行流程：<ul>
+<li>从上往下，依次执行。</li>
+</ul>
+</li>
+<li>D:案例演示<ul>
+<li>输出几句话看效果即可</li>
+</ul>
+</li>
+</ul>
+<h3 id="选择结构"><a href="#选择结构" class="headerlink" title="选择结构"></a>选择结构</h3><h4 id="if语句格式1及其使用"><a href="#if语句格式1及其使用" class="headerlink" title="if语句格式1及其使用"></a>if语句格式1及其使用</h4><ul>
+<li>A:选择结构的分类<ul>
+<li>if语句</li>
+<li>switch语句</li>
+</ul>
+</li>
+<li>B:if语句有几种格式<ul>
+<li>格式1</li>
+<li>格式2</li>
+<li>格式3</li>
+</ul>
+</li>
+<li>C:if语句的格式1</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(比较表达式) &#123;</div><div class="line">			语句体;</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>D:执行流程：<ul>
+<li>先计算比较表达式的值，看其返回值是true还是false。</li>
+<li>如果是true，就执行语句体；</li>
+<li>如果是false，就不执行语句体；</li>
+</ul>
+</li>
+</ul>
+<h4 id="选择结构if语句注意事项"><a href="#选择结构if语句注意事项" class="headerlink" title="选择结构if语句注意事项"></a>选择结构if语句注意事项</h4><ul>
+<li>A:案例演示<ul>
+<li>a:比较表达式无论简单还是复杂，结果必须是boolean类型</li>
+<li>b:if语句控制的语句体如果是一条语句，大括号可以省略；<ul>
+<li>如果是多条语句，就不能省略。建议永远不要省略。</li>
+</ul>
+</li>
+<li>c:一般来说：有左大括号就没有分号，有分号就没有左大括号</li>
+</ul>
+</li>
+</ul>
+<h4 id="选择结构if语句格式2及其使用"><a href="#选择结构if语句格式2及其使用" class="headerlink" title="选择结构if语句格式2及其使用"></a>选择结构if语句格式2及其使用</h4><ul>
+<li>A:if语句的格式2</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(比较表达式) &#123;</div><div class="line">	语句体<span class="number">1</span>;</div><div class="line">&#125;<span class="keyword">else</span> &#123;</div><div class="line">	语句体<span class="number">2</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>B:执行流程：<ul>
+<li>首先计算比较表达式的值，看其返回值是true还是false。</li>
+<li>如果是true，就执行语句体1；</li>
+<li>如果是false，就执行语句体2；</li>
+</ul>
+</li>
+<li><p>C:案例演示</p>
+<ul>
+<li>a:获取两个数据中较大的值</li>
+<li><p>b:判断一个数据是奇数还是偶数,并输出是奇数还是偶数</p>
+</li>
+<li><p>注意事项：else后面是没有比较表达式的，只有if后面有。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="if语句的格式2和三元的相互转换问题"><a href="#if语句的格式2和三元的相互转换问题" class="headerlink" title="if语句的格式2和三元的相互转换问题"></a>if语句的格式2和三元的相互转换问题</h4><ul>
+<li>A:案例演示<ul>
+<li>if语句和三元运算符完成同一个效果</li>
+</ul>
+</li>
+<li><p>B:案例演示</p>
+<ul>
+<li><p>if语句和三元运算符的区别</p>
+</li>
+<li><p>三元运算符实现的，都可以采用if语句实现。反之不成立。</p>
+</li>
+<li><p>什么时候if语句实现不能用三元改进呢?</p>
+<ul>
+<li>当if语句控制的操作是一个输出语句的时候就不能。</li>
+<li>为什么呢?因为三元运算符是一个运算符，运算符操作完毕就应该有一个结果，而不是一个输出。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="选择结构if语句格式3及其使用"><a href="#选择结构if语句格式3及其使用" class="headerlink" title="选择结构if语句格式3及其使用"></a>选择结构if语句格式3及其使用</h4><ul>
+<li>A:if语句的格式3：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(比较表达式<span class="number">1</span>) &#123;</div><div class="line">	语句体<span class="number">1</span>;</div><div class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(比较表达式<span class="number">2</span>) &#123;</div><div class="line">	语句体<span class="number">2</span>;</div><div class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(比较表达式<span class="number">3</span>) &#123;</div><div class="line">	语句体<span class="number">3</span>;</div><div class="line">&#125;</div><div class="line">...</div><div class="line"><span class="keyword">else</span> &#123;</div><div class="line">	语句体n+<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>B:执行流程：</p>
+<ul>
+<li>首先计算比较表达式1看其返回值是true还是false，</li>
+<li>如果是true，就执行语句体1，if语句结束。</li>
+<li><p>如果是false，接着计算比较表达式2看其返回值是true还是false，</p>
+</li>
+<li><p>如果是true，就执行语句体2，if语句结束。</p>
+</li>
+<li><p>如果是false，接着计算比较表达式3看其返回值是true还是false，</p>
+</li>
+<li><p>如果都是false，就执行语句体n+1。</p>
+</li>
+</ul>
+</li>
+<li>C:注意事项:最后一个else可以省略,但是建议不要省略,可以对范围外的错误值提示 </li>
+</ul>
+<h4 id="选择结构if语句格式3练习"><a href="#选择结构if语句格式3练习" class="headerlink" title="选择结构if语句格式3练习"></a>选择结构if语句格式3练习</h4><ul>
+<li>A:练习1</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">需求：键盘录入一个成绩，判断并输出成绩的等级。</div><div class="line"><span class="number">90</span>-<span class="number">100</span> 优</div><div class="line"><span class="number">80</span>-<span class="number">89</span>  良</div><div class="line"><span class="number">70</span>-<span class="number">79</span>  中</div><div class="line"><span class="number">60</span>-<span class="number">69</span>  及</div><div class="line"><span class="number">0</span>-<span class="number">59</span>   差</div></pre></td></tr></table></figure>
+<ul>
+<li><p>B:练习2</p>
+<ul>
+<li><p>需求：</p>
+<ul>
+<li><p>键盘录入x的值，计算出y的并输出。</p>
+</li>
+<li><p>x&gt;=3    y = 2 * x + 1;</p>
+</li>
+<li>-1&lt;x&lt;3    y = 2 * x;</li>
+<li>x&lt;=-1    y = 2 * x - 1;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="选择结构if语句的嵌套使用"><a href="#选择结构if语句的嵌套使用" class="headerlink" title="选择结构if语句的嵌套使用"></a>选择结构if语句的嵌套使用</h4><ul>
+<li>A:案例演示<ul>
+<li>需求：获取三个数据中的最大值</li>
+<li>if语句的嵌套使用。</li>
+</ul>
+</li>
+</ul>
+<h4 id="选择结构switch语句的格式及其解释"><a href="#选择结构switch语句的格式及其解释" class="headerlink" title="选择结构switch语句的格式及其解释"></a>选择结构switch语句的格式及其解释</h4><ul>
+<li>A:switch语句的格式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>(表达式) &#123;</div><div class="line">      <span class="keyword">case</span> 值<span class="number">1</span>：</div><div class="line">		语句体<span class="number">1</span>;</div><div class="line">		<span class="keyword">break</span>;</div><div class="line">	    <span class="keyword">case</span> 值<span class="number">2</span>：</div><div class="line">		语句体<span class="number">2</span>;</div><div class="line">		<span class="keyword">break</span>;</div><div class="line">	    …</div><div class="line">	    <span class="keyword">default</span>：	</div><div class="line">		语句体n+<span class="number">1</span>;</div><div class="line">		<span class="keyword">break</span>;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>B:switch语句的格式解释</li>
+<li>C:面试题<ul>
+<li>byte可以作为switch的表达式吗?</li>
+<li>long可以作为switch的表达式吗?</li>
+<li>String可以作为switch的表达式吗?</li>
+</ul>
+</li>
+<li>C:执行流程<ul>
+<li>先计算表达式的值</li>
+<li>然后和case后面的匹配，如果有就执行对应的语句，否则执行default控制的语句</li>
+</ul>
+</li>
+</ul>
+<h4 id="选择结构switch语句的练习"><a href="#选择结构switch语句的练习" class="headerlink" title="选择结构switch语句的练习"></a>选择结构switch语句的练习</h4><ul>
+<li>A:整数(给定一个值,输出对应星期几)</li>
+</ul>
+<h4 id="选择结构switch语句的注意事项"><a href="#选择结构switch语句的注意事项" class="headerlink" title="选择结构switch语句的注意事项"></a>选择结构switch语句的注意事项</h4><ul>
+<li>A:案例演示<ul>
+<li>a:case后面只能是常量，不能是变量，而且，多个case后面的值不能出现相同的</li>
+<li>b:default可以省略吗?<ul>
+<li>可以省略，但是不建议，因为它的作用是对不正确的情况给出提示。</li>
+<li>特殊情况：<ul>
+<li>case就可以把值固定。</li>
+<li>A,B,C,D</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>c:break可以省略吗?<ul>
+<li>最后一个可以省略,其他最好不要省略</li>
+<li>会出现一个现象：case穿透。</li>
+<li>最终我们建议不要省略</li>
+</ul>
+</li>
+<li>d:default一定要在最后吗?<ul>
+<li>不是，可以在任意位置。但是建议在最后。</li>
+</ul>
+</li>
+<li>e:switch语句的结束条件<ul>
+<li>a:遇到break就结束了</li>
+<li>b:执行到switch的右大括号就结束了</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="选择结构switch语句练习"><a href="#选择结构switch语句练习" class="headerlink" title="选择结构switch语句练习"></a>选择结构switch语句练习</h4><ul>
+<li>A:看程序写结果：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> x = <span class="number">2</span>;</div><div class="line"><span class="keyword">int</span> y = <span class="number">3</span>;</div><div class="line"><span class="keyword">switch</span>(x)&#123;</div><div class="line">	<span class="keyword">default</span>:</div><div class="line">		y++;</div><div class="line">		<span class="keyword">break</span>;</div><div class="line">	<span class="keyword">case</span> <span class="number">3</span>:</div><div class="line">		y++;</div><div class="line">	<span class="keyword">case</span> <span class="number">4</span>:</div><div class="line">		y++;</div><div class="line">&#125;</div><div class="line">System.out.println(<span class="string">"y="</span>+y);</div></pre></td></tr></table></figure>
+<ul>
+<li>B:看程序写结果：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> x = <span class="number">2</span>;</div><div class="line"><span class="keyword">int</span> y = <span class="number">3</span>;</div><div class="line"><span class="keyword">switch</span>(x)&#123;</div><div class="line">	<span class="keyword">default</span>:</div><div class="line">		y++;</div><div class="line">	<span class="keyword">case</span> <span class="number">3</span>:</div><div class="line">		y++;</div><div class="line">	<span class="keyword">case</span> <span class="number">4</span>:</div><div class="line">		y++;</div><div class="line">&#125;</div><div class="line">System.out.println(<span class="string">"y="</span>+y);</div></pre></td></tr></table></figure>
+<h4 id="选择结构if语句和switch语句的区别"><a href="#选择结构if语句和switch语句的区别" class="headerlink" title="选择结构if语句和switch语句的区别"></a>选择结构if语句和switch语句的区别</h4><ul>
+<li>A:总结switch语句和if语句的各自使用场景</li>
+<li>switch建议判断固定值的时候用</li>
+<li>if建议判断区间或范围的时候用</li>
+<li>B:案例演示<ul>
+<li>分别用switch语句和if语句实现下列需求：<ul>
+<li>键盘录入月份，输出对应的季节</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="循环结构概述"><a href="#循环结构概述" class="headerlink" title="循环结构概述"></a>循环结构概述</h3><ul>
+<li>A:循环结构的分类<ul>
+<li>for,while,do…while </li>
+</ul>
+</li>
+</ul>
+<h4 id="for语句的格式及其使用"><a href="#for语句的格式及其使用" class="headerlink" title="for语句的格式及其使用"></a>for语句的格式及其使用</h4><ul>
+<li>B:循环结构for语句的格式：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(初始化表达式;条件表达式;循环后的操作表达式) &#123;</div><div class="line">	循环体;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>C执行流程：<ul>
+<li>a:执行初始化语句</li>
+<li>b:执行判断条件语句,看其返回值是true还是false<ul>
+<li>如果是true，就继续执行</li>
+<li>如果是false，就结束循环</li>
+</ul>
+</li>
+<li>c:执行循环体语句;</li>
+<li>d:执行循环后的操作表达式</li>
+<li>e:回到B继续。</li>
+</ul>
+</li>
+<li>D:案例演示<ul>
+<li>在控制台输出10次”helloworld”</li>
+</ul>
+</li>
+</ul>
+<h4 id="for语句的练习之获取数据"><a href="#for语句的练习之获取数据" class="headerlink" title="for语句的练习之获取数据"></a>for语句的练习之获取数据</h4><ul>
+<li>A:案例演示<ul>
+<li>需求：请在控制台输出数据1-10</li>
+<li>需求：请在控制台输出数据10-1</li>
+</ul>
+</li>
+<li>B:注意事项<ul>
+<li>a:判断条件语句无论简单还是复杂结果是boolean类型。</li>
+<li>b:循环体语句如果是一条语句，大括号可以省略；如果是多条语句，大括号不能省略。建议永远不要省略。</li>
+<li>c:一般来说：有左大括号就没有分号，有分号就没有左大括号</li>
+</ul>
+</li>
+</ul>
+<h4 id="for语句的练习之求和思想"><a href="#for语句的练习之求和思想" class="headerlink" title="for语句的练习之求和思想"></a>for语句的练习之求和思想</h4><ul>
+<li>A:案例演示<ul>
+<li>需求：求出1-10之间数据之和</li>
+</ul>
+</li>
+<li>B:学生练习<ul>
+<li>需求：求出1-100之间偶数和</li>
+<li>需求：求出1-100之间奇数和</li>
+</ul>
+</li>
+</ul>
+<h4 id="for语句的练习之水仙花"><a href="#for语句的练习之水仙花" class="headerlink" title="for语句的练习之水仙花"></a>for语句的练习之水仙花</h4><ul>
+<li><p>A:案例演示</p>
+<ul>
+<li><p>需求：在控制台输出所有的”水仙花数”</p>
+</li>
+<li><p>所谓的水仙花数是指一个三位数，其各位数字的立方和等于该数本身。</p>
+</li>
+<li>举例：153就是一个水仙花数。</li>
+<li>153 = 1<em>1</em>1 + 5<em>5</em>5 + 3<em>3</em>3 = 1 + 125 + 27 = 153</li>
+</ul>
+</li>
+</ul>
+<h4 id="for语句的练习之统计思想"><a href="#for语句的练习之统计思想" class="headerlink" title="for语句的练习之统计思想"></a>for语句的练习之统计思想</h4><ul>
+<li>A:案例演示<ul>
+<li>需求：统计”水仙花数”共有多少个</li>
+</ul>
+</li>
+</ul>
+<h4 id="while语句的格式和基本使用"><a href="#while语句的格式和基本使用" class="headerlink" title="while语句的格式和基本使用"></a>while语句的格式和基本使用</h4><ul>
+<li>A:循环结构while语句的格式：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>循环的基本格式：</div><div class="line"><span class="keyword">while</span>(判断条件语句) &#123;</div><div class="line">	循环体语句;</div><div class="line">&#125;</div><div class="line"></div><div class="line">完整格式：</div><div class="line"></div><div class="line">初始化语句;</div><div class="line">   <span class="keyword">while</span>(判断条件语句) &#123;</div><div class="line">	 循环体语句;</div><div class="line">	 控制条件语句;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>B:执行流程：<ul>
+<li>a:执行初始化语句</li>
+<li>b:执行判断条件语句,看其返回值是true还是false<ul>
+<li>如果是true，就继续执行</li>
+<li>如果是false，就结束循环</li>
+</ul>
+</li>
+<li>c:执行循环体语句;</li>
+<li>d:执行控制条件语句</li>
+<li>e:回到B继续。</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>需求：请在控制台输出数据1-10</li>
+</ul>
+</li>
+</ul>
+<h4 id="while语句的练习"><a href="#while语句的练习" class="headerlink" title="while语句的练习"></a>while语句的练习</h4><ul>
+<li>A:求和思想<ul>
+<li>求1-100之和</li>
+</ul>
+</li>
+<li>B:统计思想<ul>
+<li>统计”水仙花数”共有多少个</li>
+</ul>
+</li>
+</ul>
+<h4 id="do…while语句的格式和基本使用"><a href="#do…while语句的格式和基本使用" class="headerlink" title="do…while语句的格式和基本使用"></a>do…while语句的格式和基本使用</h4><ul>
+<li>A:循环结构do…while语句的格式：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">do</span> &#123;</div><div class="line">	循环体语句;</div><div class="line">&#125;<span class="keyword">while</span>(判断条件语句);</div><div class="line"></div><div class="line">完整格式；</div><div class="line">初始化语句;</div><div class="line"><span class="keyword">do</span> &#123;</div><div class="line">	循环体语句;</div><div class="line">	控制条件语句;</div><div class="line">&#125;<span class="keyword">while</span>(判断条件语句);</div></pre></td></tr></table></figure>
+<ul>
+<li>B:执行流程：<ul>
+<li>a:执行初始化语句</li>
+<li>b:执行循环体语句;</li>
+<li>c:执行控制条件语句</li>
+<li>d:执行判断条件语句,看其返回值是true还是false<ul>
+<li>如果是true，就继续执行</li>
+<li>如果是false，就结束循环</li>
+</ul>
+</li>
+<li>e:回到b继续。</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>需求：请在控制台输出数据1-10</li>
+</ul>
+</li>
+</ul>
+<h4 id="三种循环语句的区别"><a href="#三种循环语句的区别" class="headerlink" title="三种循环语句的区别"></a>三种循环语句的区别</h4><ul>
+<li>A:案例演示<ul>
+<li>三种循环语句的区别:</li>
+<li>do…while循环至少执行一次循环体。</li>
+<li>而for,while循环必须先判断条件是否成立，然后决定是否执行循环体语句。</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>for循环和while循环的区别：<ul>
+<li>A:如果你想在循环结束后，继续使用控制条件的那个变量，用while循环，否则用for循环。不知道用谁就用for循环。因为变量及早的从内存中消失，可以提高内存的使用效率。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="注意事项之死循环"><a href="#注意事项之死循环" class="headerlink" title="注意事项之死循环"></a>注意事项之死循环</h4><ul>
+<li>A:一定要注意控制条件语句控制的那个变量的问题，不要弄丢了，否则就容易死循环。</li>
+<li>B:两种最简单的死循环格式<ul>
+<li>while(true){…}</li>
+<li>for(;;){…}</li>
+</ul>
+</li>
+</ul>
+<h4 id="循环嵌套输出4行5列的星星"><a href="#循环嵌套输出4行5列的星星" class="headerlink" title="循环嵌套输出4行5列的星星"></a>循环嵌套输出4行5列的星星</h4><ul>
+<li><p>A:案例演示</p>
+<ul>
+<li>需求：请输出一个4行5列的星星(*)图案。</li>
+<li><pre><code>如图：
+    *****
+    *****
+    *****
+    *****
+
+注意：
+    System.out.println(&quot;*&quot;);和System.out.print(&quot;*&quot;);的区别
+</code></pre></li>
+</ul>
+</li>
+<li>B:结论：<ul>
+<li>外循环控制行数，内循环控制列数</li>
+</ul>
+</li>
+</ul>
+<h4 id="循环嵌套输出正三角形"><a href="#循环嵌套输出正三角形" class="headerlink" title="循环嵌套输出正三角形"></a>循环嵌套输出正三角形</h4><ul>
+<li>A:案例演示</li>
+<li><pre><code>需求：请输出下列的形状
+*
+**
+***
+****
+*****
+</code></pre></li>
+</ul>
+<h4 id="九九乘法表"><a href="#九九乘法表" class="headerlink" title="九九乘法表"></a>九九乘法表</h4><ul>
+<li>A:案例演示<ul>
+<li>需求：在控制台输出九九乘法表。</li>
+</ul>
+</li>
+<li>B:代码优化</li>
+<li><pre><code>注意：
+&apos;\x&apos; x表示任意，\是转义符号,这种做法叫转移字符。
+
+&apos;\t&apos;    tab键的位置
+&apos;\r&apos;    回车
+&apos;\n&apos;    换行
+&apos;\&quot;&apos;
+&apos;\&apos;&apos;
+</code></pre></li>
+</ul>
+<h4 id="控制跳转语句break语句"><a href="#控制跳转语句break语句" class="headerlink" title="控制跳转语句break语句"></a>控制跳转语句break语句</h4><ul>
+<li>A:break的使用场景<ul>
+<li>只能在switch和循环中 </li>
+</ul>
+</li>
+</ul>
+<h4 id="控制跳转语句continue语句"><a href="#控制跳转语句continue语句" class="headerlink" title="控制跳转语句continue语句"></a>控制跳转语句continue语句</h4><ul>
+<li>A:continue的使用场景<ul>
+<li>只能在循环中 </li>
+</ul>
+</li>
+</ul>
+<h4 id="控制跳转语句标号"><a href="#控制跳转语句标号" class="headerlink" title="控制跳转语句标号"></a>控制跳转语句标号</h4><ul>
+<li>标号:标记某个循环对其控制</li>
+<li>标号组成规则:其实就是合法的标识符</li>
+</ul>
+<h4 id="控制调整语句练习"><a href="#控制调整语句练习" class="headerlink" title="控制调整语句练习"></a>控制调整语句练习</h4><ul>
+<li>A:练习题</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">1</span>; x&lt;=<span class="number">10</span>; x++) &#123;</div><div class="line">	<span class="keyword">if</span>(x%<span class="number">3</span>==<span class="number">0</span>) &#123;</div><div class="line">		<span class="comment">//在此处填写代码</span></div><div class="line">	&#125;</div><div class="line">	System.out.println(“Java基础班”);</div><div class="line">&#125;</div><div class="line"></div><div class="line">我想在控制台输出<span class="number">2</span>次:“Java基础班“</div><div class="line">我想在控制台输出<span class="number">7</span>次:“Java基础班“</div><div class="line">我想在控制台输出<span class="number">13</span>次:“Java基础班“</div></pre></td></tr></table></figure>
+<h4 id="控制跳转语句return语句"><a href="#控制跳转语句return语句" class="headerlink" title="控制跳转语句return语句"></a>控制跳转语句return语句</h4><ul>
+<li>A:return的作用<ul>
+<li>返回</li>
+<li>其实它的作用不是结束循环的，而是结束方法的。</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>return和break以及continue的区别?</li>
+<li>return是结束方法</li>
+<li>break是跳出循环</li>
+<li>continue是终止本次循环继续下次循环</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="方法概述和格式说明"><a href="#方法概述和格式说明" class="headerlink" title="方法概述和格式说明"></a>方法概述和格式说明</h3><ul>
+<li>A:为什么要有方法<ul>
+<li>提高代码的复用性 </li>
+</ul>
+</li>
+<li>B:什么是方法<ul>
+<li>完成特定功能的代码块。 </li>
+</ul>
+</li>
+<li>C:方法的格式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">修饰符 返回值类型 方法名(参数类型 参数名<span class="number">1</span>,参数类型 参数名<span class="number">2</span>...) &#123;</div><div class="line">	方法体语句;</div><div class="line">	<span class="keyword">return</span> 返回值; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>D:方法的格式说明<ul>
+<li>修饰符：目前就用 public static。后面我们再详细的讲解其他的修饰符。</li>
+<li>返回值类型：就是功能结果的数据类型。</li>
+<li>方法名：符合命名规则即可。方便我们的调用。</li>
+<li>参数：<ul>
+<li>实际参数：就是实际参与运算的。</li>
+<li>形式参数；就是方法定义上的，用于接收实际参数的。</li>
+</ul>
+</li>
+<li>参数类型：就是参数的数据类型</li>
+<li>参数名：就是变量名</li>
+<li>方法体语句：就是完成功能的代码。</li>
+<li>return：结束方法的。</li>
+<li>返回值：就是功能的结果，由return带给调用者。 </li>
+</ul>
+</li>
+</ul>
+<h3 id="方法之求和案例及其调用"><a href="#方法之求和案例及其调用" class="headerlink" title="方法之求和案例及其调用"></a>方法之求和案例及其调用</h3><ul>
+<li>A:如何写一个方法<ul>
+<li>1,明确返回值类型</li>
+<li>2,明确参数列表 </li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>需求：求两个数据之和的案例</li>
+</ul>
+</li>
+<li>C:方法调用图解</li>
+</ul>
+<h3 id="方法的注意事项"><a href="#方法的注意事项" class="headerlink" title="方法的注意事项"></a>方法的注意事项</h3><ul>
+<li>A:方法调用(有具体返回值)<ul>
+<li>a:单独调用,一般来说没有意义，所以不推荐。</li>
+<li>b:输出调用,但是不够好。因为我们可能需要针对结果进行进一步的操作。</li>
+<li>c:赋值调用,推荐方案。</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>a:方法不调用不执行</li>
+<li>b:方法与方法是平级关系，不能嵌套定义</li>
+<li>c:方法定义的时候参数之间用逗号隔开</li>
+<li>d:方法调用的时候不用在传递数据类型</li>
+<li>e:如果方法有明确的返回值，一定要有return带回一个值</li>
+</ul>
+</li>
+</ul>
+<h3 id="方法的练习"><a href="#方法的练习" class="headerlink" title="方法的练习"></a>方法的练习</h3><ul>
+<li>A:案例演示<ul>
+<li>需求：键盘录入两个数据，返回两个数中的较大值</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>需求：键盘录入两个数据，比较两个数是否相等     </li>
+</ul>
+</li>
+</ul>
+<h3 id="方法之输出星形及其调用"><a href="#方法之输出星形及其调用" class="headerlink" title="方法之输出星形及其调用"></a>方法之输出星形及其调用</h3><ul>
+<li>A:案例演示<ul>
+<li>需求：根据键盘录入的行数和列数，在控制台输出星形</li>
+</ul>
+</li>
+<li>B:方法调用：(无返回值,void)<ul>
+<li>单独调用</li>
+<li>输出调用(错误)</li>
+<li>赋值调用(错误)</li>
+</ul>
+</li>
+</ul>
+<h3 id="方法的练习2"><a href="#方法的练习2" class="headerlink" title="方法的练习2"></a>方法的练习2</h3><ul>
+<li>A:案例演示<ul>
+<li>需求：根据键盘录入的数据输出对应的乘法表</li>
+</ul>
+</li>
+</ul>
+<h3 id="方法重载概述和基本使用"><a href="#方法重载概述和基本使用" class="headerlink" title="方法重载概述和基本使用"></a>方法重载概述和基本使用</h3><ul>
+<li>A:方法重载概述<ul>
+<li>求和案例<ul>
+<li>2个整数</li>
+<li>3个整数</li>
+<li>4个整数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>B:方法重载：</p>
+<ul>
+<li><p>在同一个类中，方法名相同，参数列表不同。与返回值类型无关。</p>
+</li>
+<li><p>参数列表不同：</p>
+<ul>
+<li>A:参数个数不同</li>
+<li>B:参数类型不同</li>
+<li>C:参数的顺序不同(算重载,但是在开发中不用)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="方法重载练习比较数据是否相等"><a href="#方法重载练习比较数据是否相等" class="headerlink" title="方法重载练习比较数据是否相等"></a>方法重载练习比较数据是否相等</h3><ul>
+<li>A:案例演示<ul>
+<li>需求：比较两个数据是否相等。</li>
+<li>参数类型分别为两个int类型，两个double类型，并在main方法中进行测试</li>
+</ul>
+</li>
+</ul>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="数组概述和定义格式说明"><a href="#数组概述和定义格式说明" class="headerlink" title="数组概述和定义格式说明"></a>数组概述和定义格式说明</h3><ul>
+<li>A:为什么要有数组(容器)<ul>
+<li>为了存储同种数据类型的多个值</li>
+</ul>
+</li>
+<li><p>B:数组概念</p>
+<ul>
+<li>数组是存储同一种数据类型多个元素的集合。也可以看成是一个容器。</li>
+<li>数组既可以存储基本数据类型，也可以存储引用数据类型。</li>
+</ul>
+</li>
+<li><p>C:数组定义格式<br>  数据类型[] 数组名 = new 数据类型[数组的长度];</p>
+<h3 id="数组的初始化动态初始化"><a href="#数组的初始化动态初始化" class="headerlink" title="数组的初始化动态初始化"></a>数组的初始化动态初始化</h3></li>
+<li>A:什么是数组的初始化<ul>
+<li>就是为数组开辟连续的内存空间，并为每个数组元素赋予值 </li>
+</ul>
+</li>
+<li>B:如何对数组进行初始化<ul>
+<li>a:动态初始化 只指定长度，由系统给出初始化值<ul>
+<li>int[] arr = new int[5];     </li>
+</ul>
+</li>
+<li>b:静态初始化 给出初始化值，由系统决定长度    </li>
+</ul>
+</li>
+<li>C:动态初始化的格式：<ul>
+<li>数据类型[] 数组名 = new 数据类型[数组长度];</li>
+</ul>
+</li>
+<li>D:案例演示<ul>
+<li>输出数组名称和数组元素</li>
+</ul>
+</li>
+</ul>
+<h3 id="Java中的内存分配以及栈和堆的区别"><a href="#Java中的内存分配以及栈和堆的区别" class="headerlink" title="Java中的内存分配以及栈和堆的区别"></a>Java中的内存分配以及栈和堆的区别</h3><ul>
+<li>A:栈(掌握)<ul>
+<li>存储局部变量 </li>
+</ul>
+</li>
+<li>B:堆(掌握)<ul>
+<li>存储new出来的数组或对象 </li>
+</ul>
+</li>
+<li>C:方法区<ul>
+<li>面向对象部分讲解 </li>
+</ul>
+</li>
+<li>D:本地方法区<ul>
+<li>和系统相关 </li>
+</ul>
+</li>
+<li>E:寄存器<ul>
+<li>给CPU使用<h3 id="数组的内存图解1一个数组"><a href="#数组的内存图解1一个数组" class="headerlink" title="数组的内存图解1一个数组"></a>数组的内存图解1一个数组</h3></li>
+</ul>
+</li>
+<li>A:画图演示<ul>
+<li>一个数组</li>
+</ul>
+</li>
+</ul>
+<h3 id="数组的内存图解2二个数组"><a href="#数组的内存图解2二个数组" class="headerlink" title="数组的内存图解2二个数组"></a>数组的内存图解2二个数组</h3><ul>
+<li>A:画图演示<ul>
+<li>二个不同的数组</li>
+</ul>
+</li>
+</ul>
+<h3 id="数组的内存图解3三个引用两个数组"><a href="#数组的内存图解3三个引用两个数组" class="headerlink" title="数组的内存图解3三个引用两个数组"></a>数组的内存图解3三个引用两个数组</h3><ul>
+<li>A:画图演示<ul>
+<li>三个引用，有两个数组的引用指向同一个地址</li>
+</ul>
+</li>
+</ul>
+<h3 id="数组的初始化静态初始化及内存图"><a href="#数组的初始化静态初始化及内存图" class="headerlink" title="数组的初始化静态初始化及内存图"></a>数组的初始化静态初始化及内存图</h3><ul>
+<li>A:静态初始化的格式：<ul>
+<li>格式：数据类型[] 数组名 = new 数据类型[]{元素1,元素2,…};</li>
+<li>简化格式：<ul>
+<li>数据类型[] 数组名 = {元素1,元素2,…};</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>对数组的解释</li>
+<li>输出数组名称和数组元素</li>
+</ul>
+</li>
+<li>C:画图演示<ul>
+<li>一个数组</li>
+</ul>
+</li>
+</ul>
+<h3 id="数组操作的两个常见小问题越界和空指针"><a href="#数组操作的两个常见小问题越界和空指针" class="headerlink" title="数组操作的两个常见小问题越界和空指针"></a>数组操作的两个常见小问题越界和空指针</h3><ul>
+<li>A:案例演示<ul>
+<li>a:ArrayIndexOutOfBoundsException:数组索引越界异常<ul>
+<li>原因：你访问了不存在的索引。</li>
+</ul>
+</li>
+<li>b:NullPointerException:空指针异常<ul>
+<li>原因：数组已经不在指向堆内存了。而你还用数组名去访问元素。</li>
+<li>int[] arr = {1,2,3};</li>
+<li>arr = null;</li>
+<li>System.out.println(arr[0]);</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="数组的操作1遍历"><a href="#数组的操作1遍历" class="headerlink" title="数组的操作1遍历"></a>数组的操作1遍历</h3><ul>
+<li>A:案例演示<ul>
+<li>数组遍历：就是依次输出数组中的每一个元素。</li>
+<li>数组的属性:arr.length数组的长度</li>
+<li>数组的最大索引:arr.length - 1;</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; arr.length ;i++ ) &#123;</div><div class="line">		System.out.print(arr[i] + <span class="string">" "</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="数组的操作2获取最值"><a href="#数组的操作2获取最值" class="headerlink" title="数组的操作2获取最值"></a>数组的操作2获取最值</h3><ul>
+<li>A:案例演示<ul>
+<li>数组获取最值(获取数组中的最大值最小值)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getMax</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> max = arr[<span class="number">0</span>];</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; arr.length ;i++ ) &#123;			<span class="comment">//从数组的第二个元素开始遍历</span></div><div class="line">		<span class="keyword">if</span> (max &lt; arr[i]) &#123;							<span class="comment">//如果max记录的值小于的数组中的元素</span></div><div class="line">			max = arr[i];							<span class="comment">//max记录住较大的</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">		</div><div class="line">	<span class="keyword">return</span> max;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="数组的操作3反转"><a href="#数组的操作3反转" class="headerlink" title="数组的操作3反转"></a>数组的操作3反转</h3><ul>
+<li>A:案例演示<ul>
+<li>数组元素反转(就是把元素对调)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">reverseArray</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; arr.length / <span class="number">2</span> ; i++) &#123;</div><div class="line">		<span class="comment">//arr[0]和arr[arr.length-1-0]交换</span></div><div class="line">		<span class="comment">//arr[1]和arr[arr.length-1-1]交换</span></div><div class="line">		<span class="comment">//arr[2]和arr[arr.lentth-1-2]</span></div><div class="line">		<span class="comment">//...</span></div><div class="line">		</div><div class="line">		<span class="keyword">int</span> temp = arr[i];</div><div class="line">		arr[i] = arr[arr.length-<span class="number">1</span>-i];</div><div class="line">		arr[arr.length-<span class="number">1</span>-i] = temp;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="数组的操作4查表法"><a href="#数组的操作4查表法" class="headerlink" title="数组的操作4查表法"></a>数组的操作4查表法</h3><ul>
+<li>A:案例演示<ul>
+<li>数组查表法(根据键盘录入索引,查找对应星期)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">char</span> <span class="title">getWeek</span><span class="params">(<span class="keyword">int</span> week)</span> </span>&#123;</div><div class="line">	<span class="keyword">char</span>[] arr = &#123;<span class="string">' '</span>,<span class="string">'一'</span>,<span class="string">'二'</span>,<span class="string">'三'</span>,<span class="string">'四'</span>,<span class="string">'五'</span>,<span class="string">'六'</span>,<span class="string">'日'</span>&#125;;		<span class="comment">//定义了一张星期表</span></div><div class="line">	<span class="keyword">return</span> arr[week];											<span class="comment">//通过索引获取表中的元素</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="数组的操作5基本查找"><a href="#数组的操作5基本查找" class="headerlink" title="数组的操作5基本查找"></a>数组的操作5基本查找</h3><ul>
+<li>A:案例演示<ul>
+<li>数组元素查找(查找指定元素第一次在数组中出现的索引)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getIndex</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> value)</span> </span>&#123;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; arr.length ;i++ ) &#123;				<span class="comment">//数组的遍历</span></div><div class="line">		<span class="keyword">if</span> (arr[i] == value) &#123;							<span class="comment">//如果数组中的元素与查找的元素匹配</span></div><div class="line">			<span class="keyword">return</span> i;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="二维数组概述和格式1的讲解"><a href="#二维数组概述和格式1的讲解" class="headerlink" title="二维数组概述和格式1的讲解"></a>二维数组概述和格式1的讲解</h3><ul>
+<li>A:二维数组概述</li>
+<li>B:二维数组格式1<ul>
+<li>int[][] arr = new int[3][2]; </li>
+</ul>
+</li>
+<li>C:二维数组格式1的解释</li>
+<li><p>D:注意事项</p>
+<ul>
+<li>a:以下格式也可以表示二维数组<ul>
+<li>1:数据类型 数组名[][] = new 数据类型[m][n];</li>
+<li>2:数据类型[] 数组名[] = new 数据类型[m][n];</li>
+</ul>
+</li>
+<li>B:注意下面定义的区别</li>
+<li><pre><code>int x;
+int y;
+int x,y;
+
+int[] x;
+int[] y[];
+
+int[] x,y[];    x是一维数组,y是二维数组
+</code></pre></li>
+</ul>
+</li>
+<li>E:案例演示<ul>
+<li>定义二维数组，输出二维数组名称，一维数组名称，一个元素</li>
+</ul>
+</li>
+</ul>
+<h3 id="二维数组格式1的内存图解"><a href="#二维数组格式1的内存图解" class="headerlink" title="二维数组格式1的内存图解"></a>二维数组格式1的内存图解</h3><ul>
+<li>A:画图演示<ul>
+<li>画图讲解上面的二维数组名称，一维数组名称，一个元素的值的问题</li>
+</ul>
+</li>
+</ul>
+<h3 id="二维数组格式2的讲解及其内存图解"><a href="#二维数组格式2的讲解及其内存图解" class="headerlink" title="二维数组格式2的讲解及其内存图解"></a>二维数组格式2的讲解及其内存图解</h3><ul>
+<li>A:二维数组格式2<ul>
+<li>int[][] arr = new int[3][]; </li>
+</ul>
+</li>
+<li>B:二维数组格式2的解释</li>
+<li>C:案例演示<ul>
+<li>讲解格式，输出数据，并画内存图</li>
+</ul>
+</li>
+</ul>
+<h3 id="二维数组格式3的讲解及其内存图解"><a href="#二维数组格式3的讲解及其内存图解" class="headerlink" title="二维数组格式3的讲解及其内存图解"></a>二维数组格式3的讲解及其内存图解</h3><ul>
+<li><p>A:二维数组格式3</p>
+<pre><code>int[][] arr = {{1,2,3},{4,5},{6,7,8,9}}; 
+</code></pre></li>
+<li>B:二维数组格式3的解释</li>
+<li>C:案例演示<ul>
+<li>讲解格式，输出数据，并画内存图</li>
+</ul>
+</li>
+</ul>
+<h3 id="二维数组练习1遍历"><a href="#二维数组练习1遍历" class="headerlink" title="二维数组练习1遍历"></a>二维数组练习1遍历</h3><ul>
+<li><p>A:案例演示</p>
+<ul>
+<li><p>需求：二维数组遍历</p>
+</li>
+<li><p>外循环控制的是二维数组的长度，其实就是一维数组的个数。</p>
+</li>
+<li>内循环控制的是一维数组的长度。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[][] arr = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;,&#123;<span class="number">4</span>,<span class="number">5</span>&#125;,&#123;<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;&#125;;</div><div class="line">	</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; arr.length ;i++ ) &#123;			<span class="comment">//获取到每个二维数组中的一维数组</span></div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; arr[i].length ;j++ ) &#123;	<span class="comment">//获取每个一维数组中的元素</span></div><div class="line">		System.out.print(arr[i][j] + <span class="string">" "</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	System.out.println();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="二维数组练习2求和"><a href="#二维数组练习2求和" class="headerlink" title="二维数组练习2求和"></a>二维数组练习2求和</h3><ul>
+<li>A:案例演示</li>
+<li><pre><code>需求：公司年销售额求和
+某公司按照季度和月份统计的数据如下：单位(万元)
+第一季度：22,66,44
+第二季度：77,33,88
+第三季度：25,45,65
+第四季度：11,66,99
+</code></pre></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[][] arr = &#123;&#123;<span class="number">22</span>,<span class="number">66</span>,<span class="number">44</span>&#125;,&#123;<span class="number">77</span>,<span class="number">33</span>,<span class="number">88</span>&#125;,&#123;<span class="number">25</span>,<span class="number">45</span>,<span class="number">65</span>&#125;,&#123;<span class="number">11</span>,<span class="number">66</span>,<span class="number">99</span>&#125;&#125;;</div><div class="line"></div><div class="line"><span class="keyword">int</span> sum = <span class="number">0</span>;									<span class="comment">//定义变量,记录每次相加的结果</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; arr.length ;i++ ) &#123;			<span class="comment">//获取每一个一维数组</span></div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; arr[i].length ;j++ ) &#123;	<span class="comment">//获取每一个一维数组中的元素</span></div><div class="line">		sum = sum + arr[i][j];					<span class="comment">//累加</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">System.out.println(sum);</div></pre></td></tr></table></figure>
+<h3 id="思考题Java中的参数传递问题及图解"><a href="#思考题Java中的参数传递问题及图解" class="headerlink" title="思考题Java中的参数传递问题及图解"></a>思考题Java中的参数传递问题及图解</h3><ul>
+<li>A:案例演示</li>
+<li><pre><code>看程序写结果，并画内存图解释
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> a = <span class="number">10</span>;</div><div class="line">	<span class="keyword">int</span> b = <span class="number">20</span>;</div><div class="line">	System.out.println(<span class="string">"a:"</span>+a+<span class="string">",b:"</span>+b);</div><div class="line">	change(a,b);</div><div class="line">	System.out.println(<span class="string">"a:"</span>+a+<span class="string">",b:"</span>+b);</div><div class="line">	</div><div class="line">	<span class="keyword">int</span>[] arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</div><div class="line">	change(arr);</div><div class="line">	System.out.println(arr[<span class="number">1</span>]);</div><div class="line">&#125;</div><div class="line">	</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span> </span>&#123;</div><div class="line">	System.out.println(<span class="string">"a:"</span>+a+<span class="string">",b:"</span>+b);</div><div class="line">	a = b;</div><div class="line">	b = a + b;</div><div class="line">	System.out.println(<span class="string">"a:"</span>+a+<span class="string">",b:"</span>+b);</div><div class="line">&#125;</div><div class="line">	</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>; x&lt;arr.length; x++) &#123;</div><div class="line">		<span class="keyword">if</span>(arr[x]%<span class="number">2</span>==<span class="number">0</span>) &#123;</div><div class="line">			arr[x]*=<span class="number">2</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+</ul>
+
       
     </div>
 
@@ -358,6 +2200,14 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/编程/" rel="tag"># 编程</a>
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
       
 
       
@@ -434,8 +2284,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://chuantu.biz/t5/52/1490601326x2890174015.jpg"
@@ -463,7 +2322,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -488,6 +2347,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机基础知识"><span class="nav-number">1.</span> <span class="nav-text">计算机基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机概述"><span class="nav-number">1.1.</span> <span class="nav-text">计算机概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件开发和计算机语言概述"><span class="nav-number">1.2.</span> <span class="nav-text">软件开发和计算机语言概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#人机交互"><span class="nav-number">1.3.</span> <span class="nav-text">人机交互</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见的DOS命令"><span class="nav-number">1.4.</span> <span class="nav-text">常见的DOS命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何打开DOS控制台"><span class="nav-number">1.4.1.</span> <span class="nav-text">如何打开DOS控制台</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DOS命令"><span class="nav-number">1.4.2.</span> <span class="nav-text">DOS命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java语言基础"><span class="nav-number">2.</span> <span class="nav-text">Java语言基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java语言概述"><span class="nav-number">2.1.</span> <span class="nav-text">Java语言概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Java语言发展史"><span class="nav-number">2.1.1.</span> <span class="nav-text">Java语言发展史</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java语言版本"><span class="nav-number">2.1.2.</span> <span class="nav-text">Java语言版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java语言平台"><span class="nav-number">2.1.3.</span> <span class="nav-text">Java语言平台</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java语言特性"><span class="nav-number">2.1.4.</span> <span class="nav-text">Java语言特性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java语言跨平台原理"><span class="nav-number">2.2.</span> <span class="nav-text">Java语言跨平台原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JRE和JDK的概述"><span class="nav-number">2.3.</span> <span class="nav-text">JRE和JDK的概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK的下载和安装过程图解"><span class="nav-number">2.4.</span> <span class="nav-text">JDK的下载和安装过程图解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK安装路径下的目录解释"><span class="nav-number">2.5.</span> <span class="nav-text">JDK安装路径下的目录解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Path环境变量的作用及配置方式1"><span class="nav-number">2.6.</span> <span class="nav-text">Path环境变量的作用及配置方式1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Path环境变量的配置方式2"><span class="nav-number">2.7.</span> <span class="nav-text">Path环境变量的配置方式2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#classpath环境变量的作用及其配置"><span class="nav-number">2.8.</span> <span class="nav-text">classpath环境变量的作用及其配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java开发工具介绍"><span class="nav-number">2.9.</span> <span class="nav-text">Java开发工具介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Editplus开发程序并编译运行"><span class="nav-number">2.10.</span> <span class="nav-text">Editplus开发程序并编译运行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个Java程序"><span class="nav-number">3.</span> <span class="nav-text">第一个Java程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HelloWorld案例的编写和运行"><span class="nav-number">3.1.</span> <span class="nav-text">HelloWorld案例的编写和运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HelloWorld案例常见问题"><span class="nav-number">3.2.</span> <span class="nav-text">HelloWorld案例常见问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java语言的书写格式-约定俗成"><span class="nav-number">3.3.</span> <span class="nav-text">Java语言的书写格式(约定俗成)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释概述及其分类"><span class="nav-number">3.4.</span> <span class="nav-text">注释概述及其分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键字的概述和使用"><span class="nav-number">3.5.</span> <span class="nav-text">关键字的概述和使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标识符的概述和组成规则"><span class="nav-number">3.6.</span> <span class="nav-text">标识符的概述和组成规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标识符中常见的命名规则"><span class="nav-number">3.7.</span> <span class="nav-text">标识符中常见的命名规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常量与进制转换"><span class="nav-number">4.</span> <span class="nav-text">常量与进制转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常量的概述和使用"><span class="nav-number">4.1.</span> <span class="nav-text">常量的概述和使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进制概述和二-八-十六进制图解"><span class="nav-number">4.2.</span> <span class="nav-text">进制概述和二,八,十六进制图解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不同进制数据的表现形式"><span class="nav-number">4.3.</span> <span class="nav-text">不同进制数据的表现形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任意进制到十进制的转换图解"><span class="nav-number">4.4.</span> <span class="nav-text">任意进制到十进制的转换图解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#十进制到任意进制的转换图解"><span class="nav-number">4.5.</span> <span class="nav-text">十进制到任意进制的转换图解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速的进制转换法"><span class="nav-number">4.6.</span> <span class="nav-text">快速的进制转换法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原码反码补码"><span class="nav-number">4.7.</span> <span class="nav-text">原码反码补码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量与数据类型转换"><span class="nav-number">5.</span> <span class="nav-text">变量与数据类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量的概述及格式"><span class="nav-number">5.1.</span> <span class="nav-text">变量的概述及格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型的概述和分类"><span class="nav-number">5.2.</span> <span class="nav-text">数据类型的概述和分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义不同数据类型的变量"><span class="nav-number">5.3.</span> <span class="nav-text">定义不同数据类型的变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用变量的注意事项"><span class="nav-number">5.4.</span> <span class="nav-text">使用变量的注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型转换之隐式转换"><span class="nav-number">5.5.</span> <span class="nav-text">数据类型转换之隐式转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型转换之强制转换"><span class="nav-number">5.6.</span> <span class="nav-text">数据类型转换之强制转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面试题之变量相加和常量相加的区别"><span class="nav-number">5.7.</span> <span class="nav-text">面试题之变量相加和常量相加的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#long与float的取值范围谁大谁小"><span class="nav-number">5.8.</span> <span class="nav-text">long与float的取值范围谁大谁小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符和字符串参与运算"><span class="nav-number">5.9.</span> <span class="nav-text">字符和字符串参与运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#char数据类型"><span class="nav-number">5.10.</span> <span class="nav-text">char数据类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符"><span class="nav-number">6.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算术运算符的基本用法"><span class="nav-number">6.1.</span> <span class="nav-text">算术运算符的基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算术运算符-和–的用法"><span class="nav-number">6.1.1.</span> <span class="nav-text">算术运算符++和–的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#算术运算符-和–的练习"><span class="nav-number">6.1.1.1.</span> <span class="nav-text">算术运算符++和–的练习</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋值运算符的基本用法"><span class="nav-number">6.2.</span> <span class="nav-text">赋值运算符的基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#赋值运算符的面试题"><span class="nav-number">6.2.1.</span> <span class="nav-text">赋值运算符的面试题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关系运算符的基本用法及其注意事项"><span class="nav-number">6.3.</span> <span class="nav-text">关系运算符的基本用法及其注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑运算符的基本用法"><span class="nav-number">6.4.</span> <span class="nav-text">逻辑运算符的基本用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑运算符-amp-amp-和-amp-的区别"><span class="nav-number">6.5.</span> <span class="nav-text">逻辑运算符&&和&的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位运算符的基本用法"><span class="nav-number">6.6.</span> <span class="nav-text">位运算符的基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#位异或运算符的特点及面试题"><span class="nav-number">6.6.1.</span> <span class="nav-text">位异或运算符的特点及面试题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#位运算符的基本用法2及面试题"><span class="nav-number">6.6.2.</span> <span class="nav-text">位运算符的基本用法2及面试题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三元运算符的基本用法"><span class="nav-number">6.7.</span> <span class="nav-text">三元运算符的基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三元运算符的练习"><span class="nav-number">6.7.1.</span> <span class="nav-text">三元运算符的练习</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#键盘录入"><span class="nav-number">7.</span> <span class="nav-text">键盘录入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#键盘录入的基本格式讲解"><span class="nav-number">7.1.</span> <span class="nav-text">键盘录入的基本格式讲解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#键盘录入的练习1"><span class="nav-number">7.1.1.</span> <span class="nav-text">键盘录入的练习1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#键盘录入的练习2"><span class="nav-number">7.1.2.</span> <span class="nav-text">键盘录入的练习2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程控制语句"><span class="nav-number">8.</span> <span class="nav-text">流程控制语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#选择结构"><span class="nav-number">8.1.</span> <span class="nav-text">选择结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#if语句格式1及其使用"><span class="nav-number">8.1.1.</span> <span class="nav-text">if语句格式1及其使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择结构if语句注意事项"><span class="nav-number">8.1.2.</span> <span class="nav-text">选择结构if语句注意事项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择结构if语句格式2及其使用"><span class="nav-number">8.1.3.</span> <span class="nav-text">选择结构if语句格式2及其使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#if语句的格式2和三元的相互转换问题"><span class="nav-number">8.1.4.</span> <span class="nav-text">if语句的格式2和三元的相互转换问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择结构if语句格式3及其使用"><span class="nav-number">8.1.5.</span> <span class="nav-text">选择结构if语句格式3及其使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择结构if语句格式3练习"><span class="nav-number">8.1.6.</span> <span class="nav-text">选择结构if语句格式3练习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择结构if语句的嵌套使用"><span class="nav-number">8.1.7.</span> <span class="nav-text">选择结构if语句的嵌套使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择结构switch语句的格式及其解释"><span class="nav-number">8.1.8.</span> <span class="nav-text">选择结构switch语句的格式及其解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择结构switch语句的练习"><span class="nav-number">8.1.9.</span> <span class="nav-text">选择结构switch语句的练习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择结构switch语句的注意事项"><span class="nav-number">8.1.10.</span> <span class="nav-text">选择结构switch语句的注意事项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择结构switch语句练习"><span class="nav-number">8.1.11.</span> <span class="nav-text">选择结构switch语句练习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择结构if语句和switch语句的区别"><span class="nav-number">8.1.12.</span> <span class="nav-text">选择结构if语句和switch语句的区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环结构概述"><span class="nav-number">8.2.</span> <span class="nav-text">循环结构概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#for语句的格式及其使用"><span class="nav-number">8.2.1.</span> <span class="nav-text">for语句的格式及其使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for语句的练习之获取数据"><span class="nav-number">8.2.2.</span> <span class="nav-text">for语句的练习之获取数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for语句的练习之求和思想"><span class="nav-number">8.2.3.</span> <span class="nav-text">for语句的练习之求和思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for语句的练习之水仙花"><span class="nav-number">8.2.4.</span> <span class="nav-text">for语句的练习之水仙花</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for语句的练习之统计思想"><span class="nav-number">8.2.5.</span> <span class="nav-text">for语句的练习之统计思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#while语句的格式和基本使用"><span class="nav-number">8.2.6.</span> <span class="nav-text">while语句的格式和基本使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#while语句的练习"><span class="nav-number">8.2.7.</span> <span class="nav-text">while语句的练习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#do…while语句的格式和基本使用"><span class="nav-number">8.2.8.</span> <span class="nav-text">do…while语句的格式和基本使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三种循环语句的区别"><span class="nav-number">8.2.9.</span> <span class="nav-text">三种循环语句的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意事项之死循环"><span class="nav-number">8.2.10.</span> <span class="nav-text">注意事项之死循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环嵌套输出4行5列的星星"><span class="nav-number">8.2.11.</span> <span class="nav-text">循环嵌套输出4行5列的星星</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环嵌套输出正三角形"><span class="nav-number">8.2.12.</span> <span class="nav-text">循环嵌套输出正三角形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#九九乘法表"><span class="nav-number">8.2.13.</span> <span class="nav-text">九九乘法表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#控制跳转语句break语句"><span class="nav-number">8.2.14.</span> <span class="nav-text">控制跳转语句break语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#控制跳转语句continue语句"><span class="nav-number">8.2.15.</span> <span class="nav-text">控制跳转语句continue语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#控制跳转语句标号"><span class="nav-number">8.2.16.</span> <span class="nav-text">控制跳转语句标号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#控制调整语句练习"><span class="nav-number">8.2.17.</span> <span class="nav-text">控制调整语句练习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#控制跳转语句return语句"><span class="nav-number">8.2.18.</span> <span class="nav-text">控制跳转语句return语句</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">9.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法概述和格式说明"><span class="nav-number">9.1.</span> <span class="nav-text">方法概述和格式说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法之求和案例及其调用"><span class="nav-number">9.2.</span> <span class="nav-text">方法之求和案例及其调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法的注意事项"><span class="nav-number">9.3.</span> <span class="nav-text">方法的注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法的练习"><span class="nav-number">9.4.</span> <span class="nav-text">方法的练习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法之输出星形及其调用"><span class="nav-number">9.5.</span> <span class="nav-text">方法之输出星形及其调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法的练习2"><span class="nav-number">9.6.</span> <span class="nav-text">方法的练习2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法重载概述和基本使用"><span class="nav-number">9.7.</span> <span class="nav-text">方法重载概述和基本使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法重载练习比较数据是否相等"><span class="nav-number">9.8.</span> <span class="nav-text">方法重载练习比较数据是否相等</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">10.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组概述和定义格式说明"><span class="nav-number">10.1.</span> <span class="nav-text">数组概述和定义格式说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的初始化动态初始化"><span class="nav-number">10.2.</span> <span class="nav-text">数组的初始化动态初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java中的内存分配以及栈和堆的区别"><span class="nav-number">10.3.</span> <span class="nav-text">Java中的内存分配以及栈和堆的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的内存图解1一个数组"><span class="nav-number">10.4.</span> <span class="nav-text">数组的内存图解1一个数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的内存图解2二个数组"><span class="nav-number">10.5.</span> <span class="nav-text">数组的内存图解2二个数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的内存图解3三个引用两个数组"><span class="nav-number">10.6.</span> <span class="nav-text">数组的内存图解3三个引用两个数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的初始化静态初始化及内存图"><span class="nav-number">10.7.</span> <span class="nav-text">数组的初始化静态初始化及内存图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组操作的两个常见小问题越界和空指针"><span class="nav-number">10.8.</span> <span class="nav-text">数组操作的两个常见小问题越界和空指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的操作1遍历"><span class="nav-number">10.9.</span> <span class="nav-text">数组的操作1遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的操作2获取最值"><span class="nav-number">10.10.</span> <span class="nav-text">数组的操作2获取最值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的操作3反转"><span class="nav-number">10.11.</span> <span class="nav-text">数组的操作3反转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的操作4查表法"><span class="nav-number">10.12.</span> <span class="nav-text">数组的操作4查表法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的操作5基本查找"><span class="nav-number">10.13.</span> <span class="nav-text">数组的操作5基本查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二维数组概述和格式1的讲解"><span class="nav-number">10.14.</span> <span class="nav-text">二维数组概述和格式1的讲解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二维数组格式1的内存图解"><span class="nav-number">10.15.</span> <span class="nav-text">二维数组格式1的内存图解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二维数组格式2的讲解及其内存图解"><span class="nav-number">10.16.</span> <span class="nav-text">二维数组格式2的讲解及其内存图解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二维数组格式3的讲解及其内存图解"><span class="nav-number">10.17.</span> <span class="nav-text">二维数组格式3的讲解及其内存图解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二维数组练习1遍历"><span class="nav-number">10.18.</span> <span class="nav-text">二维数组练习1遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二维数组练习2求和"><span class="nav-number">10.19.</span> <span class="nav-text">二维数组练习2求和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考题Java中的参数传递问题及图解"><span class="nav-number">10.20.</span> <span class="nav-text">思考题Java中的参数传递问题及图解</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
