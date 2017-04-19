@@ -1,0 +1,974 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="录制视频，编辑并播放在日常生活中是一个很常用的功能。但是令人惊讶的是，这方面的技术帖子，文章并不好找。这个可能是因为学习iOS中录制和编辑的技术 — AVFoundation — 是非常困难的。本文，就简单讲述下，在iOS中如何进行视频的录制，播放，编辑。
+
+在本文中，我们将为您提供AVFoundation API的实践经验，以便您可以在自己的应用程序中开始使用它们。您将学习如何：
+
+从媒体库中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何在iOS中播放，录制和编辑视频">
+<meta property="og:url" content="http://www.aiwyt.com/uncategorized/如何在iOS中播放，录制和编辑视频.html">
+<meta property="og:site_name" content="祁伟鹏的博客">
+<meta property="og:description" content="录制视频，编辑并播放在日常生活中是一个很常用的功能。但是令人惊讶的是，这方面的技术帖子，文章并不好找。这个可能是因为学习iOS中录制和编辑的技术 — AVFoundation — 是非常困难的。本文，就简单讲述下，在iOS中如何进行视频的录制，播放，编辑。
+
+在本文中，我们将为您提供AVFoundation API的实践经验，以便您可以在自己的应用程序中开始使用它们。您将学习如何：
+
+从媒体库中">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2012/05/1-700x472.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2012/05/video1.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2012/05/video2.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2012/05/video3.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2012/05/video4.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2012/05/12.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2012/05/31.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2012/05/video6.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2012/05/21.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2012/05/41.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2012/05/avassetHierarchy.jpg">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2012/05/video7.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2012/05/13.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2012/05/111.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2012/05/121.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2012/05/0.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2012/05/Merged.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2012/05/MergedOutput.png">
+<meta property="og:updated_time" content="2017-04-19T09:49:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何在iOS中播放，录制和编辑视频">
+<meta name="twitter:description" content="录制视频，编辑并播放在日常生活中是一个很常用的功能。但是令人惊讶的是，这方面的技术帖子，文章并不好找。这个可能是因为学习iOS中录制和编辑的技术 — AVFoundation — 是非常困难的。本文，就简单讲述下，在iOS中如何进行视频的录制，播放，编辑。
+
+在本文中，我们将为您提供AVFoundation API的实践经验，以便您可以在自己的应用程序中开始使用它们。您将学习如何：
+
+从媒体库中">
+<meta name="twitter:image" content="https://koenig-media.raywenderlich.com/uploads/2012/05/1-700x472.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.aiwyt.com/uncategorized/如何在iOS中播放，录制和编辑视频.html"/>
+
+
+
+
+
+  <title> 如何在iOS中播放，录制和编辑视频 | 祁伟鹏的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">祁伟鹏的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.aiwyt.com/uncategorized/如何在iOS中播放，录制和编辑视频.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="祁伟鹏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://chuantu.biz/t5/52/1490601326x2890174015.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="祁伟鹏的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                如何在iOS中播放，录制和编辑视频
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-19T16:52:23+08:00">
+                2017-04-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/uncategorized/如何在iOS中播放，录制和编辑视频.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="/uncategorized/如何在iOS中播放，录制和编辑视频.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>录制视频，编辑并播放在日常生活中是一个很常用的功能。但是令人惊讶的是，这方面的技术帖子，文章并不好找。这个可能是因为学习iOS中录制和编辑的技术 — AVFoundation — 是非常困难的。本文，就简单讲述下，在iOS中如何进行视频的录制，播放，编辑。</p>
+</blockquote>
+<p>在本文中，我们将为您提供AVFoundation API的实践经验，以便您可以在自己的应用程序中开始使用它们。您将学习如何：</p>
+<ul>
+<li>从媒体库中选择并播放视频</li>
+<li>录制视频并将视频保存到媒体库</li>
+<li>将多个视频合并成一个组合的视频，并添加自定义背景音乐</li>
+</ul>
+<a id="more"></a>
+<h3 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h3><p>让我们开始创建一个简单的应用程序，让您播放和录制视频并将其保存到文件中。</p>
+<p>启动Xcode并使用iOS \ Application \ Single View Application模板创建一个新项目。为项目名称输入“VideoPlayRecord”，为设备系列选择iPhone，确保选中“使用故事板”和“使用自动参考计数”选项，并将项目保存到您选择的位置。</p>
+<p><img src="https://koenig-media.raywenderlich.com/uploads/2012/05/1-700x472.png" alt=""></p>
+<p>接下来，为您的项目添加一些必要的框架。</p>
+<p>在左侧栏的“项目导航器”窗格中选择项目的根，以在中央窗格中显示项目信息。如果未选择项目目标，请选择它，然后切换到“构建阶段”选项卡。</p>
+<p>现在点击“使用库链接二进制”部分的三角形来展开它。在这里，您可以向项目添加其他库/框架。</p>
+<p><img src="https://koenig-media.raywenderlich.com/uploads/2012/05/video1.png" alt=""></p>
+<p>单击（+）按钮添加框架。您可以通过命令单击每个项目来选择打开的对话框中的多个项目。将以下框架添加到您的项目中：</p>
+<ul>
+<li>资产图书馆</li>
+<li>AVFoundation</li>
+<li>CoreMedia</li>
+<li>媒体播放器</li>
+<li>MobileCoreServies</li>
+<li>QuartzCore</li>
+</ul>
+<p>在这个项目中，您将创建一个包含四个屏幕的应用程序。第一个将只有三个按钮，将允许您导航到以下三个屏幕：</p>
+<ul>
+<li>视频播放</li>
+<li>视频记录</li>
+<li>视频合并</li>
+</ul>
+<h3 id="得到你的故事直"><a href="#得到你的故事直" class="headerlink" title="得到你的故事直"></a>得到你的故事直</h3><p>在主窗口中选择MainStoryboard.storyboard以查看视图控制器。您需要将此视图控制器嵌入到导航控制器中，因为应用中将有多个屏幕。</p>
+<p>要做到这一点，首先单击视图控制器给它焦点，然后从菜单中单击选择编辑器\嵌入\导航控制器。视图控制器现在与导航控制器相隔。</p>
+<p>现在，从对象库中拖动三个UIButtons（右侧边栏的下半部分 - 如果对象库未被选中，则是第三个选项卡）到视图控制器。一旦您将其放在视图中，您可以按照以下方式设置按钮的标题：</p>
+<ul>
+<li>选择和播放视频</li>
+<li>录制和保存视频</li>
+<li>合并视频</li>
+</ul>
+<p>您可以通过点击按钮来选择每个按钮来设置标题，然后在属性检查器中编辑按钮的标题属性，这是右侧栏的上半部分的第四个选项卡。</p>
+<p>接下来，为通过这些按钮显示的视图设置三个视图控制器。通过使用iOS \ Cocoa Touch \ UIViewController子类模板创建三个UIViewController子类对象来执行此操作。命名新类PlayVideoViewController，RecordVideoViewController和MergeVideoViewController。当您使用故事板时，请确保您取消选中“为每个类使用XIB用户界面”选项。</p>
+<p>现在切换回MainStoryboard.storyboard并将三个UIViewControllers从对象库拖到你的故事板上。依次选择每个视图控制器对象，并切换到身份检查器（右侧栏的上半部分的第三个选项卡），以按如下方式为每个视图控制器设置类：</p>
+<ul>
+<li>PlayVideoViewController</li>
+<li>RecordVideoViewController</li>
+<li>MergeVideoViewController</li>
+</ul>
+<p><img src="https://koenig-media.raywenderlich.com/uploads/2012/05/video2.png" alt=""></p>
+<p>现在你必须将所有这些东西挂在一起。您将通过创建一个从每个按钮切换到要加载的新视图控制器来执行此操作。</p>
+<p>依次选择每个按钮，确保“连接检查器”（右侧栏的上半部分的第六个选项卡）已打开，并从“推送”连接器拖到相关视图控制器。</p>
+<p><img src="https://koenig-media.raywenderlich.com/uploads/2012/05/video3.png" alt=""></p>
+<p>完成后，您的故事板应该类似于下面的屏幕：</p>
+<p><img src="https://koenig-media.raywenderlich.com/uploads/2012/05/video4.png" alt=""></p>
+<p>很好，你已经设置了基本的UI！构建应用程序并运行它，以确保三个按钮按预期工作，每个按钮都进入辅助屏幕。</p>
+<p>如果你对故事板和如何设置它们感到困惑，别担心！有一个教程。查看iOS 5教程系列中的开始故事板。</p>
+<p>现在，您的UI正在运行，现在是创建这些辅助屏幕并给出一些实质内容的时候了！</p>
+<h3 id="选择和播放视频"><a href="#选择和播放视频" class="headerlink" title="选择和播放视频"></a>选择和播放视频</h3><p>导入头文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#import &lt;MobileCoreServices / UTCoreTypes.h&gt; </div><div class="line">#import &lt;MediaPlayer / MediaPlayer.h&gt;</div></pre></td></tr></table></figure>
+<p>添加代理协议，将以下代码添加到#import语句下方的@interface行的末尾：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;UIImagePickerControllerDelegate，UINavigationControllerDelegate&gt;</div></pre></td></tr></table></figure>
+<p>这将设置PlayVideoViewController作为UIImagePickerController和UINavigationController的委托，以便您可以在您的类中使用UIImagePickerController。具体来说，您将使用它来浏览照片库中的视频。</p>
+<p>苹果提供的这个UIImagePickerController类是什么？它提供了一个基本的，可定制的用户界面，用于拍摄和录制电影。它还为新捕获的媒体提供了一些简单的编辑功能。如果您不需要完全定制的UI，通常最好使用图像选择器控制器从媒体库中选择音频和视频文件。要浏览媒体，您需要打开一个UIImagePickerController的实例作为弹出视图。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//打开UIImagePickerController </div><div class="line">- （BOOL ） startMediaBrowserFromViewController ：（ UIViewController * ） controller usingDelegate ：（id  ） delegate &#123; </div><div class="line">    // 1  - 验证</div><div class="line">    if  （（[ UIImagePickerController isSourceTypeAvailable ： UIImagePickerControllerSourceTypeSavedPhotosAlbum ]  ==  NO ） </div><div class="line">        || （ delegate ==  nil ） </div><div class="line">        || （ controller ==  nil ）） &#123; </div><div class="line">        return  NO ;</div><div class="line">    &#125; </div><div class="line">    // 2  - 获取图像选择器 </div><div class="line">    UIImagePickerController * mediaUI =  [ [ UIImagePickerController alloc ] init ] ;</div><div class="line">    mediaUI.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;</div><div class="line">    mediaUI.mediaTypes =  [ [ NSArray alloc ] initWithObjects ： （NSString  * ） kUTTypeMovie，nil ] ;</div><div class="line">    //隐藏用于移动和缩放图片的控件，或</div><div class="line">    //修剪动画。要显示控件，请使用YES。</div><div class="line">    mediaUI.allowsEditing =  YES ;</div><div class="line">    mediaUI.delegate = delegate;</div><div class="line">    // 3  - 显示图像选择器</div><div class="line">    [ controller presentModalViewController ： mediaUI animated ：YES ] ;</div><div class="line">    返回 YES ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在上述代码中，您将执行以下操作：</p>
+<pre><code>1、检查UIImagePickerControllerSourceTypeSavedPhotosAlbum（定义的源）是否在设备上可用。当您使用UIImagePickerController来挑选媒体时，此检查是必不可少的。如果您不这样做，您可能会尝试从不存在的媒体库中挑选媒体，导致崩溃或其他意外问题。
+2、如果您想要的源可用，则创建一个新的UIImagePickerController对象并设置其源和媒体类型。只有“kUTTypeMovie”包含在mediaTypes数组中，因为您只需要视频。您可以在数组中包含“kUTTypeImage”来选择图像。
+3、最后，您将UIImagePickerController呈现为模态视图控制器。
+</code></pre><p>如果您的媒体库中有视频，则您可以在第一个屏幕上点击“选择和播放视频”按钮，然后点击第二个“播放视频”按钮，看到它们与以下屏幕截图相似。屏幕。</p>
+<p><img src="https://koenig-media.raywenderlich.com/uploads/2012/05/12.png" alt=""></p>
+<p>注意：如果您在模拟器上运行此项目，则无法捕获视频。此外，您需要找出一种手动将视频添加到媒体库的方法。换句话说，我建议你在设备上测试这个项目！</p>
+<p>看到视频列表后，选择一个。您将被带到另一个显示视频的屏幕。点击“选择”按钮在这里实际选择视频。</p>
+<p>如果您点击“选择”，除了应用程序返回播放视频屏幕外没有任何反应！这是因为您没有实现任何委托方法来处理在显示图像选择器时执行的操作。</p>
+<p>UIImagePickerController有一个委托回调方法，可以在选择媒体时执行。实现通过添加以下代码的结束该方法PlayVideoViewController.m：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">- （void ） imagePickerController ：（ UIImagePickerController * ） picker didFinishPickingMediaWithInfo ：（NSDictionary  * ） info &#123; </div><div class="line">    // 1  - 获取媒体类型</div><div class="line">    NSString  * mediaType =  [ info objectForKey ： UIImagePickerControllerMediaType ] ;</div><div class="line">    // 2  - 关闭图像选择器</div><div class="line">    [ self dismissModalViewControllerAnimated ：NO ] ;</div><div class="line">    //处理电影捕获</div><div class="line">    如果 （ CFStringCompare （（ __bridge_retained CFStringRef ） mediaType的，kUTTypeMovie，0 ） == kCFCompareEqualTo ） &#123; </div><div class="line">        // 3 -播放视频 </div><div class="line">        MPMoviePlayerViewController * theMovie =  [ [ MPMoviePlayerViewController的alloc ]  </div><div class="line">            initWithContentURL ：[信息objectForKey ： UIImagePickerControllerMediaURL ] ] ;</div><div class="line">        [自presentMoviePlayerViewControllerAnimated ： theMovie ] ;</div><div class="line">        // 4 -注册为再现完毕通知</div><div class="line">        [ [ NSNotificationCenter defaultCenter ]的addObserver ：自选择器：@selector （ myMovieFinishedCallback ：） </div><div class="line">            名称： MPMoviePlayerPlaybackDidFinishNotification对象： theMovie ] ; &#125; </div><div class="line">&#125; @selector （ myMovieFinishedCallback ：）名称： MPMoviePlayerPlaybackDidFinishNotification对象： theMovie ] ; &#125; &#125; @selector （ myMovieFinishedCallback ：）名称： MPMoviePlayerPlaybackDidFinishNotification对象： theMovie ] ;</div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上述代码执行以下操作：</p>
+<ul>
+<li>获取媒体类型，以便稍后验证所选媒体是视频。</li>
+<li>关闭图像选择器，使其不再显示在屏幕上。</li>
+<li>验证所选媒体是否为视频，然后创建MPMoviePlayerViewController的实例来播放。</li>
+<li>添加一个回调方法，该方法将在电影完成播放后执行。</li>
+</ul>
+<p>所述myMovieFinishedCallback：在步骤＃4中引用的方法需要实现。下面的代码添加到年底PlayVideoViewController.m：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//电影完成后，释放控制器。</div><div class="line">- （void ） myMovieFinishedCallback ：（NSNotification * ） aNotification &#123; </div><div class="line">    [ self dismissMoviePlayerViewControllerAnimated ] ;</div><div class="line">    的MPMoviePlayerController * theMovie =  [ aNotification对象] ;</div><div class="line">    [ [ NSNotificationCenter defaultCenter ] removeObserver ： self</div><div class="line">        名： MPMoviePlayerPlaybackDidFinishNotification对象： theMovie ] ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后一件事是为用户点击“取消”而不是选择视频添加一个处理程序。在ImagePickerController下面添加以下代码：didFinishPickingMediaWithInfo：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//为了响应用户点击取消。</div><div class="line">- （void ） imagePickerControllerDidCancel ：（ UIImagePickerController * ） picker &#123; </div><div class="line">    [ self dismissModalViewControllerAnimated ： YES ] ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果用户取消操作，图像选择器将被取消。</p>
+<p>编译并运行您的项目。按“选择和播放视频”按钮，然后按“播放视频”按钮，最后从列表中选择一个视频。您应该可以看到在媒体播放器播放的视频。</p>
+<p><img src="https://koenig-media.raywenderlich.com/uploads/2012/05/31.png" alt=""></p>
+<h3 id="录制和保存视频"><a href="#录制和保存视频" class="headerlink" title="录制和保存视频"></a>录制和保存视频</h3><p>现在，您有视频播放功能，现在是使用设备的相机录制视频并将其保存到媒体库的时候了。<br>切换回故事板，并执行以下操作：</p>
+<ul>
+<li>添加一个名为“录制视频”的新按钮到录像视频控制器。</li>
+<li>如前所述，切换到助手编辑器模式，并将“录制视频”按钮连接到名为recordAndPlay的操作：。</li>
+</ul>
+<p><img src="https://koenig-media.raywenderlich.com/uploads/2012/05/video6.png" alt=""></p>
+<p>获取编码的时间！用以下内容替换RecordVideoViewController.h的内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#import &lt;MediaPlayer / MediaPlayer.h&gt; </div><div class="line">#import &lt;MobileCoreServices / UTCoreTypes.h&gt; </div><div class="line">#import &lt;AssetsLibrary / AssetsLibrary.h&gt;</div><div class="line"> </div><div class="line">@interface RecordVideoViewController ： UIViewController</div><div class="line"> </div><div class="line">- （ IBAction ） recordAndPlay ：（id ） sender;</div><div class="line">- （BOOL ） startCameraControllerFromViewController ：（ UIViewController * ）控制器</div><div class="line">    usingDelegate ：（id  ） delegate;</div><div class="line">- （void ） video : (（NSString  * ） videoPath didFinishSavingWithError ：（NSError  * ） error contextInfo ：（void * ） contextInfo;</div><div class="line"> </div><div class="line">@结束</div></pre></td></tr></table></figure>
+<p>您可能已经注意到：其中一些与您在PlayVideoViewController中所做的相似。至于没有的位：</p>
+<p>AssetsLibrary.h导入可以访问照片应用程序控件下的视频和照片。当您将视频保存到已保存的照片库时，您需要访问AssetsLibrary框架。</p>
+<p>资产库包括已保存的照片相册中的媒体，来自iTunes的媒体以及直接导入设备的媒体。您可以使用AssetsLibrary检索所有资产组的列表，并将图像和视频保存到已保存的照片相册中。</p>
+<p>其他新产品视频：didFinishSavingWithError：contextInfo： 。顾名思义，该方法在将视频保存到资产/照片库后执行。</p>
+<p>切换到RecordVideoViewController.m并将以下内容添加到recordAndPlay：：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[ self startCameraControllerFromViewController ： self usingDelegate ： self ] ;</div></pre></td></tr></table></figure>
+<p>你再次在熟悉的地区。该代码简单地调用startCameraControllerFromViewController：usingDelegate：当“录制视频”按钮被点击时。当然，这意味着你应该添加下一个方法的实现。将以下代码添加到文件的末尾（但在最后的@end之前）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">- （BOOL ） startCameraControllerFromViewController ：（ UIViewController * ）控制器</div><div class="line">    usingDelegate ：（id  ） delegate &#123; </div><div class="line">    // 1  -  Validatt </div><div class="line">    if if  （（[ UIImagePickerController isSourceTypeAvailable ： UIImagePickerControllerSourceTypeCamera ]  ==  NO ） </div><div class="line">        || （ delegate ==  nil ） </div><div class="line">        || （ controller ==  nil ）） &#123; </div><div class="line">        return  NO ;</div><div class="line">    &#125; </div><div class="line">    // 2  - 获取图像选择器 </div><div class="line">    UIImagePickerController * cameraUI =  [ [ UIImagePickerController alloc ] init ] ;</div><div class="line">    cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;</div><div class="line">    //显示允许用户选择影片捕获的 </div><div class="line">    控件cameraUI.mediaTypes =  [ [ NSArray alloc ] initWithObjects ：（NSString  * ） kUTTypeMovie，nil ] ;</div><div class="line">    //隐藏用于移动和缩放图片的控件，或</div><div class="line">    //修剪动画。要显示控件，请使用YES。</div><div class="line">    cameraUI.allowsEditing =  NO ;</div><div class="line">    cameraUI.delegate = delegate;</div><div class="line">    // 3  - 显示图像选择器</div><div class="line">    [ controller presentModalViewController ： cameraUI animated ： YES ] ;</div><div class="line">    返回 YES ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在上面的代码中，您检查“UIImagePickerControllerSourceTypeCamera”而不是“UIImagePickerControllerSourceTypeSavedPhotosAlbum”，因为您要使用相机。其余的代码与以前使用的代码大致相同。</p>
+<p>构建并运行你的代码，看看你到目前为止。</p>
+<p>转到记录屏幕，然后按“录制视频”按钮。相机界面打开，而不是照片库。通过点击屏幕底部的红色记录按钮开始录制视频，完成录制后再次点击。</p>
+<p><img src="https://koenig-media.raywenderlich.com/uploads/2012/05/21.png" alt=""></p>
+<p>这个视频看起来更令人兴奋。我不能在这里张贴，但是有一个很好的宝贝就在屏幕外！只是开玩笑，但是当您看到自己的设备运行时更令人兴奋。：]</p>
+<p>当您进入下一个屏幕时，您可以选择使用录制的视频或重新拍摄视频。如果您选择“使用”，您会注意到没有任何反应 - 这是因为您猜测到，没有实现回调方法。您需要回调方法将录制的视频保存到媒体库。</p>
+<p>为了实现回调方法，下面的代码添加到年底RecordVideoViewController.m：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">- （void ） imagePickerController ：（ UIImagePickerController * ） picker didFinishPickingMediaWithInfo ：（NSDictionary  * ） info &#123; </div><div class="line">    NSString  * mediaType =  [ info objectForKey ： UIImagePickerControllerMediaType ] ;</div><div class="line">    [ self dismissModalViewControllerAnimated ：NO ] ;</div><div class="line">    //处理电影捕获</div><div class="line">    if  （ CFStringCompare （（ __bridge_retained CFStringRef ） mediaType，kUTTypeMovie，0 ） == kCFCompareEqualTo ） &#123; </div><div class="line">        NSString  * moviePath =  [ [ info objectForKey ： UIImagePickerControllerMediaURL ] path ] ;</div><div class="line">        如果 （ UIVideoAtPathIsCompatibleWithSavedPhotosAlbum （ moviePath ）） &#123; </div><div class="line">            UISaveVideoAtPathToSavedPhotosAlbum （ moviePath，自我， </div><div class="line">                 @selector （视频： didFinishSavingWithError ： contextInfo ：），零） ;</div><div class="line">         </div><div class="line">    </div><div class="line"></div><div class="line"> </div><div class="line">nil cancelButtonTitle ：@ “OK” otherButtonTitles ：nil ] ;</div><div class="line">        [警报显示] ;</div><div class="line">    &#125; else &#123; </div><div class="line">        UIAlertView * alert = [ [ UIAlertView alloc ] initWithTitle ：@ “Video Saved”消息：@ “保存到相册”  </div><div class="line">            委托： self cancelButtonTitle ：@ “OK” otherButtonTitles ：nil ] ;</div><div class="line">        [警报显示] ;</div><div class="line">    &#125; &#125;</div></pre></td></tr></table></figure>
+<p>在上面的代码中，imagePickerController：didFinishPickingMediaWithInfo：给你一个moviePath。您验证电影可以保存到设备的相册，如果是这样保存。</p>
+<p>UISaveVideoAtPathToSavedPhotosAlbum是SDK提供的将视频保存到照片相册的默认方式。作为参数，你通过这两个被保存到该视频的路径，以及一个回调方法，将通知您的保存操作的状态。</p>
+<p>构建代码并运行它。录制视频并选择“使用”。如果弹出“视频保存”按钮，则您的视频已成功保存到照片库。</p>
+<p><img src="https://koenig-media.raywenderlich.com/uploads/2012/05/41.png" alt=""></p>
+<h3 id="AVFoundation简介"><a href="#AVFoundation简介" class="headerlink" title="AVFoundation简介"></a>AVFoundation简介</h3><p>现在，您的视频播放和录制已启动并运行，让我们进一步复杂一点：AVFoundation。</p>
+<p>自iOS 4.0以来，iOS SDK在AVFoundation框架中提供了许多视频编辑API。使用这些API，您可以将任何种类的CGAffineTransform应用于视频，并将多个视频和音频文件合并到一个视频中。</p>
+<p>本教程的最后几节将引导您将两个视频合并为单个视频并添加背景音轨。</p>
+<p>在进入代码之前，先来讨论一些理论。</p>
+<h4 id="AVAsset"><a href="#AVAsset" class="headerlink" title="AVAsset"></a>AVAsset</h4><p>这是一个抽象类，表示定时的视听媒体，如视频和音频。每个资产包含旨在一起呈现或处理的每个轨道的集合，每个轨道均包含但不限于音频，视频，文本，隐藏字幕和字幕。</p>
+<p>AVAsset对象定义构成资产的轨道的集合属性。轨道由AVAssetTrack的实例表示。</p>
+<p>在典型的简单情况下，一个轨道表示音频分量，另一个表示视频分量; 在复杂的组合中，可能存在多个重叠的音频和视频轨道。您将代表要合并为AVAsset对象的视频和音频文件。</p>
+<p><img src="https://koenig-media.raywenderlich.com/uploads/2012/05/avassetHierarchy.jpg" alt=""></p>
+<h4 id="AVComposition"><a href="#AVComposition" class="headerlink" title="AVComposition"></a>AVComposition</h4><p>AVComposition对象以自定义的时间排列方式组合来自多个基于文件的源的媒体数据，以便一起呈现或处理它们。无论容器类型如何，所有基于文件的视听资产均可合并。</p>
+<p>在其顶层，AVComposition是一个轨道的集合，每个轨道根据时间线呈现特定类型的媒体，如音频或视频。每个曲目由AVCompositionTrack的一个实例表示。</p>
+<h4 id="AVMutableComposition和AVMutableCompositionTrack"><a href="#AVMutableComposition和AVMutableCompositionTrack" class="headerlink" title="AVMutableComposition和AVMutableCompositionTrack"></a>AVMutableComposition和AVMutableCompositionTrack</h4><p>AVMutableComposition和AVMutableCompositionTrack也提供了构建组合的高级界面。这些对象提供插入，移除和缩放操作，而无需直接操纵组合轨道的轨道段数组。</p>
+<p>AVMutableComposition和AVMutableCompositionTrack使用更高级的结构，如AVAsset和AVAssetTrack。这意味着客户端可以使用与创建的候选来源相同的引用，以便在包含在组合中之前对其进行检查或预览。</p>
+<p>简而言之，您有一个AVMutableComposition，您可以向其添加多个AVMutableCompositionTrack实例。每个AVMutableCompositionTrack将有一个单独的媒体资源。</p>
+<h4 id="和休息"><a href="#和休息" class="headerlink" title="和休息"></a>和休息</h4><p>为了将CGAffineTransform应用于曲目，您将使用AVVideoCompositionInstruction和AVVideoComposition。AVVideoCompositionInstruction对象表示由合成器执行的操作。该对象包含多个AVMutableVideoCompositionLayerInstruction对象。</p>
+<p>您使用AVVideoCompositionLayerInstruction对象来修改变换和不透明度斜坡以应用于AV组合中的给定轨迹。AVMutableVideoCompositionLayerInstruction是AVVideoCompositionLayerInstruction的可变子类。</p>
+<p>AVVideoComposition对象维护一组指令来执行其组合，并且AVMutableVideoComposition对象表示可变视频构图。</p>
+<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><ul>
+<li>您有一个主AVMutableComposition对象包含多个AVMutableCompositionTrack实例。每条轨道代表资产。</li>
+<li>您有AVMutableVideoComposition对象包含多个AVMutableVideoCompositionInstructions。</li>
+<li>每个AVMutableVideoCompositionInstruction包含多个AVMutableVideoCompositionLayerInstruction实例。</li>
+<li>每层指令用于将特定的变换应用于给定的轨道。</li>
+</ul>
+<p>知道了吗 在您下载项目示例代码之前，最终将进行测试。;]</p>
+<p>现在你至少听说过你将用来合并媒体的所有主要对象。这可能有点混乱，但是当你编写一些代码时，事情会变得更加清晰。我承诺！</p>
+<h3 id="合并视频"><a href="#合并视频" class="headerlink" title="合并视频"></a>合并视频</h3><p>现在把这个理论用了！打开MainStoryboard.storyboard并选择Merge Video View Controller。将四个按钮添加到屏幕，并将其命名如下：</p>
+<ul>
+<li>负载资产1</li>
+<li>负载资产2</li>
+<li>加载音频</li>
+<li>合并和保存视频</li>
+</ul>
+<p>切换到助手编辑器模式，并将您的四个按钮连接到以下操作：</p>
+<ul>
+<li>loadAssetOne：</li>
+<li>loadAssetTwo：</li>
+<li>loadAudio：</li>
+<li>mergeAndSave：</li>
+</ul>
+<p>最后的结果应该是这样的：</p>
+<p><img src="https://koenig-media.raywenderlich.com/uploads/2012/05/video7.png" alt=""></p>
+<p>现在切换到MergeVideoViewController.h并将其内容替换为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#import &lt;AVFoundation / AVFoundation.h&gt; </div><div class="line">#import &lt;CoreMedia / CoreMedia.h&gt; </div><div class="line">#import &lt;MobileCoreServices / UTCoreTypes.h&gt; </div><div class="line">#import &lt;AssetsLibrary / AssetsLibrary.h&gt; </div><div class="line">#import &lt;MediaPlayer / MediaPlayer.h&gt;</div><div class="line"> </div><div class="line">@interface MergeVideoViewController ： UIViewController &#123; </div><div class="line">    BOOL isSelectingAssetOne;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">@property （ nonatomic，strong ） AVAsset * firstAsset;</div><div class="line">@property （ nonatomic，strong ） AVAsset * secondAsset;</div><div class="line">@property （ nonatomic，strong ） AVAsset * audioAsset;</div><div class="line">@property  （弱，非原子） IBOutlet UIActivityIndi​​catorView * activityView;</div><div class="line"> </div><div class="line">- （ IBAction ） loadAssetOne ：（id ） sender;</div><div class="line">- （ IBAction ） loadAssetTwo ：（id ） sender;</div><div class="line">- （ IBAction ） loadAudio ：（id ） sender;</div><div class="line">- （ IBAction ） mergeAndSave ：（id ） sender;</div><div class="line">- （BOOL ） startMediaBrowserFromViewController ：（ UIViewController * ） controller usingDelegate ：（id ）代表;</div><div class="line">- （void ） exportDidFinish ：（ AVAssetExportSession * ） session;</div><div class="line"> </div><div class="line">@结束</div></pre></td></tr></table></figure>
+<p>以上大部分应该是熟悉的。有几个新的属性，但它们主要是保留对您添加的资产的引用，以创建最终合并的视频。除了资产之外，还有一个活动指标，当应用程序合并文件时会显示，因为可能需要一些时间来完成该过程。</p>
+<p>要合成上面添加的属性，请切换到MergeVideoViewController.m，并在文件顶部添加以下内容，位于@implementation行之下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@synthesize firstAsset，secondAsset，audioAsset;</div><div class="line">@synthesize activityView;</div></pre></td></tr></table></figure>
+<p>然后，将以下内容添加到loadAssetOne中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">if  （[ UIImagePickerController isSourceTypeAvailable ： UIImagePickerControllerSourceTypeSavedPhotosAlbum ]  ==  NO ） &#123; </div><div class="line">    UIAlertView * alert =  [ [ UIAlertView alloc ] initWithTitle ：@ “Error” message ：@ “No saved Album Found”   </div><div class="line">        delegate ：nil cancelButtonTitle ：@ “OK” otherButtonTitles ：nil ] ;</div><div class="line">    [警报显示] ;        </div><div class="line">&#125;  else  &#123; </div><div class="line">    isSelectingAssetOne = TRUE;</div><div class="line">    [ self startMediaBrowserFromViewController ： self usingDelegate ： self ] ;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>将此代码添加到loadAssetTwo中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">if  （[ UIImagePickerController isSourceTypeAvailable ： UIImagePickerControllerSourceTypeSavedPhotosAlbum ]  ==  NO ） &#123; </div><div class="line">    UIAlertView * alert =  [ [ UIAlertView alloc ] initWithTitle ：@ “Error” message ：@ “No saved Album Found”  </div><div class="line">        delegate ：nil cancelButtonTitle ：@ “OK” otherButtonTitles ：nil ] ;</div><div class="line">    [警报显示] ;</div><div class="line">&#125;  else  &#123; </div><div class="line">    isSelectingAssetOne = FALSE;</div><div class="line">    [ self startMediaBrowserFromViewController ： self usingDelegate ： self ] ;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>请注意，除了分配给isSelectingAssetOne的值之外，上述两个实例中的代码几乎相同。您可以使用UIImagePickerController来像“播放视频”部分一样选择视频文件。所述isSelectingAssetOne变量用来识别哪个资产当前选择。</p>
+<p>将以下代码添加到UIImagePickerController显示和处理文件的末尾：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">- （BOOL ） startMediaBrowserFromViewController ：（ UIViewController * ） controller usingDelegate ：（id ） delegate &#123; </div><div class="line">    // 1  - 验证</div><div class="line">    if  （（[ UIImagePickerController isSourceTypeAvailable ： UIImagePickerControllerSourceTypeSavedPhotosAlbum ]  ==  NO ） </div><div class="line">        || （ delegate ==  nil ） </div><div class="line">        || （ controller ==  nil ）） &#123; </div><div class="line">        return  NO ;</div><div class="line">    &#125; </div><div class="line">    // 2  - 创建图像选择器 </div><div class="line">    UIImagePickerController * mediaUI =  [ [ UIImagePickerController alloc ] init ] ;</div><div class="line">    mediaUI.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;</div><div class="line">    mediaUI.mediaTypes =  [ [ NSArray alloc ] initWithObjects ：（NSString  * ） kUTTypeMovie，nil ] ;</div><div class="line">    //隐藏用于移动和缩放图片的控件，或</div><div class="line">    //修剪动画。要显示控件，请使用YES。</div><div class="line">    mediaUI.allowsEditing =  YES ;</div><div class="line">    mediaUI.delegate = delegate;</div><div class="line">    // 3  - 显示图像选择器</div><div class="line">    [ controller presentModalViewController ： mediaUI animated ： YES ] ;</div><div class="line">    返回 YES ;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">- （void ） imagePickerController ：（ UIImagePickerController * ） picker didFinishPickingMediaWithInfo ：（NSDictionary  * ） info &#123; </div><div class="line">    // 1  - 获取媒体类型</div><div class="line">    NSString  * mediaType =  [ info objectForKey ： UIImagePickerControllerMediaType ] ;</div><div class="line">    // 2  - 关闭图像选择器</div><div class="line">    [ self dismissModalViewControllerAnimated ：NO ] ;</div><div class="line">    </div><div class="line">       </div><div class="line">         </div><div class="line">            UIAlertView * alert =  [ [ UIAlertView alloc ] initWithTitle ：@ “Asset Loaded”消息：@ “Video One Loaded”  </div><div class="line">                委托：nil cancelButtonTitle ：@ “OK” otherButtonTitles ：nil ] ;</div><div class="line">            [警报显示] ;</div><div class="line">            firstAsset =  [ AVAsset assetWithURL ：[ info objectForKey ： UIImagePickerControllerMediaURL ] ] ;</div><div class="line">        &#125;  else  &#123; </div><div class="line">            NSLog （@ “Video two Loaded” ） ;</div><div class="line">            UIAlertView * alert =  [ [ UIAlertView alloc ] initWithTitle ：@ “Asset Loaded”消息：@ “Video Two Loaded”  </div><div class="line">                委托：nil cancelButtonTitle ：@ “OK” otherButtonTitles ：nil ] ;</div><div class="line">            [警报显示] ;</div><div class="line">            secondAsset =  [ AVAsset assetWithURL ：[ info objectForKey ： UIImagePickerControllerMediaURL ] ] ;        </div><div class="line">        &#125; </div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>请注意，在imagePickerController：didFinishPickingMediaWithInfo：中，您可以使用图像选择器返回的媒体URL来初始化每个资产变量。还要注意，如何使用isSelectingAssetOne变量来确定设置了哪个资产变量。</p>
+<p>此时，您有代码可以选择两个视频资源。</p>
+<p>编译并运行，并确保您的库中至少有两个视频。然后选择“合并视频”选项，然后选择两个视频。如果一切正常，您都可以在选择每个视频后看到“已加载资产”消息。</p>
+<p><img src="https://koenig-media.raywenderlich.com/uploads/2012/05/13.png" alt=""></p>
+<p>下一步是添加功能来选择音频文件。</p>
+<p>UIImagePickerController仅提供从媒体库中选择视频和图像的功能。要从音乐库中选择音频文件，您将使用MPMediaPickerController。它的工作原理与UIImagePickerController完全相同，但不是图像和视频，它会访问媒体库中的音频文件。</p>
+<p>将以下代码添加到loadAudio中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">MPMediaPickerController * mediaPicker =  [ [ MPMediaPickerController alloc ] initWithMediaTypes ： MPMediaTypeAny ] ;</div><div class="line">mediaPicker.delegate = self;</div><div class="line">mediaPicker.prompt =  @ “选择音频” ;</div><div class="line">[ self presentModalViewController ： mediaPicker animated ：YES ] ;</div></pre></td></tr></table></figure>
+<p>上述代码创建一个新的MPMediaPickerController实例，并将其显示为模态视图控制器。</p>
+<p>建立并运行。现在，当您点击“加载音频”按钮时，您可以访问设备上的音频库。（当然，您需要在设备上安装一些音频文件，否则列表将为空。）</p>
+<p><img src="https://koenig-media.raywenderlich.com/uploads/2012/05/111.png" alt=""></p>
+<p>如果您从列表中选择一首歌曲，您会发现没有任何反应。没错，MPMediaPickerController需要委托方法！在文件末尾添加以下两种方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">- （无效） mediaPicker ：（ MPMediaPickerController * ） mediaPicker didPickMediaItems ：（ MPMediaItemCollection * ） mediaItemCollection &#123; </div><div class="line">    的NSArray  * selectedSong =  [ mediaItemCollection项] ;</div><div class="line">    if  （[ selectedSong count ] &gt; 0 ） &#123; </div><div class="line">        MPMediaItem * songItem =  [ selectedSong objectAtIndex ：0 ] ;</div><div class="line">          </div><div class="line">        audioAsset =  [ AVAsset assetWithURL ： songURL ] ;</div><div class="line">         NSLog （@ “Audio Loaded” ） ;</div><div class="line">         UIAlertView * alert =  [ [ UIAlertView alloc ] initWithTitle ：@ “Asset Loaded”消息：@ “Audio Loaded”  </div><div class="line">             委托：nil cancelButtonTitle ：@ “OK” otherButtonTitles ：nil ] ;</div><div class="line">         [警报显示] ;</div><div class="line">    &#125; </div><div class="line">    [ self dismissModalViewControllerAnimated ：YES ] ;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">- （void ） mediaPickerDidCancel ：（ MPMediaPickerController * ） mediaPicker &#123; </div><div class="line">    [ self dismissModalViewControllerAnimated ： YES ] ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>代码非常类似于UIImagePickerController的委托方法。您可以根据通过MPMediaPickerController选择的媒体项来设置音频资源。</p>
+<p>建立并再次运行。转到合并视频屏幕并选择音频文件。如果没有错误，您应该看到“加载音频”消息。</p>
+<p><img src="https://koenig-media.raywenderlich.com/uploads/2012/05/121.png" alt=""></p>
+<p>您现在可以正确加载所有视频和音频资源。现在是时候将各种媒体文件合并成一个文件了。</p>
+<p>但是在你进入该代码之前，你必须做一点设置。将以下代码添加到mergeAndSave：：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">if  （ firstAsset ！= nil  &amp;&amp; secondAsset ！= nil ） &#123; </div><div class="line">       [ activityView startAnimating ] ;</div><div class="line">       // 1  - 创建AVMutableComposition对象。此对象将保存您的AVMutableCompositionTrack实例。</div><div class="line">       AVMutableComposition * mixComposition =  [ [ AVMutableComposition alloc ] init ] ;</div><div class="line">       // 2  - 视频轨道 </div><div class="line">       AVMutableCompositionTrack * firstTrack =  [ mixComposition addMutableTrackWithMediaType ： AVMediaTypeVideo</div><div class="line">           preferredTrackID ： kCMPersistentTrackID_Invalid ] ;</div><div class="line">       [ firstTrack insertTimeRange ： CMTimeRangeMake （ kCMTimeZero，firstAsset.duration ）  </div><div class="line">           ofTrack ：[ [ firstAsset tracksWithMediaType ： AVMediaTypeVideo ] objectAtIndex ：0 ] atTime ： kCMTimeZero误差：零] ;</div><div class="line">       [ firstTrack insertTimeRange ： CMTimeRangeMake （ kCMTimeZero，secondAsset.duration ）  </div><div class="line">           ofTrack ：[ [ secondAsset tracksWithMediaType ： AVMediaTypeVideo ] objectAtIndex ：0 ] atTime ： firstAsset.duration error ：nil ] ; // 3  - 音频轨道</div><div class="line">       if  （ audioAsset ！= nil ）&#123; </div><div class="line">           AVMutableCompositionTrack * AudioTrack =  [ mixComposition addMutableTrackWithMediaType ： AVMediaTypeAudio 0 ] atTime ： firstAsset.duration error ：nil ] ; // 3  - 音频轨道if （ audioAsset ！= nil ）&#123; AVMutableCompositionTrack * AudioTrack = [ mixComposition addMutableTrackWithMediaType ： AVMediaTypeAudio 0 ] atTime ： firstAsset.duration error ：nil ] ;</div><div class="line">       // 3  - 音频轨道if （ audioAsset ！= nil ）&#123; AVMutableCompositionTrack * AudioTrack = [ mixComposition addMutableTrackWithMediaType ： AVMediaTypeAudio</div><div class="line">               preferredTrackID ： kCMPersistentTrackID_Invalid ] ;</div><div class="line">           [ AudioTrack insertTimeRange ： CMTimeRangeMake （ kCMTimeZero，CMTimeAdd （ firstAsset.duration，secondAsset.duration ））  </div><div class="line">               ofTrack ：[ [ audioAsset tracksWithMediaType ： AVMediaTypeAudio ] objectAtIndex ：0 ] atTime ： kCMTimeZero误差：零] ;</div><div class="line">       &#125;  </div><div class="line">       // 4  - 获取路径</div><div class="line">       NSArray  * paths = NSSearchPathForDirectoriesInDomains （ NSDocumentDirectory，NSUserDomainMask，YES ） ;</div><div class="line">       NSString  * documentsDirectory =  [ paths objectAtIndex ：0 ] ;</div><div class="line">       NSString  * myPathDocs =   [ documentsDirectory stringByAppendingPathComponent ：</div><div class="line">           [ NSString stringWithFormat ：@ “mergeVideo-％d.mov”，arc4random （） ％ 1000 ] ] ;</div><div class="line">       NSURL  * url =  [ NSURL fileURLWithPath ： myPathDocs ] ;</div><div class="line">       // 5  - 创建导出器 </div><div class="line">       AVAssetExportSession * exporter =  [ [ AVAssetExportSession alloc ] initWithAsset ： mixComposition</div><div class="line">           presetName ： AVAssetExportPresetHighestQuality ] ;</div><div class="line">       exporter.outputURL = url;</div><div class="line">       exporter.outputFileType = AVFileTypeQuickTimeMovie;</div><div class="line">       exporter.shouldOptimizeForNetworkUse =  YES ;</div><div class="line">       [ exporter exportAsynchronouslyWithCompletionHandler ：^ &#123; </div><div class="line">            dispatch_async （ dispatch_get_main_queue （），^ &#123; </div><div class="line">                [ self exportDidFinish ： exporter ] ;</div><div class="line">             &#125; ） ;</div><div class="line">        &#125; ] ;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>以下是上述代码的分步细分：</p>
+<ul>
+<li>您创建一个AVMutableComposition对象来保存视频和音轨以及变换效果。</li>
+<li>接下来，您将为视频创建AVMutableCompositionTrack，并将其添加到AVMutableComposition对象。然后将两个视频插入到新创建的AVMutableCompositionTrack中。</li>
+<li>请注意，insertTimeRange方法允许您将视频的一部分插入主要合成而不是整个视频。这样，您可以将视频剪辑到您所选择的时间范围。</li>
+<li>在这种情况下，您要插入整个视频，因此您可以创建一个从kCMTimeZero到您的视频资源持续时间的时间范围。atTime参数允许您将您的视频/音轨放在您想要的组合中。注意如何firstAsset被插入在时间零点，和secondAsset被插入在所述第一视频的结尾。本教程假设您希望您的视频资产一个接一个。但是您也可以通过玩时间范围来重叠资产。</li>
+<li>对于使用时间范围，您可以使用CMTime结构体。CMTime结构是表示时间的非透明可变结构体，其中时间可以是时间戳或持续时间。</li>
+<li>同样，您为音频创建一个新曲目[AVMutableCompositionTrack？]，并将其添加到主要作品中。这次您将音频时间范围设置为第一和第二个视频的持续时间的总和，因为这将是视频的完整长度。</li>
+<li>在保存最终视频之前，您需要保存文件的路径。因此，创建一个随机文件名，指向文档文件夹中的文件。</li>
+<li>最后，渲染和导出合并的视频。为此，您将创建一个AVAssetExportSession对象，该对象对AVAsset源对象的内容进行转码，以创建由指定的导出预设描述的窗体的输出。</li>
+<li>在使用包含源介质的资产，导出预设名称（presetName）和输出文件类型（outputFileType）初始化导出会话后，通过调用exportAsynchronouslyWithCompletionHandler：启动导出。</li>
+<li>因为导出是异步执行的，所以该方法立即返回。exportAsynchronouslyWithCompletionHandler提供的完成处理程序：是否导出失败，完成或被取消。完成后，出口商的状态属性表示出口是否成功完成。如果失败，导出器的错误属性的值提供有关失败原因的其他信息。</li>
+</ul>
+<p>请注意，完成处理程序调用exportDidFinish：一个需要实现的方法。将以下代码添加到文件末尾：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">- （void ） exportDidFinish ：（ AVAssetExportSession * ） session &#123; </div><div class="line">    if  （ session.status == AVAssetExportSessionStatusCompleted ） &#123; </div><div class="line">        NSURL  * outputURL = session.outputURL;</div><div class="line">        ALAssetsLibrary * library =  [ [ ALAssetsLibrary alloc ] init ] ;</div><div class="line">        如果 （[库videoAtPathIsCompatibleWithSavedPhotosAlbum ： outputURL ] ） &#123; </div><div class="line">            [库writeVideoAtPathToSavedPhotosAlbum ： outputURL completionBlock ：^ （NSURL  * assetURL，NSError  *错误）&#123; </div><div class="line">                dispatch_async （ dispatch_get_main_queue （），^ &#123; </div><div class="line">                    if  （ error ） &#123; </div><div class="line">                        UIAlertView * alert =  [ [ UIAlertView alloc ] initWithTitle ：@ “Error” message ：@ “Video Saving Failed”  </div><div class="line">                            委托：nil cancelButtonTitle ：@ “OK” otherButtonTitles ：nil ] ;</div><div class="line">                        [警报显示] ;</div><div class="line">                    &#125;  else  &#123; </div><div class="line">                        UIAlertView * alert =  [ [ UIAlertView alloc ] initWithTitle ：@ “Video Saved”消息：@ “保存到相册”  </div><div class="line">                            委托： self cancelButtonTitle ：@ “OK” otherButtonTitles ：nil ] ;</div><div class="line">                        [警报显示] ;</div><div class="line">                    &#125; </div><div class="line">                &#125; ） ;</div><div class="line">            &#125; ] ;</div><div class="line">        &#125;  </div><div class="line">    &#125; </div><div class="line">    audioAsset =  nil ;</div><div class="line">    firstAsset =  nil ;</div><div class="line">    secondAsset =  nil ;</div><div class="line">    [ activityView stopAnimating ] ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>导出成功完成后，新导出的视频将保存到相册中。您实际上不需要做 - 您可以使用AssetBrowser浏览到您保存到文档文件夹的最终视频。但是，将输出视频复制到相册更容易，以便您可以看到最终的输出。</p>
+<p>继续，建立并运行您的项目！</p>
+<p>选择视频和音频文件并合并选定的文件。如果合并成功，您应该看到一个“视频保存”消息。此时，您的新视频应该存在于相册中。</p>
+<p><img src="https://koenig-media.raywenderlich.com/uploads/2012/05/0.png" alt=""></p>
+<p>转到相册，或使用自己的“选择和播放视频”屏幕浏览！您会注意到，虽然视频已经合并，但有一些方向问题。肖像视频处于横向模式，有时视频会颠倒。</p>
+<p><img src="https://koenig-media.raywenderlich.com/uploads/2012/05/Merged.png" alt=""></p>
+<p>这是由于默认的AVAsset方向。使用默认iPhone摄像头应用程序录制的所有影片和影像文件都将视频帧设置为横向，因此媒体将以横向模式保存。</p>
+<p>AVAsset有一个preferredTransform属性，其中包含媒体方向信息，每当您使用照片应用程序或QuickTime查看媒体文件时，它将应用于媒体文件。在上面的代码中，您尚未对AVAsset对象应用转换，因此导向问题。</p>
+<p>您可以通过将必要的转换应用到您的AVAsset对象来轻松更正。但是，由于您的两个视频文件具有不同的方向，因此您需要使用两个独立的AVMutableCompositionTrack实例，而不是像您最初一样。</p>
+<p>将mergeAndSave中的第2个部分替换为以下，以便您有两个AVMutableCompositionTrack实例而不是一个：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 2  - 创建两个视频轨道 </div><div class="line">AVMutableCompositionTrack * firstTrack =  [ mixComposition addMutableTrackWithMediaType ： AVMediaTypeVideo</div><div class="line">    preferredTrackID ： kCMPersistentTrackID_Invalid ] ;</div><div class="line">[ firstTrack insertTimeRange ： CMTimeRangeMake （ kCMTimeZero，firstAsset.duration ）  </div><div class="line">    ofTrack ：[ [ firstAsset tracksWithMediaType ： AVMediaTypeVideo ] objectAtIndex ：0 ] atTime ： kCMTimeZero误差：零] ;</div><div class="line">AVMutableCompositionTrack * secondTrack =  [ mixComposition addMutableTrackWithMediaType ： AVMediaTypeVideo</div><div class="line">    preferredTrackID ： kCMPersistentTrackID_Invalid ] ;</div><div class="line">[ secondTrack insertTimeRange ： CMTimeRangeMake （ kCMTimeZero，secondAsset.duration ）  </div><div class="line">    ofTrack ：[ [ secondAsset tracksWithMediaType ： AVMediaTypeVideo ] objectAtIndex ：0 ] atTime ： firstAsset.duration误差：零] ;</div></pre></td></tr></table></figure>
+<p>由于您现在有两个独立的AVMutableCompositionTrack实例，因此您需要将AVMutableVideoCompositionLayerInstruction应用于每个轨道，以便修复方向。所以在你刚刚替换的代码之后添加以下代码（在第3节之前）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">// 2.1  - 创建AVMutableVideoCompositionInstruction </div><div class="line">AVMutableVideoCompositionInstruction * mainInstruction =  [ AVMutableVideoCompositionInstruction videoCompositionInstruction ] ;</div><div class="line">mainInstruction.timeRange = CMTimeRangeMake(kCMTimeZero, CMTimeAdd(firstAsset.duration, secondAsset.duration));</div><div class="line">// 2.2 - Create an AVMutableVideoCompositionLayerInstruction for the first track</div><div class="line">AVMutableVideoCompositionLayerInstruction *firstlayerInstruction = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:firstTrack];</div><div class="line">AVAssetTrack *firstAssetTrack = [[firstAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];</div><div class="line">UIImageOrientation firstAssetOrientation_  = UIImageOrientationUp;</div><div class="line">BOOL isFirstAssetPortrait_  = NO;</div><div class="line">CGAffineTransform firstTransform = firstAssetTrack.preferredTransform;</div><div class="line">if (firstTransform.a == 0 &amp;&amp; firstTransform.b == 1.0 &amp;&amp; firstTransform.c == -1.0 &amp;&amp; firstTransform.d == 0) &#123;</div><div class="line">    firstAssetOrientation_ = UIImageOrientationRight; </div><div class="line">    isFirstAssetPortrait_ = YES;</div><div class="line">&#125;</div><div class="line">if (firstTransform.a == 0 &amp;&amp; firstTransform.b == -1.0 &amp;&amp; firstTransform.c == 1.0 &amp;&amp; firstTransform.d == 0) &#123;</div><div class="line">    firstAssetOrientation_ =  UIImageOrientationLeft; </div><div class="line">    isFirstAssetPortrait_ = YES;</div><div class="line">&#125;</div><div class="line">if (firstTransform.a == 1.0 &amp;&amp; firstTransform.b == 0 &amp;&amp; firstTransform.c == 0 &amp;&amp; firstTransform.d == 1.0) &#123;</div><div class="line">    firstAssetOrientation_ =  UIImageOrientationUp;</div><div class="line">&#125;</div><div class="line">if (firstTransform.a == -1.0 &amp;&amp; firstTransform.b == 0 &amp;&amp; firstTransform.c == 0 &amp;&amp; firstTransform.d == -1.0) &#123;</div><div class="line">    firstAssetOrientation_ = UIImageOrientationDown;</div><div class="line">&#125;</div><div class="line">[firstlayerInstruction setTransform:firstAsset.preferredTransform atTime:kCMTimeZero];</div><div class="line">[firstlayerInstruction setOpacity:0.0 atTime:firstAsset.duration];</div><div class="line">// 2.3 - Create an AVMutableVideoCompositionLayerInstruction for the second track</div><div class="line">AVMutableVideoCompositionLayerInstruction *secondlayerInstruction = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:secondTrack];</div><div class="line">AVAssetTrack *secondAssetTrack = [[secondAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];</div><div class="line">UIImageOrientation secondAssetOrientation_  = UIImageOrientationUp;</div><div class="line">BOOL isSecondAssetPortrait_  = NO;</div><div class="line">CGAffineTransform secondTransform = secondAssetTrack.preferredTransform;</div><div class="line">if (secondTransform.a == 0 &amp;&amp; secondTransform.b == 1.0 &amp;&amp; secondTransform.c == -1.0 &amp;&amp; secondTransform.d == 0) &#123;</div><div class="line">    secondAssetOrientation_= UIImageOrientationRight; </div><div class="line">    isSecondAssetPortrait_ = YES;</div><div class="line">&#125;</div><div class="line">if (secondTransform.a == 0 &amp;&amp; secondTransform.b == -1.0 &amp;&amp; secondTransform.c == 1.0 &amp;&amp; secondTransform.d == 0) &#123;</div><div class="line">    secondAssetOrientation_ =  UIImageOrientationLeft; </div><div class="line">    isSecondAssetPortrait_ = YES;</div><div class="line">&#125;</div><div class="line">if (secondTransform.a == 1.0 &amp;&amp; secondTransform.b == 0 &amp;&amp; secondTransform.c == 0 &amp;&amp; secondTransform.d == 1.0) &#123;</div><div class="line">    secondAssetOrientation_ =  UIImageOrientationUp;</div><div class="line">&#125;</div><div class="line">if (secondTransform.a == -1.0 &amp;&amp; secondTransform.b == 0 &amp;&amp; secondTransform.c == 0 &amp;&amp; secondTransform.d == -1.0) &#123;</div><div class="line">    secondAssetOrientation_ = UIImageOrientationDown;</div><div class="line">&#125;</div><div class="line">[secondlayerInstruction setTransform:secondAsset.preferredTransform atTime:firstAsset.duration];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在第2.1节中，您将创建一个AVMutableVideoCompositionInstruction对象，该对象将保存图层指令。</p>
+<p>然后在第2.2节中，将方向固定添加到第一个轨道，如下所示：</p>
+<ul>
+<li>您创建一个AVMutableVideoCompositionLayerInstruction并将其与您的firstTrack相关联。</li>
+<li>接下来，您将从AVAsset创建一个AVAssetTrack对象。AVAssetTrack对象为所有资产提供轨道级检查界面。您需要此对象才能访问资产的preferredTransform和dimension。</li>
+<li>然后，确定您的AVAsset的方向。这将在确定导出的视频大小时稍后使用。</li>
+<li>接下来，应用preferredTransform来修复方向。</li>
+<li>您还将firstAsset.duration的第一层的不透明度设置为零。这是因为您希望您的第一首曲目在完成播放后消失。否则，第一轨道的最后一帧将保持在屏幕上，并与来自第二轨道的视频重叠。</li>
+</ul>
+<p>2.3节中的代码与＃2.2节中的代码几乎相同。这只是应用于第二轨道的方向固定。</p>
+<p>接下来，在第2.3节之后添加以下代码（在第3节之前）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">// 2.4  - 添加指令 </div><div class="line">mainInstruction.layerInstructions =  [ NSArray arrayWithObjects ： firstlayerInstruction，secondlayerInstruction，nil ] ;</div><div class="line">AVMutableVideoComposition * mainCompositionInst =  [ AVMutableVideoComposition videoComposition ] ;</div><div class="line">mainCompositionInst.instructions =  [ NSArray arrayWithObject ： mainInstruction ] ;</div><div class="line">mainCompositionInst.frameDuration = CMTimeMake （1，30 ） ;</div><div class="line"> </div><div class="line">CGSize naturalSizeFirst，naturalSizeSecond;</div><div class="line">if （ isFirstAssetPortrait_ ）&#123; </div><div class="line">    naturalSizeFirst = CGSizeMake （ FirstAssetTrack.naturalSize.height，FirstAssetTrack.naturalSize.width ） ;</div><div class="line">&#125;  else  &#123; </div><div class="line">    naturalSizeFirst = FirstAssetTrack.naturalSize;</div><div class="line">&#125; </div><div class="line">if （ isSecondAssetPortrait_ ）&#123; </div><div class="line">    naturalSizeSecond = CGSizeMake （ SecondAssetTrack.naturalSize.height，SecondAssetTrack.naturalSize.width ） ;</div><div class="line">&#125;  else  &#123; </div><div class="line">    naturalSizeSecond = SecondAssetTrack.naturalSize;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">float renderWidth，renderHeight;</div><div class="line">if （ naturalSizeFirst.width&gt; naturalSizeSecond.width ） &#123; </div><div class="line">    renderWidth = naturalSizeFirst.width;</div><div class="line">&#125;  else  &#123; </div><div class="line">    renderWidth = naturalSizeSecond.width;</div><div class="line">&#125; </div><div class="line">if （ naturalSizeFirst.height&gt; naturalSizeSecond.height ） &#123; </div><div class="line">    renderHeight = naturalSizeFirst.height;</div><div class="line">&#125;  else  &#123; </div><div class="line">    renderHeight = naturalSizeSecond.height;</div><div class="line">&#125; </div><div class="line">MainCompositionInst.renderSize = CGSizeMake （ renderWidth，</div></pre></td></tr></table></figure>
+<p>现在您有第一和第二个曲目的AVMutableVideoCompositionLayerInstruction实例，您只需将它们添加到主AVMutableVideoCompositionInstruction对象即可。接下来，将mainInstruction对象添加到AVMutableVideoComposition实例的instructions属性中。您还将组合的帧速率设置为30帧/秒。</p>
+<p>那么你必须找到最终视频的导出大小。首先我们要检查资源是纵向还是横向。为此，我们从前面使用变量isFirstAssetPortrait<em>和isSecondAssetPortrait</em>。如果它们是风景，我们可以使用我们提供的naturalSize属性，但是如果它们是纵向的，我们必须翻转naturalSize，使得宽度现在是高度，反之亦然。我们将每个结果保存到变量中。</p>
+<p>那么我们必须确定两个资产中哪一个是更广泛的，哪一个是较高的。这是为了确保导出的视频足够大以容纳所有的每个视频。通过一些简单的比较，我们将结果保存到变量中。</p>
+<p>然后，您可以将导出的renderSize设置为找到的renderWidth和renderHeight。</p>
+<p>现在，您已经配置了一个AVMutableVideoComposition对象，所有您需要做的是将其分配给您的导出器。在第5节中，在该部分的第4行之后插入以下代码（就在exportAsynchronouslyWithCompletionHandler： call 之前）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">exporter.videoComposition = mainCompositionInst;</div></pre></td></tr></table></figure>
+<p>呃 - 就是这样！</p>
+<p>构建并运行您的项目。如果您通过组合两个视频（可选的音频文件）创建一个新的视频，您将看到当您播放新的合并的视频时，方向问题已经消失。</p>
+<p><img src="https://koenig-media.raywenderlich.com/uploads/2012/05/MergedOutput.png" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/uncategorized/个人简历.html" rel="next" title="个人简历">
+                <i class="fa fa-chevron-left"></i> 个人简历
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://chuantu.biz/t5/52/1490601326x2890174015.jpg"
+               alt="祁伟鹏" />
+          <p class="site-author-name" itemprop="name">祁伟鹏</p>
+           
+              <p class="site-description motion-element" itemprop="description">上天安排的最大嘛</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#入门"><span class="nav-number">1.</span> <span class="nav-text">入门</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#得到你的故事直"><span class="nav-number">2.</span> <span class="nav-text">得到你的故事直</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择和播放视频"><span class="nav-number">3.</span> <span class="nav-text">选择和播放视频</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#录制和保存视频"><span class="nav-number">4.</span> <span class="nav-text">录制和保存视频</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AVFoundation简介"><span class="nav-number">5.</span> <span class="nav-text">AVFoundation简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AVAsset"><span class="nav-number">5.1.</span> <span class="nav-text">AVAsset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AVComposition"><span class="nav-number">5.2.</span> <span class="nav-text">AVComposition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AVMutableComposition和AVMutableCompositionTrack"><span class="nav-number">5.3.</span> <span class="nav-text">AVMutableComposition和AVMutableCompositionTrack</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#和休息"><span class="nav-number">5.4.</span> <span class="nav-text">和休息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结论"><span class="nav-number">5.5.</span> <span class="nav-text">结论</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并视频"><span class="nav-number">6.</span> <span class="nav-text">合并视频</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">祁伟鹏</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://short.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://www.aiwyt.com//uncategorized/如何在iOS中播放，录制和编辑视频.html';
+          this.page.identifier = '/uncategorized/如何在iOS中播放，录制和编辑视频.html';
+          this.page.title = '如何在iOS中播放，录制和编辑视频';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://short.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
