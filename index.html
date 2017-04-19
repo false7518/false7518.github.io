@@ -250,6 +250,137 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.aiwyt.com/uncategorized/iOS获取时间-当天、前一天、下一天.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="祁伟鹏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://chuantu.biz/t5/52/1490601326x2890174015.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="祁伟鹏的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/uncategorized/iOS获取时间-当天、前一天、下一天.html" itemprop="url">
+                  iOS获取时间---当天、前一天、下一天
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-19T18:09:33+08:00">
+                2017-04-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/uncategorized/iOS获取时间-当天、前一天、下一天.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="/uncategorized/iOS获取时间-当天、前一天、下一天.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">#pragma mark - 获取时间，当天，前一天，下一天</div><div class="line">- (NSString *)getDateForUrl:(NSDate *)date</div><div class="line">&#123;</div><div class="line">    NSDate *early = [date earlierDate:date];</div><div class="line">    NSDate *ed = [early earlierDate:date];</div><div class="line">    NSLog(@&quot;early%@&quot;,early);</div><div class="line">    NSLog(@&quot;ed%@&quot;,ed);</div><div class="line">    </div><div class="line">    NSString *str = [[NSString alloc] initWithFormat:@&quot;%@&quot;,date];</div><div class="line">    NSArray *array1 = [str componentsSeparatedByString:@&quot; &quot;];</div><div class="line">    NSString *subStr1 = [array1 objectAtIndex:0];</div><div class="line">    NSArray *array2 = [subStr1 componentsSeparatedByString:@&quot;-&quot;];</div><div class="line">    NSString *subStr2 = [array2 componentsJoinedByString:nil];</div><div class="line">    NSLog(@&quot;%@&quot;,subStr2);</div><div class="line">    return  subStr2;</div><div class="line">&#125;</div><div class="line">- (NSDate *)customEarlyDate:(NSDate *)anotherDate</div><div class="line">&#123;</div><div class="line">    NSCalendar *calendar = [NSCalendar currentCalendar];</div><div class="line">    NSDateComponents *comps;</div><div class="line">    comps = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:nil];</div><div class="line">    [comps setHour:-24]; //+24表示获取下一天的date，-24表示获取前一天的date；</div><div class="line">    [comps setMinute:0];</div><div class="line">    [comps setSecond:0];</div><div class="line">    NSDate *nowDate = [calendar dateByAddingComponents:comps toDate:anotherDate options:0];   //showDate表示某天的date，nowDate表示showDate的前一天或下一天的date</div><div class="line">    return nowDate;</div><div class="line">&#125;</div><div class="line">- (NSDate *)customLatterDate:(NSDate *)anotherDate</div><div class="line">&#123;</div><div class="line">    NSCalendar *calendar = [NSCalendar currentCalendar];</div><div class="line">    NSDateComponents *comps;</div><div class="line">    comps = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:nil];</div><div class="line">    [comps setHour:+24]; //+24表示获取下一天的date，-24表示获取前一天的date；</div><div class="line">    [comps setMinute:0];</div><div class="line">    [comps setSecond:0];</div><div class="line">    NSDate *nowDate = [calendar dateByAddingComponents:comps toDate:anotherDate options:0];   //showDate表示某天的date，nowDate表示showDate的前一天或下一天的date</div><div class="line">    return nowDate;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://www.aiwyt.com/uncategorized/如何在iOS中播放，录制和编辑视频.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1455,137 +1586,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.aiwyt.com/uncategorized/Mac下好用的应用集合.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="祁伟鹏">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://chuantu.biz/t5/52/1490601326x2890174015.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="祁伟鹏的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/uncategorized/Mac下好用的应用集合.html" itemprop="url">
-                  Mac下好用的应用集合
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-27T15:07:20+08:00">
-                2017-03-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/uncategorized/Mac下好用的应用集合.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="/uncategorized/Mac下好用的应用集合.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1635,7 +1635,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
