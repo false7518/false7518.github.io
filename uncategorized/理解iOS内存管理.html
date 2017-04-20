@@ -1,0 +1,820 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="本文将介绍如何使用Objective-C和Cocoa进行内存管理。内存管理是程序设计中常见的资源管理(resource management)的一部分。每个计算机系统可供程序使用的资源都是有限的，包括内存、网络连接等。如果你不断的打开文件并且保持打开状态而从不关闭，最终将好近文件资源。任何人都不希望出现这种结果。
+不是每个程序都会使用文件或网络连接，但都会消耗内存。每个C语言程序员都会遇到与内存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解iOS内存管理">
+<meta property="og:url" content="http://www.aiwyt.com/uncategorized/理解iOS内存管理.html">
+<meta property="og:site_name" content="祁伟鹏的博客">
+<meta property="og:description" content="本文将介绍如何使用Objective-C和Cocoa进行内存管理。内存管理是程序设计中常见的资源管理(resource management)的一部分。每个计算机系统可供程序使用的资源都是有限的，包括内存、网络连接等。如果你不断的打开文件并且保持打开状态而从不关闭，最终将好近文件资源。任何人都不希望出现这种结果。
+不是每个程序都会使用文件或网络连接，但都会消耗内存。每个C语言程序员都会遇到与内存">
+<meta property="og:image" content="http://img.kuqin.com/upimg/allimg/160803/14334M540-0.png">
+<meta property="og:image" content="http://img.kuqin.com/upimg/allimg/160803/14334L300-1.png">
+<meta property="og:image" content="http://img.kuqin.com/upimg/allimg/160803/14334I012-2.png">
+<meta property="og:image" content="http://img.kuqin.com/upimg/allimg/160803/14334G124-3.png">
+<meta property="og:image" content="http://img.kuqin.com/upimg/allimg/160803/14334G018-4.png">
+<meta property="og:updated_time" content="2017-04-20T05:45:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解iOS内存管理">
+<meta name="twitter:description" content="本文将介绍如何使用Objective-C和Cocoa进行内存管理。内存管理是程序设计中常见的资源管理(resource management)的一部分。每个计算机系统可供程序使用的资源都是有限的，包括内存、网络连接等。如果你不断的打开文件并且保持打开状态而从不关闭，最终将好近文件资源。任何人都不希望出现这种结果。
+不是每个程序都会使用文件或网络连接，但都会消耗内存。每个C语言程序员都会遇到与内存">
+<meta name="twitter:image" content="http://img.kuqin.com/upimg/allimg/160803/14334M540-0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.aiwyt.com/uncategorized/理解iOS内存管理.html"/>
+
+
+
+
+
+  <title> 理解iOS内存管理 | 祁伟鹏的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">祁伟鹏的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.aiwyt.com/uncategorized/理解iOS内存管理.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="祁伟鹏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://chuantu.biz/t5/52/1490601326x2890174015.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="祁伟鹏的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                理解iOS内存管理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-20T10:47:27+08:00">
+                2017-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/uncategorized/理解iOS内存管理.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="/uncategorized/理解iOS内存管理.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文将介绍如何使用Objective-C和Cocoa进行内存管理。内存管理是程序设计中常见的资源管理(resource management)的一部分。每个计算机系统可供程序使用的资源都是有限的，包括内存、网络连接等。如果你不断的打开文件并且保持打开状态而从不关闭，最终将好近文件资源。任何人都不希望出现这种结果。</p>
+<p>不是每个程序都会使用文件或网络连接，但都会消耗内存。每个C语言程序员都会遇到与内存有关的错误，这种错误是灾难性的。而使用Java和脚本语言的程序员则不需要考虑此类问题：这些语言的内存管理是自动进行的。另一方面我们必须确保在需要的时候分配内存，在程序运行结束时释放内存。如果我们只分配而不释放，就会导致内存泄漏(leak memory)：程序的内存占用量不断增加，最终会被耗尽并导致程序崩溃。</p>
+<p>已用计数(Reference Count)是一个简单而有效的管理对象生命周期的方式，不管是Objective-C语言还是Swift语言，其内存管理方式都是基于引用计数的。本章将讲解这种内存管理方式的特点及注意事项。</p>
+</blockquote>
+<h2 id="对象生命周期"><a href="#对象生命周期" class="headerlink" title="对象生命周期"></a>对象生命周期</h2><p>正如现实世界中的生物一样，程序中的对象也是有生命周期的。对象的生命周期包括诞生(通过alloc或new方法实现)、生存(接收消息并执行操作)、交友(通过复合以及向方法传递参数)以及最终死去(被释放掉)。当生命周期结束时，它们的原材料(内存)将被回收，以供新的对象使用。</p>
+<h2 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h2><h3 id="什么是引用计数，原理是什么？"><a href="#什么是引用计数，原理是什么？" class="headerlink" title="什么是引用计数，原理是什么？"></a>什么是引用计数，原理是什么？</h3><p>引用计数可以有效的管理对象生命周期。当我们创建一个新对象的时候，它的引用计数为1，当有一个新的指针指向这个对象时，我们将其引用计数加1，当某个指针不再指向这个对象时，我们将其引用计数减1，当对象的引用计数变为0时，说明这个对象不再被任何指针指向了，这个时候我们就可以将对象销毁，回收内存。</p>
+<p>当使用alloc、new方法或者通过copy(接收到该消息的对象会创建一个自身的副本)创建一个对象时，对象的引用计数会被设置为1。要增加对象的引用计数的值，可以对该对象使用retain。要减少的话，怎可以使用release方法。</p>
+<p>当一个对象的引用计数为0即将销毁时，Objective-C会自动调用对象的dealloc方法。你可以在自己的对象中重写dealloc方法，这样就能释放掉已经分配的全部相关资源。一定不要直接调用dealloc方法，Objective-C会在需要销毁对象时自动调用它。</p>
+<p>要获得引用计数的值，可以使用retainCount方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (id)retain;</div><div class="line">- (oneway void)release;</div><div class="line">- (NSUInteger)retainCount;</div></pre></td></tr></table></figure>
+<p>retain方法返回一个id类型的值。通过这种方式，可以在接受其他消息的同事进行retain调用，增加对象引用计数值并要求对象完成某种操作。例如，[[car retain] setTire:tire atIndex:2];表示要求car对象保留其引用计数器的值加1并执行setTire操作。</p>
+<p>由于引用计数简单有效，除了Objective-C语言外，微软的COM(Component Object Model)、C++11（C++11提供了基于引用计数的智能指针share_prt）等语言也提供了基于引用计数的内存管理方式，如下图所示。<br><img src="http://img.kuqin.com/upimg/allimg/160803/14334M540-0.png" alt=""><br>为了更形象一些，我们再来看一段Objective-C的代码。新建一个工程，因为现在默认的工程都开启了自动引用计数ARC(Automatic Reference Count)，我们先修改工程设置，给Appdelegate.m加上-fno-objc-arc的编译参数，如下图所示。这个参数可以启用手动内存管理引用计数的模式。<br><img src="http://img.kuqin.com/upimg/allimg/160803/14334L300-1.png" alt=""><br>然后，我们在中输入如下代码，可以通过 Log 看到相应的引用计数的变化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">- (BOOL)application:(UIApplication *)application </div><div class="line">       didFinishLaunchingWithOptions:(NSDictionary *)launchOptions</div><div class="line">&#123;</div><div class="line">    NSObject *object = [[NSObject alloc] init];</div><div class="line">    NSLog(@&quot;Reference Count = %u&quot;, [object retainCount]);</div><div class="line">    NSObject *another = [object retain];</div><div class="line">    NSLog(@&quot;Reference Count = %u&quot;, [object retainCount]);</div><div class="line">    [another release];</div><div class="line">    NSLog(@&quot;Reference Count = %u&quot;, [object retainCount]);</div><div class="line">    [object release];</div><div class="line">    // 到这里时，object 的内存被释放了</div><div class="line">    return YES;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Reference Count = 1 Reference Count = 2 Reference Count = 1</div></pre></td></tr></table></figure>
+<p>对 Linux 文件系统比较了解的同学可能发现，引用计数的这种管理方式类似于文件系统里面的硬链接。在 Linux 文件系统中，我们用 ln 命令可以创建一个硬链接（相当于我们这里的 retain)，当删除一个文件时（相当于我们这里的 release)，系统调用会检查文件的 link count 值，如果大于 1，则不会回收文件所占用的磁盘区域。直到最后一次删除前，系统发现 link count 值为 1，则系统才会执行直正的删除操作，把文件所占用的磁盘区域标记成未用</p>
+<h3 id="我们为什么需要引用计数"><a href="#我们为什么需要引用计数" class="headerlink" title="我们为什么需要引用计数"></a>我们为什么需要引用计数</h3><p>从上面那个简单的例子中，我们还看不出来引用计数真正的用处。因为该对象的生命期只是在一个函数内，所以在真实的应用场景下，我们在函数内使用一个临时的对象，通常是不需要修改它的引用计数的，只需要在函数返回前将该对象销毁即可。</p>
+<p>引用计数真正派上用场的场景是在面向对象的程序设计架构中，用于对象之间传递和共享数据。我们举一个具体的例子：</p>
+<p>假如对象 A 生成了一个对象 M，需要调用对象 B 的某一个方法，将对象 M 作为参数传递过去。在没有引用计数的情况下，一般内存管理的原则是 “谁申请谁释放”，那么对象 A 就需要在对象 B 不再需要对象 M 的时候，将对象 M 销毁。但对象 B 可能只是临时用一下对象 M，也可能觉得对象 M 很重要，将它设置成自己的一个成员变量，那这种情况下，什么时候销毁对象 M 就成了一个难题。</p>
+<p><img src="http://img.kuqin.com/upimg/allimg/160803/14334I012-2.png" alt=""></p>
+<p>对于这种情况，有一个暴力的做法，就是对象 A 在调用完对象 B 之后，马上就销毁参数对象 M，然后对象 B 需要将参数另外复制一份，生成另一个对象 M2，然后自己管理对象 M2 的生命期。但是这种做法有一个很大的问题，就是它带来了更多的内存申请、复制、释放的工作。本来一个可以复用的对象，因为不方便管理它的生命期，就简单的把它销毁，又重新构造一份一样的，实在太影响性能。如下图所示：</p>
+<p><img src="http://img.kuqin.com/upimg/allimg/160803/14334G124-3.png" alt=""></p>
+<p>我们另外还有一种办法，就是对象 A 在构造完对象 M 之后，始终不销毁对象 M，由对象 B 来完成对象 M 的销毁工作。如果对象 B 需要长时间使用对象 M，它就不销毁它，如果只是临时用一下，则可以用完后马上销毁。这种做法看似很好地解决了对象复制的问题，但是它强烈依赖于 AB 两个对象的配合，代码维护者需要明确地记住这种编程约定。而且，由于对象 M 的申请是在对象 A 中，释放在对象 B 中，使得它的内存管理代码分散在不同对象中，管理起来也非常费劲。如果这个时候情况再复杂一些，例如对象 B 需要再向对象 C 传递对象 M，那么这个对象在对象 C 中又不能让对象 C 管理。所以这种方式带来的复杂性更大，更不可取。</p>
+<p><img src="http://img.kuqin.com/upimg/allimg/160803/14334G018-4.png" alt=""></p>
+<p>所以引用计数很好的解决了这个问题，在参数 M 的传递过程中，哪些对象需要长时间使用这个对象，就把它的引用计数加 1，使用完了之后再把引用计数减 1。所有对象都遵守这个规则的话，对象的生命期管理就可以完全交给引用计数了。我们也可以很方便地享受到共享对象带来的好处。</p>
+<h3 id="自动释放池"><a href="#自动释放池" class="headerlink" title="自动释放池"></a>自动释放池</h3><p>Cocoa中有一个自动释放池(autorelease pool)的概念。你可能已经见过@autoreleasepool或NSAutoreleasePool。现在我们来看看自动释放池究竟是怎么一回事。</p>
+<p>从名称上来推测，他大概是一个用来存放对象的池子，并且能够自动释放。</p>
+<p>NSObject类提供了一个叫autorelease的方法：</p>
+<pre><code>- (id)autorelease;
+</code></pre><p>该方法预先设定了一条会在未来某个时间放松的release消息，其返回值是接受这条消息的对象。这一特性与retain消息采用了相同的技术。党给一个对象发送autorelease消息时，实际上是讲该对象添加到了自动释放池中。当自动释放池被销毁时，会向该池中的所有对象发送release消息。</p>
+<ul>
+<li>说明：自动释放池概念并不难理解，你可以使用NSMutableArray来编写自己的自动释放池，以容纳对象并在dealloc方法中向池中的所有对象发送release消息，但是并无次必要，因为苹果公司已经替你完成了这项艰巨的任务。</li>
+</ul>
+<p>现在我们可以编写一个能够很好的管理内存的description方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">- (NSString *)description&#123;</div><div class="line">	NSString *description = [[NSString alloc] initWithFormat:@&quot;I am %ld years old&quot;,4];</div><div class="line">	return [description autorelease];</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">``` </div><div class="line">你现在只要编写一行这样的代码就够了：</div><div class="line"></div><div class="line">	NSLog(@&quot;%@&quot;,[someObject description]);</div><div class="line">因为description方法首先创建了一个新的字符串对象，然后自动释放该对象，最后将其返回给NSLog()函数，所以内存管理问题至此得到了圆满的解决。由于description方法中的字符串对象是自动释放的，该对象暂时被放入了当前活动的自动释放池中，等到调用NSLog()函数的代码结束以后，自动释放池会被自动销毁。</div><div class="line">### 自动释放池什么时候销毁</div><div class="line">自动释放池什么时候销毁，并向其所包含的对象发送release消息？还有自动释放池应该什么时候创建？其实有两种方法可以创建一个自动释放池。</div><div class="line"></div><div class="line">* 通过@autoreleasepool关键字</div><div class="line">* 通过NSAutoreleasePool对象</div><div class="line"></div><div class="line">在我们一直使用的Foundation工具集中，创建和销毁自动释放池已经由@autoreleasepool关键字完成。当你使用@autoreleasepool&#123;&#125;时，所有在花括号里的代码都会被放入这个新池子中。如果你的程序运算是内存密集型的，你可以使用这种自动释放池。</div><div class="line"></div><div class="line">有一点需要记住，任何在花括号里定义的变量在花括号外无法使用。</div><div class="line"></div><div class="line">第二种更加明确地方法就是使用NSAutoreleasePool对象。如果你使用这个方法，创建和释放NSAutoreleasePool对象之间的代码就会使用这个新的池子。</div></pre></td></tr></table></figure>
+<pre><code>NSAutoreleasePool *pool = [NSAutoreleasePool new];
+...
+[pool release];
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">创建了一个自动释放池后，该池子就会自动变成为活动的池子。释放该池后，其保留计数器的值归0，然后该池被销毁。在销毁的过程中，该池将释放其包含的所有对象。</div><div class="line"></div><div class="line">那么你应该使用哪一种方法呢？推荐使用关键字方法。它比对象方法更快。因为Objective-C语言创建和释放内存的能力远在我们之上。</div><div class="line"></div><div class="line">使用APPKit时，Cocoa定期自动为你创建和销毁自动释放池。通常实在程序处理完当前事件以后执行这些操作。你可以使用任意树木的自动释放池对象，当不再使用它们时，自动释放池将自动为你清理这些对象。</div><div class="line"></div><div class="line">### 自动释放池的工作流程</div><div class="line">下面我将通过代码，展示下自动释放池的工作流程。</div><div class="line"></div><div class="line">main()函数如下所示：</div></pre></td></tr></table></figure>
+<p>int main(int argc,const char* argv[]){</p>
+<pre><code>//首先，我们创建了一个自动释放池：
+NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
+//现在每次向对象发送autorelease消息，该对象都会被添加到这个自动释放池中，
+
+RetainTracker *tracker = [RetainTracker new];    //count:1
+//这时创建了一个新的tracker对象，因为他在创建时接收了一条new消息，所以计数器值为1
+
+[tracker retain];    //count:2
+//接下来我们保留对象，于是该对象计数器值增加到2
+
+[tracker autorelease];    //count:still 2
+//然后该对象被自动释放，但是其引用计数值仍保持不变，依旧是2.
+
+
+[tracker release];    //count:1
+//之后释放该对象，抵消之前的retain操作
+
+NSLog(@&quot;releasing pool&quot;);
+[pool release];    //gets nuked,sends release to tracker
+//现在我们销毁该释放池。因该释放池奖杯销毁掉，其dealloc方法被调用。
+//使用@autoreleasepool也能达到同样的目的，不过它并不需要分配或销毁自动释放池对象。
+
+
+@autoreleasepool
+{
+    RetainTracker *tracker2 = [RetainTracker new];    //count:1
+    [tracker2 retain];    //count:2
+    [tracker2 autorelease];    //count:still 2
+    [tracker2 release];    //count:1
+    NSLog(@&quot;auto releasing pool&quot;);
+}
+return(0);
+</code></pre><p>}    //main<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">### 不要向已经释放的对象发送消息</div><div class="line"></div><div class="line">有些同学想测试当对象释放时，其 retainCount 是否变成了 0，他们的试验代码如下：</div></pre></td></tr></table></figure></p>
+<ul>
+<li>(BOOL)application:(UIApplication <em>)application didFinishLaunchingWithOptions:(NSDictionary </em>)launchOptions<br>{<br>  NSObject *object = [[NSObject alloc] init];<br>  NSLog(@”Reference Count = %u”, [object retainCount]);<br>  [object release];<br>  NSLog(@”Reference Count = %u”, [object retainCount]);<br>  return YES;<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">但是，如果你真的这么实验，你得到的输出结果可能是以下这样：</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Reference Count = 1 Reference Count = 1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">我们注意到，最后一次输出，引用计数并没有变成 0。这是为什么呢？因为该对象的内存已经被回收，而我们向一个已经被回收的对象发了一个 retainCount 消息，所以它的输出结果应该是不确定的，如果该对象所占的内存被复用了，那么就有可能造成程序异常崩溃。</div><div class="line"></div><div class="line">那为什么在这个对象被回收之后，这个不确定的值是 1 而不是 0 呢？这是因为当最后一次执行 release 时，系统知道马上就要回收内存了，就没有必要再将 retainCount 减 1 了，因为不管减不减 1，该对象都肯定会被回收，而对象被回收后，它的所有的内存区域，包括 retainCount 值也变得没有意义。不将这个值从 1 变成 0，可以减少一次内存的写操作，加速对象的回收。</div><div class="line"></div><div class="line">拿我们之前提到的 Linux 文件系统举列，Linux 文件系统下删除一个文件，也不是真正的将文件的磁盘区域进行抹除操作，而只是删除该文件的索引节点号。这也和引用计数的内存回收方式类似，即回收时只做标记，并不抹除相关的数据。</div><div class="line"></div><div class="line">### 循环引用（Reference Cycle）问题</div><div class="line"></div><div class="line">引用计数这种管理内存的方式虽然很简单，但是有一个比较大的瑕疵，即它不能很好的解决循环引用问题。如下图所示：对象 A 和对象 B，相互引用了对方作为自己的成员变量，只有当自己销毁时，才会将成员变量的引用计数减 1。因为对象 A 的销毁依赖于对象 B 销毁，而对象 B 的销毁与依赖于对象 A 的销毁，这样就造成了我们称之为循环引用（Reference Cycle）的问题，这两个对象即使在外界已经没有任何指针能够访问到它们了，它们也无法被释放</div><div class="line"></div><div class="line">![](http://img.kuqin.com/upimg/allimg/160803/14334M249-5.png)</div><div class="line"></div><div class="line">不止两对象存在循环引用问题，多个对象依次持有对方，形式一个环状，也可以造成循环引用问题，而且在真实编程环境中，环越大就越难被发现。下图是 4 个对象形成的循环引用问题。</div><div class="line"></div><div class="line">![](http://img.kuqin.com/upimg/allimg/160803/14334J0F-6.png)</div><div class="line"></div><div class="line">解决循环引用问题主要有两个办法，第一个办法是我明确知道这里会存在循环引用，在合理的位置主动断开环中的一个引用，使得对象得以回收。如下图所示：</div><div class="line"></div><div class="line">![](http://img.kuqin.com/upimg/allimg/160803/14334H2U-7.png)</div><div class="line"></div><div class="line">不过，主动断开循环引用这种操作依赖于程序员自己手工显式地控制，相当于回到了以前 “谁申请谁释放” 的内存管理年代，它依赖于程序员自己有能力发现循环引用并且知道在什么时机断开循环引用回收内存（这通常与具体的业务逻辑相关），所以这种解决方法并不常用，更常见的办法是使用弱引用 (weak reference) 的办法。</div><div class="line"></div><div class="line">弱引用虽然持有对象，但是并不增加引用计数，这样就避免了循环引用的产生。在 iOS 开发中，弱引用通常在 delegate 模式中使用。举个例子来说，两个 ViewController A 和 B，ViewController A 需要弹出 ViewController B，让用户输入一些内容，当用户输入完成后，ViewController B 需要将内容返回给 ViewController A。这个时候，View Controller 的 delegate 成员变量通常是一个弱引用，以避免两个 ViewController 相互引用对方造成循环引用问题，如下所示：</div><div class="line"></div><div class="line">![](http://img.kuqin.com/upimg/allimg/160803/14334K2N-8.png)</div><div class="line"></div><div class="line">### 使用 Xcode 检测循环引用</div><div class="line">Xcode 的 Instruments 工具集可以很方便的检测循环引用。为了测试效果，我们在一个测试用的 ViewController 中填入以下代码，该代码中的firstArray 和 secondArray 相互引用了对方，构成了循环引用。</div></pre></td></tr></table></figure>
+<ul>
+<li>(void)viewDidLoad {<br>  [super viewDidLoad];<br>  NSMutableArray <em>firstArray = [NSMutableArray array];<br>  NSMutableArray </em>secondArray = [NSMutableArray array];<br>  [firstArray addObject:secondArray];<br>  [secondArray addObject:firstArray];<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">在 Xcode 的菜单栏选择：Product -&gt; Profile，然后选择 “Leaks”，再点击右下角的”Profile” 按钮开始检测。如下图</div><div class="line"></div><div class="line">![](http://img.kuqin.com/upimg/allimg/160803/14334K358-9.jpg)</div><div class="line"></div><div class="line">这个时候 iOS 模拟器会运行起来，我们在模拟器里进行一些界面的切换操作。稍等几秒钟，就可以看到 Instruments 检测到了我们的这次循环引用。Instruments 中会用一条红色的条来表示一次内存泄漏的产生。如下图所示：</div><div class="line"></div><div class="line">![](http://img.kuqin.com/upimg/allimg/160803/14334H030-10.jpg)</div><div class="line"></div><div class="line">我们可以切换到 Leaks 这栏，点击”Cycles &amp; Roots”，就可以看到以图形方式显示出来的循环引用。这样我们就可以非常方便地找到循环引用的对象了。</div><div class="line"></div><div class="line">![](http://img.kuqin.com/upimg/allimg/160803/14334M2T-11.png)</div><div class="line"></div><div class="line">## 使用ARC</div><div class="line">### Automatic Reference Count</div><div class="line">自动引用技术(Automatic Reference Count，简称ARC)，是苹果在WWDC2011年大会上提出的用于内存管理的技术。ARC技术直到今天，仍然被不少人误解。误解主要分为两类：1、对于ARC的疑虑；2、对于ARC的盲目依赖。</div><div class="line"></div><div class="line">第一类的人主要是经历过手工管理引用计数(Manual Reference Count,简称MRC)时代的老一代iOS程序员,他们主要是对ARC技术有怀疑,不敢用。</div><div class="line"></div><div class="line">第二类的人主要是2011年以后,一开始就从ARC开始学习的新的iOS开发者们,他们有些人完全不知道引用计数为何物,对ARC有很强的依赖,但是不知道ARC内部的原理,过于依赖ARC使得他们遇到需要与Core Foundation类打交道,以及循环引用问题时,显得一筹莫展。</div><div class="line">### 对于ARC的疑虑</div><div class="line"></div><div class="line">我们来先说说第一类:老一代iOS程序员对于ARC的疑虑,经过和他们沟通,我了解到他们对于ARC的疑虑主要在以下几点:</div><div class="line"></div><div class="line">1. 担心这个技术方案不靠谱。苹果大多数时候的技术方案都是比较靠谱的,但也有一些技术方案有很多“坑”,例如storyboard。</div><div class="line"></div><div class="line">2. 原有的项目在非ARC环境下运行良好,担心迁移成本或引入新的问题。原有的第三方库可能也没有兼容ARC,担心有迁移成本。</div><div class="line"></div><div class="line">3. 苹果以前手工管理内存需要非常小心,稍微不注意应用程序就崩溃了。有过这段经历的iOS开发老手,心理上还是觉得自己手工管理内存更踏实一些。</div><div class="line"></div><div class="line">4. 使用ARC需要了解ARC的一些细节,还需要引入_bridge等新的关键字,学习成本还是有的。</div><div class="line"></div><div class="line">5. 以为ARC只能支持iOS5.0以上,这是非常大的误解。</div><div class="line"></div><div class="line">对于上面提到5点问题,我认为相应的回答如下:</div><div class="line"></div><div class="line">1. ARC是WWDC2011大会时提出的技术,离现在已经很多年了,而且苹果现在将MacOS上的垃圾回收机制废弃(Deprecated),采用ARC替代,无疑证明了ARC是成熟的了。</div><div class="line"></div><div class="line">2. 确实有一些迁移成本,但苹果在Xcode中专门集成了迁移工具,成本已经非常小了。如下图所示就是Xcode集成的将非ARC工程转换成ARC工程的工具。另外,为了兼容第三方的非ARC开源库,你也可以在工程中随意使用编译参数-fno-objc-arc,这个参数允许对部分文件关闭ARC。</div><div class="line"></div><div class="line">![](http://upload-images.jianshu.io/upload_images/2048356-eba93b51e3df2e35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</div><div class="line"></div><div class="line">3. 手工管理内存虽然踏实,但是很容易发生泄露。常常在开发完成后,需要使用Instruments来检测泄露。但用了ARC后,基本不会出现泄露了,我在开发iPhone客户端时,由于使用了ARC,花三个月开发完的应用,用Instruments检测后,没有发现任何内存泄漏问题。这在没有使用ARC的工程中是不可想象的。</div><div class="line"></div><div class="line">4. ARC确实有学习成本,但是非常值得学习,学成后能省不少开发精力。</div><div class="line"></div><div class="line">5. 虽然ARC是与iOS5一同推出,但是由于ARC的实现机制是在编译期完成,所以使用ARC之后应用仍然可以支持iOS4.3。稍微需要注意的是,如果要在ARC开启的情况下支持iOS4.3,需要将weak关键字换成__unsafe_unretained。</div><div class="line"></div><div class="line">所以我希望大家都能在项目中使用ARC,一旦你感受到它带来的好处,你就离不开它了。它也能让你从繁琐的内存管理代码中解放出来,用更多精力关注于代码结构、设计模式而不是底层的内存管理。</div><div class="line"></div><div class="line">### 对于ARC的盲目依赖</div><div class="line"></div><div class="line">ARC能够解决iOS开发中90%的内存管理问题,但是另外还有10%的内存管理,是需要开发者自己处理的,这主要就是与底层Core Foundation对象交互的那部分,底层的Core Foundation对象由于不在ARC的管理下,所以需要自己维护这些对象的引用计数。</div><div class="line"></div><div class="line">对于ARC盲目依赖的iOS新人们,由于不知道引用计数,他们的问题主要体现在:</div><div class="line"></div><div class="line">1. 过度使用block之后,无法解决循环引用问题。</div><div class="line"></div><div class="line">2. 遇到底层Core Foundation对象,需要自己手工管理它们的引用计数时,显得一筹莫展。</div><div class="line"></div><div class="line">### Core Foundation对象的内存管理</div><div class="line"></div><div class="line">下面我们就来简单介绍一下对底层Core Foundation对象的内存管理。底层的Core Foundation对象,大多数以XxxCreateWithXxx这样的方式创建,例如:</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>//创建一个CFStringRef对象</p>
+<p>CFStringRef str= CFStringCreateWithCString(kCFAllocatorDefault,“hello world”, kCFStringEncodingUTF8</p>
+<p>// 创建一个CTFontRef 对象</p>
+<p>CTFontRef fontRef = CTFontCreateWithName((CFStringRef)@”ArialMT”,␣fontSize,␣NULL);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">对于这些对象的引用计数的修改,要相应地使用CFRetain和CFRelease方法。如下所示:</div></pre></td></tr></table></figure></p>
+<p>//创建一个CTFontRef对象</p>
+<p>CTFontRef fontRef = CTFontCreateWithName((CFStringRef)@”ArialMT”, fontSize, NULL);</p>
+<p>//引用计数加1<br>CFRetain(fontRef);</p>
+<p>//引用计数减1<br>CFRelease(fontRef);<br>```</p>
+<p>对于CFRetain和CFRelease两种方法,读者可以直观地认为,它们与Objective-C对象的retain和release方法等价。</p>
+<p>所以对于底层Core Foundation对象,我们只需要延续以前手工管理引用计数的办法即可。</p>
+<p>除此之外,还有另外一个问题需要解决。在ARC下,我们有时需要将一个Core Foundation对象转换成一个Objective-C对象,这个时候我们需要告诉编译器,转换过程中的引用计数需要做如何的调整。这就引入了bridge相关的关键字,以下是这些关键字的说明:</p>
+<ul>
+<li><p>__bridge:只做类型转换,不修改相关对象的引用计数,原来的Core Foundation对象在不用时,需要调用CFRelease方法。</p>
+</li>
+<li><p>__bridge_retained:类型转换后,将相关对象的引用计数加1,原来的Core Foundation对象在不用时,需要调用CFRelease方法。</p>
+</li>
+<li><p>__bridge_transfer:类型转换后,将该对象的引用计数交给ARC管理,Core Foundation对象在不用时,不再需要调用CFRelease方法。</p>
+</li>
+</ul>
+<p>我们根据具体的业务逻辑,合理使用上面的三种转换关键字,就可以解决Core Foundation对象与Objective-C对象相对转换的问题了。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/uncategorized/iOS获取时间-当天、前一天、下一天.html" rel="next" title="iOS获取时间---当天、前一天、下一天">
+                <i class="fa fa-chevron-left"></i> iOS获取时间---当天、前一天、下一天
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://chuantu.biz/t5/52/1490601326x2890174015.jpg"
+               alt="祁伟鹏" />
+          <p class="site-author-name" itemprop="name">祁伟鹏</p>
+           
+              <p class="site-description motion-element" itemprop="description">上天安排的最大嘛</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#对象生命周期"><span class="nav-number">1.</span> <span class="nav-text">对象生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用计数"><span class="nav-number">2.</span> <span class="nav-text">引用计数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是引用计数，原理是什么？"><span class="nav-number">2.1.</span> <span class="nav-text">什么是引用计数，原理是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我们为什么需要引用计数"><span class="nav-number">2.2.</span> <span class="nav-text">我们为什么需要引用计数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动释放池"><span class="nav-number">2.3.</span> <span class="nav-text">自动释放池</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">祁伟鹏</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://short.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://www.aiwyt.com//uncategorized/理解iOS内存管理.html';
+          this.page.identifier = '/uncategorized/理解iOS内存管理.html';
+          this.page.title = '理解iOS内存管理';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://short.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
