@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://img.kuqin.com/upimg/allimg/160803/14334I012-2.png">
 <meta property="og:image" content="http://img.kuqin.com/upimg/allimg/160803/14334G124-3.png">
 <meta property="og:image" content="http://img.kuqin.com/upimg/allimg/160803/14334G018-4.png">
-<meta property="og:updated_time" content="2017-04-20T05:45:03.000Z">
+<meta property="og:updated_time" content="2017-04-20T05:46:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解iOS内存管理">
 <meta name="twitter:description" content="本文将介绍如何使用Objective-C和Cocoa进行内存管理。内存管理是程序设计中常见的资源管理(resource management)的一部分。每个计算机系统可供程序使用的资源都是有限的，包括内存、网络连接等。如果你不断的打开文件并且保持打开状态而从不关闭，最终将好近文件资源。任何人都不希望出现这种结果。
@@ -346,6 +346,7 @@
 <p>不是每个程序都会使用文件或网络连接，但都会消耗内存。每个C语言程序员都会遇到与内存有关的错误，这种错误是灾难性的。而使用Java和脚本语言的程序员则不需要考虑此类问题：这些语言的内存管理是自动进行的。另一方面我们必须确保在需要的时候分配内存，在程序运行结束时释放内存。如果我们只分配而不释放，就会导致内存泄漏(leak memory)：程序的内存占用量不断增加，最终会被耗尽并导致程序崩溃。</p>
 <p>已用计数(Reference Count)是一个简单而有效的管理对象生命周期的方式，不管是Objective-C语言还是Swift语言，其内存管理方式都是基于引用计数的。本章将讲解这种内存管理方式的特点及注意事项。</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="对象生命周期"><a href="#对象生命周期" class="headerlink" title="对象生命周期"></a>对象生命周期</h2><p>正如现实世界中的生物一样，程序中的对象也是有生命周期的。对象的生命周期包括诞生(通过alloc或new方法实现)、生存(接收消息并执行操作)、交友(通过复合以及向方法传递参数)以及最终死去(被释放掉)。当生命周期结束时，它们的原材料(内存)将被回收，以供新的对象使用。</p>
 <h2 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h2><h3 id="什么是引用计数，原理是什么？"><a href="#什么是引用计数，原理是什么？" class="headerlink" title="什么是引用计数，原理是什么？"></a>什么是引用计数，原理是什么？</h3><p>引用计数可以有效的管理对象生命周期。当我们创建一个新对象的时候，它的引用计数为1，当有一个新的指针指向这个对象时，我们将其引用计数加1，当某个指针不再指向这个对象时，我们将其引用计数减1，当对象的引用计数变为0时，说明这个对象不再被任何指针指向了，这个时候我们就可以将对象销毁，回收内存。</p>
 <p>当使用alloc、new方法或者通过copy(接收到该消息的对象会创建一个自身的副本)创建一个对象时，对象的引用计数会被设置为1。要增加对象的引用计数的值，可以对该对象使用retain。要减少的话，怎可以使用release方法。</p>
