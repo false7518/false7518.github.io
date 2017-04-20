@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://img.kuqin.com/upimg/allimg/160803/14334H030-10.jpg">
 <meta property="og:image" content="http://img.kuqin.com/upimg/allimg/160803/14334M2T-11.png">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2048356-eba93b51e3df2e35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-04-20T06:09:06.000Z">
+<meta property="og:updated_time" content="2017-04-20T06:10:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解iOS内存管理">
 <meta name="twitter:description" content="本文将介绍如何使用Objective-C和Cocoa进行内存管理。内存管理是程序设计中常见的资源管理(resource management)的一部分。每个计算机系统可供程序使用的资源都是有限的，包括内存、网络连接等。如果你不断的打开文件并且保持打开状态而从不关闭，最终将好近文件资源。任何人都不希望出现这种结果。
@@ -382,7 +382,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (id)autorelease;</div></pre></td></tr></table></figure>
 <p>该方法预先设定了一条会在未来某个时间放松的release消息，其返回值是接受这条消息的对象。这一特性与retain消息采用了相同的技术。党给一个对象发送autorelease消息时，实际上是讲该对象添加到了自动释放池中。当自动释放池被销毁时，会向该池中的所有对象发送release消息。</p>
 <p>现在我们可以编写一个能够很好的管理内存的description方法。</p>
-<p>2<br>你现在只要编写一行这样的代码就够了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (NSString *)description&#123;</div><div class="line">		NSString *description = [[NSString alloc] </div><div class="line">		initWithFormat:@&quot;I am %ld years old&quot;,4];</div><div class="line">		return [description autorelease];</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>你现在只要编写一行这样的代码就够了：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSLog(@&quot;%@&quot;,[someObject description]);</div></pre></td></tr></table></figure>
 <p>因为description方法首先创建了一个新的字符串对象，然后自动释放该对象，最后将其返回给NSLog()函数，所以内存管理问题至此得到了圆满的解决。由于description方法中的字符串对象是自动释放的，该对象暂时被放入了当前活动的自动释放池中，等到调用NSLog()函数的代码结束以后，自动释放池会被自动销毁。</p>
 <h3 id="自动释放池什么时候销毁"><a href="#自动释放池什么时候销毁" class="headerlink" title="自动释放池什么时候销毁"></a>自动释放池什么时候销毁</h3><p>自动释放池什么时候销毁，并向其所包含的对象发送release消息？还有自动释放池应该什么时候创建？其实有两种方法可以创建一个自动释放池。</p>
