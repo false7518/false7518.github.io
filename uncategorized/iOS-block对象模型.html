@@ -1,0 +1,774 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="block的内部数据结构定义从苹果的llvm项目的开源代码中，我们可以得到block的数据结构定义，如下图所示：
+对应的结构体定义如下：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS block对象模型">
+<meta property="og:url" content="http://www.aiwyt.com/uncategorized/iOS-block对象模型.html">
+<meta property="og:site_name" content="祁伟鹏的博客">
+<meta property="og:description" content="block的内部数据结构定义从苹果的llvm项目的开源代码中，我们可以得到block的数据结构定义，如下图所示：
+对应的结构体定义如下：">
+<meta property="og:image" content="http://img.blog.csdn.net/20160507145652306">
+<meta property="og:updated_time" content="2017-04-25T08:14:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS block对象模型">
+<meta name="twitter:description" content="block的内部数据结构定义从苹果的llvm项目的开源代码中，我们可以得到block的数据结构定义，如下图所示：
+对应的结构体定义如下：">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160507145652306">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.aiwyt.com/uncategorized/iOS-block对象模型.html"/>
+
+
+
+
+
+  <title> iOS block对象模型 | 祁伟鹏的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">祁伟鹏的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.aiwyt.com/uncategorized/iOS-block对象模型.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="祁伟鹏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://chuantu.biz/t5/52/1490601326x2890174015.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="祁伟鹏的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS block对象模型
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-24T13:18:47+08:00">
+                2017-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/uncategorized/iOS-block对象模型.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="/uncategorized/iOS-block对象模型.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="block的内部数据结构定义"><a href="#block的内部数据结构定义" class="headerlink" title="block的内部数据结构定义"></a>block的内部数据结构定义</h2><p>从苹果的llvm项目的开源代码中，我们可以得到block的数据结构定义，如下图所示：<br><img src="http://img.blog.csdn.net/20160507145652306" alt=""></p>
+<p>对应的结构体定义如下：</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">struct Block_descriptor &#123;</div><div class="line">	unsigned long int reserved;</div><div class="line">	unsigned long int size;</div><div class="line">	void (*copy)(void *dst,void *src);</div><div class="line">	void (*dispose)(void *);</div><div class="line">&#125;</div><div class="line"></div><div class="line">struct Block_layout &#123;</div><div class="line">	void *isa;</div><div class="line">	int flags;</div><div class="line">	int reserved;</div><div class="line">	void (*invoke)(void *,...);</div><div class="line">	struct Block_descriptor *descriptor;</div><div class="line">	/* Imported variables. */</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过该图，我们可以知道，一个block的实例实际上由6部分构成：</p>
+<ul>
+<li>isa指针，所有对象都有指针，用于实现对象相关的功能。</li>
+<li>flags，用于按bit位表示一些block的附加信息，我们会在之后的block copy的实现代码中，看到对该变量的使用。</li>
+<li>reserved，保留变量。</li>
+<li>invoke，函数指针，只想具体的block实现的函数调用地址。</li>
+<li>descriptor，表示该block的附加描述信息，主要是size大小，以及copy和dispose函数的指针。</li>
+<li>variables，capture过来的变量，block能够访问它外部的局部变量，就是因为将这些变量的地址或变量复制到了结构体中。</li>
+</ul>
+<p>该数据结构和后面的clang分析出的结构实际上是一样的，仅仅是结构体的嵌套方式不一样。在Objective-C中，一共有3中类型的block：</p>
+<ol>
+<li>_NSCocreteGlobalBlock，全局的静态block，不会访问任何外部变量。</li>
+<li>_NSConcreteStackBlock，保存在栈中的block，当函数返回时会被销毁。</li>
+<li>_NSConcreteMallocBlock，保存在堆中的block，当引用计数为0时被销毁。</li>
+</ol>
+<p>我们在下面会分别来查看他们在实现方式上的差别。</p>
+<h2 id="用clang分析block的实现"><a href="#用clang分析block的实现" class="headerlink" title="用clang分析block的实现"></a>用clang分析block的实现</h2><h3 id="使用工具：clang"><a href="#使用工具：clang" class="headerlink" title="使用工具：clang"></a>使用工具：clang</h3><p>为了研究编译器是如何实现block的，我们需要使用clang。clang提供一个命令，可以将Objective-C源码改写成C语言，借此可以研究block具体的源码实现方式。该命令是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">clang -rewrite-objc block.c</div></pre></td></tr></table></figure>
+<h3 id="NSConcreteGlobalBlock类型的block的实现"><a href="#NSConcreteGlobalBlock类型的block的实现" class="headerlink" title="NSConcreteGlobalBlock类型的block的实现"></a>NSConcreteGlobalBlock类型的block的实现</h3><p>我们先新建一个名为“block1.c”的源文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line"></div><div class="line">int main() &#123;</div><div class="line">	^&#123;printf(&quot;helloworld\n&quot;);&#125;();</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后再命令行输入clang -rewrite-objc block1.c，即可在目录中看到clang输出了一个名为“block1.cpp”的文件，该文件就是block在C语言中的实现。将block1.cpp中一些无关的代码去掉，关键引用代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">struct __block_impl &#123;</div><div class="line">	void *isa;</div><div class="line">	int Flags;</div><div class="line">	int Reserved;</div><div class="line">	void *Funcptr;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">struct __main_block_impl_0 &#123;</div><div class="line">	struct __block_impl impl;</div><div class="line">	struct __main_block_desc_0* Desc;</div><div class="line">	__main_block_impl_0(void *fp,struct __main_block_desc_0 *desc,int flags=0)&#123;</div><div class="line">		impl.isa = &amp;_NSConcreteStackBlock;</div><div class="line">		impl.Flags = flags;</div><div class="line">		impl.FuncPtr = fp;</div><div class="line">		Desc = desc;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">static void __main_block_func_0(struct __main_block_impl_0 *__cself)&#123;</div><div class="line">	printf(&quot;Helloworld!\n&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">static struct __main_block_desc_0 &#123;</div><div class="line">	size_t reserved;</div><div class="line">	size_t Block_size;</div><div class="line">&#125; __main_block_desc_0_DATA = &#123;0,sizeof(struct __main_block_impl_0)&#125;;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">	(void (*)())&amp;__main_block_impl_0((void*)__main_block_func_0,&amp;__main_block_desc_0_DATA)();</div><div class="line">return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>__main_block_impl_0就是该block的实现，从中我们可以看出：</p>
+<ol>
+<li>一个block实际是一个对象，它主要由一个isa、一个impl合一个descriptor组成。</li>
+<li>由于这里没有开启ARC，所以我们看到的isa指向的还是_NSconcreteStackBlock。但在开启ARC时，block应该指的是_NSConcreteGlobalBlock类。</li>
+<li>impl是实际的函数指针，impl相当于之前提到的invoke变量，只是clang编译器对这个变量的命名不一样。</li>
+<li>descriptor是用于描述当前这个block的附加信息的，包括结构体大小，需要capture和dispose的变量列表等。结构体大小需要保存是因为，每个block会capture一些变量，这些变量会加到__main_block_impl_0这个结构体中，使其体积变大。在该例子中我们还看不到相关capture的代码，后面将会看到。</li>
+</ol>
+<h3 id="NSConcreteStackBlock类型的block的实现"><a href="#NSConcreteStackBlock类型的block的实现" class="headerlink" title="NSConcreteStackBlock类型的block的实现"></a>NSConcreteStackBlock类型的block的实现</h3><p>我们另外新建一个名为“block2.c”的文件，输入一下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line"></div><div class="line">int main() &#123;</div><div class="line">	int a = 100;</div><div class="line">	void (^block2)(void) = ^&#123;</div><div class="line">		printf(&quot;%d\n&quot;,a);</div><div class="line">	&#125;;</div><div class="line">	block2();</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>用之前提到的clang工具，转换后的关键代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">struct __main_block_impl_0 &#123;</div><div class="line">	struct __block_impl impl;</div><div class="line">	struct __main_block_desc_0* Desc;</div><div class="line">	int a;</div><div class="line">	__main_block_impl_0(void *fp,struct __main_block_desc_0 *desc,int _a,int flags=0):a(_a)&#123;</div><div class="line">		impl.isa = &amp;_NSConcretestackBlock;</div><div class="line">		impl.Flags = flags;</div><div class="line">		impl.funcptr = fp;</div><div class="line">		Desc = desc</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line">static void __main_block_func_0(struct __main_block_impl_0 *__cself) &#123;</div><div class="line">	int a = __cself-&gt;a;//bound by copy;</div><div class="line">	printf(&quot;%d\n&quot;,a);</div><div class="line">&#125;</div><div class="line">static struct __main_block_desc_0 &#123;</div><div class="line">	size_t reserved;</div><div class="line">	size_t Block_size;</div><div class="line">&#125; __main_block_desc_0_DATA = &#123;0,sizeof(struct __main_block_impl_0)&#125;;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">	int a = 100;</div><div class="line">	void (*block2)(void) = (void(*)())&amp;__main_block_impl_0((void*)__main_block_func_0,&amp;__main_block_desc_0_DATA,a);</div><div class="line">	((void(*)(__block_impl *))((__block_impl *)block2)-&gt;FuncPtr)((__block_impl *)block2);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在本例中，我们可以看到：</p>
+<ol>
+<li>本例中，isa指向_NSConcreteStackBlock,说明这是一个分配在栈上的实例。</li>
+<li>__main_block_impl_0中增加了一个变量a，在block中引用的变量a实际是在申明block时，被复制到__main_block_impl_0结构体中的那个变量a。因为这样，我们就能理解，在block内部修改变量a的内容，不会影响外部的实际变量。</li>
+<li>__main_block_impl_0中由于增加了一个变量a，所以结构体变大了，该结构体大小被卸载了__main_block_desc_0中。</li>
+</ol>
+<p>我们修改上面的源码，在变量前面增加一个 __block关键字；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line"></div><div class="line">int main() &#123;</div><div class="line">	__block int a = 100;</div><div class="line">	void (^block2)(void) = ^&#123;</div><div class="line">		printf(&quot;%d\n&quot;,a);</div><div class="line">	&#125;;</div><div class="line">	block2();</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>生成的关键代码如下，可以看到，差异相当大：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">struct __Block_byref_i_0 &#123;</div><div class="line">	void *__isa;</div><div class="line">	__Block_byref_i_0 *__forwarding;</div><div class="line">	int __flags;</div><div class="line">	int __size;</div><div class="line">	int i;</div><div class="line">&#125;</div><div class="line"></div><div class="line">struct __main_block_impl_0 &#123;</div><div class="line">	struct __block_impl impl;</div><div class="line">	struct __main_block_desc_0* Desc;</div><div class="line">	__Block_byref_i_0 *i;// by ref</div><div class="line">	__main_block_impl_0(void *fp,struct __main_block_desc_0 *desc,__Block_byref_i_0 *_i,int flags=0):i(_i-&gt;__forwarding)&#123;</div><div class="line">		impl.isa = &amp;_NSConcretestackBlock;</div><div class="line">		impl.Flags = flags;</div><div class="line">		impl.funcptr = fp;</div><div class="line">		Desc = desc</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line">static void __main_block_func_0(struct __main_block_impl_0 *__cself) &#123;</div><div class="line">	__Block_byref_i_0 *i = __cself-&gt;i;//bound by ref</div><div class="line">	printf(&quot;%d\n&quot;,(i-&gt;__forwarding-&gt;i));</div><div class="line">	(i-&gt;__forwarding-&gt;i) = 1023;</div><div class="line">&#125;</div><div class="line">static void __main_block_copy_0(struct __main_block_impl_0 *dst,struct __main_block_impl_0*src)&#123;</div><div class="line">	_Block_object_assign((void *)&amp;dst-&gt;i,(void *)src-&gt;i,8/*BLOCK_FIELD_IS_BYREF*/);</div><div class="line">&#125;</div><div class="line">static void __main_block_dispose_0(struct __main_block_impl_0*src)&#123;</div><div class="line">	_Block_object_dispose((void*)src-&gt;i,8/*BLOCK_FIELD_IS_BYREF*/);</div><div class="line">&#125;</div><div class="line"></div><div class="line">static struct __main_block_desc_0 &#123;</div><div class="line">	size_t reserved;</div><div class="line">	size_t Block_size;</div><div class="line">	void (*copy)(struct __main_block_impl_0*,struct __main_block_impl_0);</div><div class="line">	void (*dispose)(struct __main_block_impl_0*);</div><div class="line">&#125; __main_block_desc_0_DATA = &#123;0,sizeof(struct __main_block_impl_0),__main_block_copy_0,__main_block_dispose_0&#125;;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">	__attribute__((__blocks__(byref))) __Block_byref_i_0 i = &#123;(void *)0,(__Block_byref_i_0 *)&amp;i,0,sizeof(__Block_byref_i_0),1024&#125;;</div><div class="line">	void (*block2)(void) = (void(*)())&amp;__main_block_impl_0((void*)__main_block_func_0,&amp;__main_block_desc_0_DATA,(__Block_byref_i_0 *)&amp;i,570425344);</div><div class="line">	((void(*)(__block_impl *))((__block_impl *)block2)-&gt;FuncPtr)((__block_impl *)block2);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从代码中我们可以看到：</p>
+<ol>
+<li>源码中增加一个名为__Block_byref_i_0的结构体，用来保存我们要capture并且修改的变量i。</li>
+<li>__main_block_impl_0中引用的是__Block_byref_i_0的结构体指针，这样就可以起到修改外部变量的作用。</li>
+<li>__Block_byref_i_0结构体中带有isa，说明他也是一个对象。</li>
+<li>我们需要负责__Block_byref_i_0结构体相关的内存管理，所以 __main_block_des_0中增加了copy和dispose函数指针，用于在调用前后修改相应变量的引用计数。</li>
+</ol>
+<h3 id="NSConcreteMallocBlock类型的block的实现"><a href="#NSConcreteMallocBlock类型的block的实现" class="headerlink" title="NSConcreteMallocBlock类型的block的实现"></a>NSConcreteMallocBlock类型的block的实现</h3><p>NSConcreteMallocBlock类型的block通常不会在源码中直接出现，只有当一个block被调用其copy方法的时候，系统才会将这个block复制到堆中，从而产生NSConcreteMallocBlock类型的block。一下是一个block被copy时的示例代码，可以看到，在第8步，目标的block类型被修改为_NSConcreteMallocBlock。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">static void *_block_copy_internal(const void *arg,const int flags)&#123;</div><div class="line">	struct Block_layout *aBlock;</div><div class="line">	const bool wantsOne = (WANTS_ONE &amp; flags) == WANTS_ONE;</div><div class="line">	</div><div class="line">	//1</div><div class="line">	if(!arg) return NULL;</div><div class="line">	</div><div class="line">	//2</div><div class="line">	aBlock = (struct Block_layout *)arg;</div><div class="line">	</div><div class="line">	//3</div><div class="line">	if(aBlock-&gt;flags &amp; BLOCK_NEEDS_FREE) &#123;</div><div class="line">		// latches on high</div><div class="line">		latching_incr_int(&amp;aBlock-&gt;flags);</div><div class="line">		return aBlock;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	//4</div><div class="line">	else if (aBlock-&gt;flags &amp; BLOCK_IS_GLOBAL)&#123;</div><div class="line">		return aBlock;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	//5</div><div class="line">	struct Block_layout *result = malloc(aBlock-&gt;descriptor-&gt;size);</div><div class="line">	if(!result) return (void *)0;</div><div class="line">	</div><div class="line">	//6</div><div class="line">	memmove(result,aBlock,aBlock-&gt;descriptor-&gt;size);/bitcopy first</div><div class="line">	</div><div class="line">	//7</div><div class="line">	result -&gt; flags &amp;= ~(BLOCK_REFCOUNT_MASK); // XXX not needed</div><div class="line">	result -&gt; flags |= BLOCK_NEEDS_FREE|1;</div><div class="line">	</div><div class="line">	//8</div><div class="line">	result-&gt;isa = _NSConcreteMallocBlock;</div><div class="line">	</div><div class="line">	//9</div><div class="line">	if(result-&gt;flags &amp;BLOCK_HAS_COPY_DISPOSE) &#123;</div><div class="line">		(*aBlock-&gt;descriptor-&gt;copy)(result,aBlock); // do fixup</div><div class="line">	&#125;</div><div class="line">	return result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="变量的复制"><a href="#变量的复制" class="headerlink" title="变量的复制"></a>变量的复制</h3><p>对于block外的变量引用，block默认是将其复制到其数据结构中来实现访问的。如果这个对象是一个引用类型，则block会将其引用计数加1，对于用__block修饰的外部变量引用，block是复制其引用地址来实现访问的。</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="避免循环引用"><a href="#避免循环引用" class="headerlink" title="避免循环引用"></a>避免循环引用</h3><p>由于block会复制外部的变量，所以如果不注意，会比较容易造成循环引用。对于这种问题，需要将引用的一方变成weak的，从而避免循环引用，下面是一个具体避免循环引用的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">MyViewController *__weak weakSelf = self;</div><div class="line">self.tableViewAgent.selectedCellBlock = ^(UITableView *tableView,NSIndexPath *indexPath) &#123;</div><div class="line">	[weakSelf someMethod];</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="ARC对block类型的影响"><a href="#ARC对block类型的影响" class="headerlink" title="ARC对block类型的影响"></a>ARC对block类型的影响</h3><p>在ARC开启的情况下，将只会有NSConcreteGlobalBlock和NSConcreteMallocBlock类型的block。</p>
+<p>原本的NSConcreteStackBlock的block会被NSConcreteMallocBlock类型的block替代。证名方式是一下代码在Xcode中，会输出&lt;__NSMallocBlock__ : 0x100109960&gt;。在苹果官方文档中也提到，当把栈中的block返回时，就不需要调用copy方法了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line">int main(int argc,const char * argv[])&#123;</div><div class="line">	@autoreleasepool &#123;</div><div class="line">		int i = 1024;</div><div class="line">		void (^block1)(void) = ^&#123;</div><div class="line">			printf(&quot;%ld\n&quot;,i);</div><div class="line">		&#125;;</div><div class="line">		block1();</div><div class="line">		NSLog(@&quot;%@&quot;,block1);</div><div class="line">	&#125;</div><div class="line">	return 0 ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这么做的原因是由于ARC已经能很好的处理对象的生命周期的管理，这样所有对象都放到堆上管理，对于编译器实现来说，会比较方便。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/uncategorized/理解iOS内存管理.html" rel="next" title="理解iOS内存管理">
+                <i class="fa fa-chevron-left"></i> 理解iOS内存管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://chuantu.biz/t5/52/1490601326x2890174015.jpg"
+               alt="祁伟鹏" />
+          <p class="site-author-name" itemprop="name">祁伟鹏</p>
+           
+              <p class="site-description motion-element" itemprop="description">上天安排的最大嘛</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#block的内部数据结构定义"><span class="nav-number">1.</span> <span class="nav-text">block的内部数据结构定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用clang分析block的实现"><span class="nav-number">2.</span> <span class="nav-text">用clang分析block的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用工具：clang"><span class="nav-number">2.1.</span> <span class="nav-text">使用工具：clang</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSConcreteGlobalBlock类型的block的实现"><span class="nav-number">2.2.</span> <span class="nav-text">NSConcreteGlobalBlock类型的block的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSConcreteStackBlock类型的block的实现"><span class="nav-number">2.3.</span> <span class="nav-text">NSConcreteStackBlock类型的block的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSConcreteMallocBlock类型的block的实现"><span class="nav-number">2.4.</span> <span class="nav-text">NSConcreteMallocBlock类型的block的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量的复制"><span class="nav-number">2.5.</span> <span class="nav-text">变量的复制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意事项"><span class="nav-number">3.</span> <span class="nav-text">注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#避免循环引用"><span class="nav-number">3.1.</span> <span class="nav-text">避免循环引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARC对block类型的影响"><span class="nav-number">3.2.</span> <span class="nav-text">ARC对block类型的影响</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">祁伟鹏</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://short.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://www.aiwyt.com//uncategorized/iOS-block对象模型.html';
+          this.page.identifier = '/uncategorized/iOS-block对象模型.html';
+          this.page.title = 'iOS block对象模型';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://short.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
